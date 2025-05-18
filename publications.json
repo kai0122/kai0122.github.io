@@ -2,97 +2,97 @@
   "publications": [
     {
       "authors": "Po-Kai Yang and Benjamin Filtjens and Pieter Ginis and Maaike Goris and Alice Nieuwboer and Moran Gilat and Peter Slaets and Bart Vanrumste",
-      "year": "",
+      "year": 2024,
       "title": "Freezing of gait assessment with inertial measurement units and deep learning: effect of tasks, medication states, and stops",
-      "journal": "",
+      "journal": "Journal of NeuroEngineering and Rehabilitation 21 (1), 24, 2024",
       "url": "https://link.springer.com/article/10.1186/s12984-024-01320-1",
       "citations": 15
     },
     {
       "authors": "Po-Kai Yang and Benjamin Filtjens and Pieter Ginis and Maaike Goris and Alice Nieuwboer and Moran Gilat and Peter Slaets and Bart Vanrumste",
-      "year": "",
+      "year": 2024,
       "title": "Automatic detection and assessment of freezing of gait manifestations",
-      "journal": "",
+      "journal": "IEEE Transactions on Neural Systems and Rehabilitation Engineering, 2024",
       "url": "https://ieeexplore.ieee.org/abstract/document/10604853/",
       "citations": 6
     },
     {
       "authors": "Po-Kai Yang and Benjamin Filtjens and Pieter Ginis and Maaike Goris and Alice Nieuwboer and Moran Gilat and Peter Slaets and Bart Vanrumste",
-      "year": "",
+      "year": 2025,
       "title": "Multimodal Freezing of Gait Detection: Analyzing the Benefits and Limitations of Physiological Data",
-      "journal": "",
+      "journal": "IEEE Transactions on Neural Systems and Rehabilitation Engineering, 2025",
       "url": "https://ieeexplore.ieee.org/abstract/document/10902623/",
       "citations": 2
     },
     {
       "authors": "Po-Kai Yang and Oscar Luis Alvarado Rodriguez and Francisco Gutiérrez and Katrien Verbert",
-      "year": "",
+      "year": 2022,
       "title": "Touching the Explanations: Explaining Movie Recommendation Scores in Mobile Augmented Reality",
-      "journal": "",
+      "journal": "2022 IEEE International Conference on Artificial Intelligence and Virtual …, 2022",
       "url": "https://ieeexplore.ieee.org/abstract/document/10024447/",
       "citations": 2
     },
     {
       "authors": "Benjamin Filtjens and Po-Kai Yang and Maaike Goris and Moran Gilat and Niklas Kempynck and Pieter Ginis and Alice Nieuwboer and Peter Slaets and Bart Vanrumste",
-      "year": "",
+      "year": 2023,
       "title": "Automated freezing of gait assessment with deep learning and data augmentation from simulated inertial measurement unit data",
-      "journal": "",
+      "journal": "2023 IEEE 19th international conference on body sensor networks (BSN), 1-4, 2023",
       "url": "https://ieeexplore.ieee.org/abstract/document/10330987/",
       "citations": 1
     },
     {
       "authors": "Po-Kai Yang and Benjamin Filtjens and Pieter Ginis and Maaike Goris and Moran Gilat and Alice Nieuwboer and Peter Slaets and Bart Vanrumste",
-      "year": "",
+      "year": 2023,
       "title": "Automated freezing of gait assessment in Parkinson's disease using inertial measurement units and deep learning",
-      "journal": "",
+      "journal": "The International Society of Posture and Gait Research (ISPGR) Congress 2023 …, 2023",
       "url": "https://scholar.google.com/scholar?cluster=669455215489714483&hl=en&oi=scholarr",
       "citations": 1
     },
     {
       "authors": "Maaike Goris and Po-Kai Yang and Pieter Ginis and Benjamin Filtjens and Clint Hansen and Christian Schlenstedt and Jeff M Hausdorff and Walter Maetsler and Wim Vandenberghe and Moran Gilat",
-      "year": "",
+      "year": 2025,
       "title": "Can a deep learning algorithm assess freezing of gait during a turning task in people with Parkinson’s disease?",
-      "journal": "",
+      "journal": "ISPGR 2025, Date: 2025/06/29-2025/07/02, Location: Maastricht, 2025",
       "url": "https://scholar.google.com/scholar?cluster=6131879175500659525&hl=en&oi=scholarr",
       "citations": 0
     },
     {
       "authors": "Maaike Goris and Po-Kai Yang and Pieter Ginis and Benjamin Filtjens and Bart Vanrumste and Alice Nieuwboer and Moran Gilat",
-      "year": "",
+      "year": 2024,
       "title": "Automatic detection of Freezing of gait in Parkinson’s disease with IMU: validation of a deep learning algorithm in the home",
-      "journal": "",
+      "journal": "International Congress of Parkinson’s Disease and Movement Disorders …, 2024",
       "url": "https://scholar.google.com/scholar?cluster=2423835789335965580&hl=en&oi=scholarr",
       "citations": 0
     },
     {
       "authors": "Po-Kai Yang and Benjamin Filtjens and Pinar Onal and Kevin Langlois and Joost Geeroms and Tom Verstraten and Bart Vanrumste",
-      "year": "",
+      "year": 2023,
       "title": "A Comparative Study of Multi-Modal Data for Human Action Forecasting in Robotic Assistive Devices",
-      "journal": "",
+      "journal": "21st National Day of Biomedical Engineering 2023, Location: VUB Campus …, 2023",
       "url": "https://researchportal.vub.be/files/106507872/poster_ai4exo_v4.pdf",
       "citations": 0
     },
     {
       "authors": "Benjamin Filtjens and Pieter Ginis and Po Kai Yang and Nitesh Ghosh and Alice Nieuwboer and Bart Vanrumste and Peter Slaets",
-      "year": "",
+      "year": 2022,
       "title": "Automatic freezing of gait annotation with deep learning and simulated inertial measurement unit data",
-      "journal": "",
+      "journal": "ISPGR World Congress 2022, Date: 2022/07/04-2022/07/07, Location: Montreal …, 2022",
       "url": "https://scholar.google.com/scholar?cluster=10904140343362864419&hl=en&oi=scholarr",
       "citations": 0
     },
     {
       "authors": "Benjamin Filtjens and Pieter Ginis and Po Kai Yang and Nitesh Ghosh and Alice Nieuwboer and Peter Slaets and Bart Vanrumste",
-      "year": "",
+      "year": 2022,
       "title": "Automatic gait assessment of people with Parkinson's disease and freezing of gait with motion capture and deep learning",
-      "journal": "",
+      "journal": "ISPGR World Congress 2022, Date: 2022/07/04-2022/07/07, Location: Montreal …, 2022",
       "url": "https://scholar.google.com/scholar?cluster=3267344796385059806&hl=en&oi=scholarr",
       "citations": 0
     },
     {
       "authors": "Po-Kai Yang and Benjamin Filtjens and Pieter Ginis and Alice Nieuwboer and Peter Slaets and Bart Vanrumste",
-      "year": "",
+      "year": 2022,
       "title": "Freezing-of-gait detection for Parkinson’s Disease with RGB videos",
-      "journal": "",
+      "journal": "Leuven. AI Scientific Workshop 2022, Date: 2022/06/02-2022/06/02, Location …, 2022",
       "url": "https://scholar.google.com/scholar?cluster=764369054064081553&hl=en&oi=scholarr",
       "citations": 0
     }

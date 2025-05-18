@@ -10,11 +10,12 @@ def fetch_publications():
     pubs = []
     for p in author['publications']:
         entry = scholarly.fill(p)
+        # print(entry)
         pubs.append({
             'authors': entry.get('bib', {}).get('author', ''),
-            'year': entry.get('bib', {}).get('year', ''),
+            'year': entry.get('bib', {}).get('pub_year', ''),
             'title': entry.get('bib', {}).get('title', ''),
-            'journal': entry.get('bib', {}).get('venue', ''),
+            'journal': entry.get('bib', {}).get('citation', ''),
             'url': entry.get('pub_url', '#'),
             'citations': entry.get('num_citations', 0)
         })
