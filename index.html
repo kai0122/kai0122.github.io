@@ -15,12 +15,12 @@
     }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Arial, sans-serif; color: var(--color-dark); background: var(--color-light); }
-    .sidebar { position: fixed; top: 0; left: 0; width: 260px; height: 100vh; padding: 1rem; background: var(--color-dark); color: var(--color-light); display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 260px; height: 100vh; padding: 1rem; background: var(--color-dark); color: var(--color-light); display: flex; flex-direction: column; align-items: center; }
     .sidebar img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; }
-    .sidebar h1 { margin: 0.5rem 0; font-size: 1.8rem; text-align: center; }
+    .sidebar h1 { margin: 0.5rem 0; font-size: 1.8rem; }
     .sidebar p, .sidebar a { margin: 0.3rem 0; color: var(--color-light); font-size: 0.95rem; text-decoration: none; display: flex; align-items: center; }
-    .sidebar p i, .sidebar a i { margin-right: 0.5rem; width: 1rem; text-align: center; }
     .sidebar a:hover { text-decoration: underline; }
+    .sidebar p i, .sidebar a i { margin-right: 0.5rem; width: 1rem; }
     main { margin-left: 280px; padding: 2rem; max-width: 900px; }
     section + section { margin-top: 2rem; border-top: 1px solid var(--color-gray2); padding-top: 1.5rem; }
     section { padding-left: 1rem; }
@@ -31,13 +31,18 @@
     ul { list-style: none; padding: 0; }
     ul li { margin-bottom: 0.8rem; display: flex; align-items: flex-start; }
     ul li i { margin-right: 0.5rem; color: var(--color-accent); margin-top: 0.2rem; }
-    /* Publications Flex */
-    #pub-list li { display: flex; flex-wrap: wrap; align-items: baseline; }
-    #pub-list li i { margin-top: 0.1rem; }
-    #pub-list li em, #pub-list li .citations, #pub-list li a { margin-left: 0.25rem; margin-right: 0.5rem; white-space: nowrap; }
-    #pub-list li a { color: var(--color-accent); font-weight: bold; text-decoration: none; }
+    /* Publications */
+    #pub-list li { display: flex; align-items: baseline; flex-wrap: nowrap; }
+    #pub-list li i { margin-right: 0.5rem; color: var(--color-accent); }
+    #pub-list li a { color: var(--color-accent); font-weight: bold; text-decoration: none; margin-left: 0.25rem; }
     #pub-list li a:hover { text-decoration: underline; }
+    #pub-list li em, #pub-list li .citations { margin-left: 0.25rem; white-space: nowrap; }
     #pub-list li .citations { color: var(--color-gray1); font-size: 0.9rem; }
+    /* Game */
+    #click-game { margin-top: auto; text-align: center; width: 100%; padding-bottom: 1rem; }
+    #game-area { width: 200px; height: 200px; background: var(--color-gray2); border-radius: 8px; margin: 0 auto; position: relative; }
+    .dot { width: 20px; height: 20px; background: var(--color-accent); border-radius: 50%; position: absolute; cursor: pointer; }
+    #score-display { margin-top: 0.5rem; font-weight: bold; color: var(--color-light); }
   </style>
 </head>
 <body>
@@ -50,56 +55,60 @@
     <p><i class="fas fa-phone"></i>+886 988 335 302</p>
     <a href="https://orcid.org/0000-0003-0649-9263" target="_blank"><i class="fab fa-orcid"></i>ORCID</a>
     <a href="https://scholar.google.com/citations?user=0gl__ukAAAAJ&hl=zh-TW" target="_blank"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
-    <a href="https://www.linkedin.com/in/po-kai-yang-a41921176/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
+    <a href="https://linkedin.com/in/po-kai-yang-a41921176" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
     <a href="https://github.com/kai0122" target="_blank"><i class="fab fa-github"></i>GitHub</a>
     <a href="https://twitter.com/iampokaiyang" target="_blank"><i class="fab fa-twitter"></i>@iampokaiyang</a>
+    <div id="click-game">
+      <h3 style="color:var(--color-light);">Click the Dot!</h3>
+      <div id="game-area"></div>
+      <div id="score-display">Score: 0</div>
+    </div>
   </aside>
   <main>
     <section id="about">
       <h2>About Me</h2>
-      <p class="intro">
-        I am currently a Ph.D. student in the <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e‑Media Research Lab</a> at KU Leuven, under the supervision of <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>.
-        My research focuses on artificial intelligence for healthcare applications. As part of the <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG‑IT project</a>, I develop deep learning methods to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.
-      </p>
+      <p class="intro">I am currently a Ph.D. student in the <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a> at KU Leuven, under the supervision of <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>. My research focuses on artificial intelligence for healthcare applications. As part of the <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG-IT project</a>, I develop deep learning methods to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.</p>
     </section>
     <section id="updates">
       <h2>Recent News</h2>
       <ul>
-        <li><i class="fas fa-bullhorn"></i>June 2025 – Poster at ICFOG 2025 (Atlanta, GA)</li>
-        <li><i class="fas fa-bullhorn"></i>June 2025 – Poster at ISPGR 2025</li>
+        <li><i class="fas fa-bullhorn"></i>June 2025 – Poster at ICFOG 2025 (Atlanta, GA)</li>
+        <li><i class="fas fa-bullhorn"></i>June 2025 – Poster at ISPGR 2025</li>
       </ul>
     </section>
     <section id="experience">
       <h2>Professional Experience</h2>
       <ul>
-        <li><i class="fas fa-briefcase"></i>Jul 2020–Jun 2021 – Master Student, HCI Lab (Augment Group), KU Leuven</li>
-        <li><i class="fas fa-briefcase"></i>Jul 2020–Aug 2020 – Summer Intern, Nokia Bell Labs (APSS Lab)</li>
-        <li><i class="fas fa-briefcase"></i>Jun 2018–Mar 2019 – Intern, Mobile Communications Network Lab, NCTU</li>
-        <li><i class="fas fa-briefcase"></i>Jul 2018–Dec 2018 – Intern, ITRI</li>
-        <li><i class="fas fa-briefcase"></i>Sep 2017–Dec 2018 – Undergrad Research, Collaborative Vision Lab, NCTU</li>
+        <li><i class="fas fa-briefcase"></i>Jul 2020–Jun 2021 – Master of Science in Computer Science (Cum laude), KU Leuven, HCI Lab (Augment Group)</li>
+        <li><i class="fas fa-briefcase"></i>Jul 2020–Aug 2020 – Summer Research Intern, Nokia Bell Labs (APSS Lab)</li>
+        <li><i class="fas fa-briefcase"></i>Jun 2018–Mar 2019 – Research Intern, Mobile Communications Network Lab, NCTU</li>
+        <li><i class="fas fa-briefcase"></i>Jul 2018–Dec 2018 – Research Intern, Industrial Technology Research Institute (ITRI)</li>
+        <li><i class="fas fa-briefcase"></i>Sep 2017–Dec 2018 – Undergraduate Researcher, Collaborative Vision Lab, NCTU</li>
       </ul>
     </section>
     <section id="education">
       <h2>Education</h2>
       <ul>
-        <li><i class="fas fa-graduation-cap"></i>Oct 2021–Sep 2025 – Ph.D., Engineering Technology (Electrical), KU Leuven (expected)</li>
-        <li><i class="fas fa-graduation-cap"></i>Sep 2019–Sep 2021 – M.S. Computer Science (Cum laude), KU Leuven</li>
-        <li><i class="fas fa-graduation-cap"></i>Apr 2019–Sep 2019 – Exchange, RWTH Aachen</li>
-        <li><i class="fas fa-graduation-cap"></i>Sep 2015–Jun 2019 – B.S. Comp Sci & Eng, NCTU; GPA 4.06/4.3</li>
+        <li><i class="fas fa-graduation-cap"></i>Oct 2021–Sep 2025 – Doctor of Philosophy in Engineering Technology (Electrical Engineering), KU Leuven (expected)</li>
+        <li><i class="fas fa-graduation-cap"></i>Sep 2019–Sep 2021 – Master of Science in Computer Science (Cum laude), KU Leuven</li>
+        <li><i class="fas fa-graduation-cap"></i>Apr 2019–Sep 2019 – Exchange Program, RWTH Aachen</li>
+        <li><i class="fas fa-graduation-cap"></i>Sep 2015–Jun 2019 – Bachelor of Science in Computer Science and Engineering, NCTU; GPA 4.06/4.3</li>
       </ul>
     </section>
     <section id="awards">
       <h2>Honors &amp; Grants</h2>
       <ul>
-        <li><i class="fas fa-trophy"></i>2018 – Highest Distinction Award, NCTU Dept. Project</li>
-        <li><i class="fas fa-trophy"></i>2018 – Popular Award (2nd Runner-up), NCTU</li>
+        <li><i class="fas fa-trophy"></i>2018 – Highest Distinction Award, Department Graduation Project, NCTU</li>
+        <li><i class="fas fa-trophy"></i>2018 – Popular Award (2nd Runner-up), NCTU Graduation Project</li>
+        <li><i class="fas fa-trophy"></i>2025 – FWO Travel Grant, Research Foundation Flanders for ICFOG 2025</li>
+        <li><i class="fas fa-trophy"></i>202x – KU Leuven–Taiwan Scholarship (教育部百大留學獎學金)</li>
       </ul>
     </section>
     <section id="services">
       <h2>Academic Service</h2>
       <ul>
-        <li><i class="fas fa-user-edit"></i>2025 – Reviewer: Scientific Reports; AI in Medicine</li>
-        <li><i class="fas fa-user-edit"></i>2024 – Reviewer: Scientific Reports; IEEE Access; IEEE EMBC</li>
+        <li><i class="fas fa-book-open"></i>Reviewer – Scientific Reports; IEEE Access; Journal of NeuroEngineering and Rehabilitation</li>
+        <li><i class="fas fa-chalkboard"></i>Program Committee – IEEE EMBC; AI in Medicine Conference</li>
       </ul>
     </section>
     <section id="publications">
@@ -110,20 +119,10 @@
     </section>
   </main>
   <script>
-    async function loadPublications() {
-      const res = await fetch('publications.json?t=' + Date.now());
-      const data = await res.json();
-      data.publications.sort((a,b) => parseInt(b.year || '0') - parseInt(a.year || '0'));
-      const list = document.getElementById('pub-list'); list.innerHTML = '';
-      data.publications.forEach(pub => {
-        const authors = pub.authors.split(/, | and /g).map(n => n.trim()).map(n => n.includes('Yang') ? `<strong>${n}</strong>` : n).join(', ');
-        const journal = pub.journal || 'Unknown Venue'; const year = pub.year || 'n.d.';
-        const li = document.createElement('li');
-        li.innerHTML = `<i class="fas fa-file-alt"></i> ${year} – ${authors}, “${pub.title},” <em>${journal}</em>. <a href="${pub.url}" target="_blank">Read Paper</a> <span class="citations">(${pub.citations} citations)</span>`;
-        list.appendChild(li);
-      });
-    }
-    loadPublications();
+    // Click-the-dot game
+    (function(){const area=document.getElementById('game-area'),scoreEl=document.getElementById('score-display'),score=[0];function spawn(){area.innerHTML='';const d=document.createElement('div');d.className='dot';const s=20;const x=Math.random()*(area.clientWidth-s),y=Math.random()*(area.clientHeight-s);d.style.left=x+'px';d.style.top=y+'px';area.appendChild(d);d.onclick=()=>{score[0]++;scoreEl.textContent='Score: '+score[0];spawn()}}spawn();})();
+    // Load publications
+    async function loadPublications(){const res=await fetch('publications.json?t='+Date.now()),data=await res.json();data.publications.sort((a,b)=>parseInt(b.year||0)-parseInt(a.year||0));const list=document.getElementById('pub-list');list.innerHTML='';data.publications.forEach(pub=>{const auth=pub.authors.split(/, | and /g).map(n=>n.trim()).map(n=>n.includes('Yang')?`<strong>${n}</strong>`:n).join(', ');const journal=pub.journal||'Unknown Venue',year=pub.year||'n.d.';const li=document.createElement('li');li.innerHTML=`<i class="fas fa-file-alt"></i>${year} – ${auth}, “${pub.title},” <em>${journal}</em>. <a href="${pub.url}" target="_blank">Read Paper</a> <span class="citations">(${pub.citations} citations)</span>`;list.appendChild(li)});}loadPublications();
   </script>
 </body>
 </html>
