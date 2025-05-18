@@ -15,19 +15,14 @@
     }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Arial, sans-serif; color: var(--color-dark); background: var(--color-light); }
-    .sidebar {
-      position: fixed; top: 0; left: 0;
-      width: 260px; height: 100vh;
-      padding: 2rem 1rem 1rem;
-      background: var(--color-dark); color: var(--color-light);
-      display: flex; flex-direction: column; align-items: center;
-      overflow-y: auto;
-    }
+    /* Sidebar */
+    .sidebar { position: fixed; top: 0; left: 0; width: 260px; height: 100vh; padding: 2rem 1rem 1rem; background: var(--color-dark); color: var(--color-light); display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
     .sidebar img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; }
     .sidebar h1 { margin: 0.5rem 0 1rem; font-size: 1.8rem; }
     .sidebar p, .sidebar a { margin: 0.3rem 0; color: var(--color-light); font-size: 0.95rem; text-decoration: none; display: flex; align-items: center; }
-    .sidebar p i, .sidebar a i { margin-right: 0.5rem; width: 1rem; text-align: center; }
+    .sidebar p i, .sidebar a i { margin-right: 0.5rem; width: 1rem; }
     .sidebar a:hover { text-decoration: underline; }
+    /* Main content */
     main { margin-left: 280px; padding: 2rem; max-width: 900px; }
     section + section { margin-top: 2rem; border-top: 1px solid var(--color-gray2); padding-top: 1.5rem; }
     section { padding-left: 1rem; }
@@ -35,27 +30,25 @@
     p.intro { font-size: 1rem; line-height: 1.5; margin-bottom: 1rem; }
     p.intro a { color: var(--color-accent); text-decoration: none; }
     p.intro a:hover { text-decoration: underline; }
+    /* Align lists with date span */
     ul { list-style: none; padding: 0; }
-    ul li { margin-bottom: 0.8rem; display: flex; align-items: flex-start; }
+    ul li { display: flex; align-items: flex-start; margin-bottom: 0.8rem; }
     ul li i { margin-right: 0.5rem; color: var(--color-accent); margin-top: 0.2rem; }
+    ul li span.date { flex: 0 0 10rem; font-weight: bold; }
+    ul li span.desc { flex: 1; }
     /* Publications */
-    #pub-list li {
-      display: flex;
-      align-items: baseline;
-      white-space: normal;
-      margin-bottom: 0.5rem;
-    }
+    #pub-list li { display: flex; align-items: baseline; margin-bottom: 0.5rem; }
     #pub-list li i { margin-right: 0.5rem; color: var(--color-accent); }
-    #pub-list li a { color: var(--color-accent); font-weight: bold; text-decoration: none; margin-left: 0.25rem; }
+    #pub-list li a { color: var(--color-accent); font-weight: bold; text-decoration: none; margin-left: 0.5rem; }
     #pub-list li a:hover { text-decoration: underline; }
-    #pub-list li em, #pub-list li .citations { margin-left: 0.25rem; white-space: nowrap; }
-    #pub-list li .citations { color: var(--color-gray1); font-size: 0.9rem; }
-    /* Game */
-    #click-game { margin-top: auto; text-align: center; width: 100%; padding-bottom: 1rem; }
-    #click-game h3 { color: var(--color-light); margin-bottom: 0.5rem; }
-    #game-area { width: 200px; height: 200px; background: var(--color-gray2); border-radius: 8px; margin: 0 auto; position: relative; }
-    .dot { width: 20px; height: 20px; background: var(--color-accent); border-radius: 50%; position: absolute; cursor: pointer; }
-    #score-display { margin-top: 0.5rem; font-weight: bold; color: var(--color-light); }
+    #pub-list li em { margin-left: 0.5rem; font-style: italic; }
+    #pub-list li .citations { margin-left: 0.5rem; color: var(--color-gray1); font-size: 0.9rem; }
+    /* Reaction Game */
+    #reaction-game { margin-top: auto; text-align: center; width: 100%; padding-bottom: 1rem; }
+    #reaction-game h3 { color: var(--color-light); margin-bottom: 0.5rem; }
+    #reaction-area { width: 200px; height: 200px; background: var(--color-gray2); border-radius: 8px; margin: 0 auto; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    #reaction-text { color: var(--color-light); font-size: 1rem; }
+    #reaction-result { margin-top: 0.5rem; color: var(--color-light); font-weight: bold; }
   </style>
 </head>
 <body>
@@ -64,73 +57,72 @@
     <h1>Po-Kai Yang</h1>
     <p><i class="fas fa-map-marker-alt"></i>Leuven, Belgium</p>
     <p><i class="fas fa-envelope"></i><a href="mailto:po-kai.yang@kuleuven.be">po-kai.yang@kuleuven.be</a></p>
-    <p><i class="fas fa-phone"></i>+32 456 388 594</p>
-    <p><i class="fas fa-phone"></i>+886 988 335 302</p>
-    <a href="https://orcid.org/0000-0003-0649-9263" target="_blank"><i class="fab fa-orcid"></i>ORCID</a>
-    <a href="https://scholar.google.com/citations?user=0gl__ukAAAAJ&hl=zh-TW" target="_blank"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
-    <a href="https://linkedin.com/in/po-kai-yang-a41921176" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
-    <a href="https://github.com/kai0122" target="_blank"><i class="fab fa-github"></i>GitHub</a>
-    <a href="https://twitter.com/iampokaiyang" target="_blank"><i class="fab fa-twitter"></i>@iampokaiyang</a>
-    <div id="click-game">
-      <h3>Click the Dot!</h3>
-      <div id="game-area"></div>
-      <div id="score-display">Score: 0</div>
+    <p><i class="fas fa-phone"></i>+32 456 388 594</p>
+    <p><i class="fas fa-phone"></i>+886 988 335 302</p>
+    <a href="https://orcid.org/0000-0003-0649-9263"><i class="fab fa-orcid"></i>ORCID</a>
+    <a href="https://scholar.google.com/citations?user=0gl__ukAAAAJ&hl=zh-TW"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
+    <a href="https://linkedin.com/in/po-kai-yang-a41921176"><i class="fab fa-linkedin"></i>LinkedIn</a>
+    <a href="https://github.com/kai0122"><i class="fab fa-github"></i>GitHub</a>
+    <a href="https://twitter.com/iampokaiyang"><i class="fab fa-twitter"></i>@iampokaiyang</a>
+    <div id="reaction-game">
+      <h3>Reaction Time Test</h3>
+      <div id="reaction-area"><span id="reaction-text">Wait...</span></div>
+      <div id="reaction-result">Best: -- ms</div>
     </div>
   </aside>
   <main>
     <section id="about">
       <h2>About Me</h2>
-      <p class="intro">I am currently a Ph.D. student in the <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e‑Media Research Lab</a> at KU Leuven, under the supervision of <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>. My research focuses on artificial intelligence for healthcare applications. As part of the <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG‑IT project</a>, I develop deep learning methods to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.</p>
+      <p class="intro">I am currently a Ph.D. student in the <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a> at KU Leuven, under the supervision of <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>. My research focuses on artificial intelligence for healthcare applications. As part of the <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG-IT project</a>, I develop deep learning methods to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.</p>
     </section>
     <section id="updates">
       <h2>Recent News</h2>
       <ul>
-        <li><i class="fas fa-bullhorn"></i>June 2025 – Poster at The International Consortium on Freezing of Gait (ICFOG 2025), Atlanta, GA</li>
-        <li><i class="fas fa-bullhorn"></i>June 2025 – Poster at The International Society of Posture and Gait Research (ISPGR 2025), Maastricht, Netherlands</li>
+        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025 –</span><span class="desc"><strong>Poster</strong> at The International Consortium on Freezing of Gait (ICFOG 2025), Atlanta, GA</span></li>
+        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025 –</span><span class="desc"><strong>Poster</strong> at The International Society of Posture and Gait Research (ISPGR 2025), Maastricht, Netherlands</span></li>
       </ul>
     </section>
     <section id="experience">
       <h2>Experience</h2>
       <ul>
-        <li><i class="fas fa-briefcase"></i>Oct 2021–Sep 2025 – PhD Researcher, KU Leuven, Belgium</li>
-        <li><i class="fas fa-briefcase"></i>Jul 2020–Aug 2020 – Summer Research Intern, Nokia Bell Labs (APSS Lab)</li>
-        <li><i class="fas fa-briefcase"></i>Jun 2018–Mar 2019 – Research Intern, Mobile Communications Network Lab, NCTU</li>
-        <li><i class="fas fa-briefcase"></i>Jul 2018–Dec 2018 – Research Intern, Industrial Technology Research Institute (ITRI)</li>
-        <li><i class="fas fa-briefcase"></i>Sep 2017–Dec 2018 – Undergraduate Researcher, Collaborative Vision Lab, NCTU</li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Oct 2021–Sep 2025 –</span><span class="desc">Ph.D. Researcher, KU Leuven, Belgium</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2020–Aug 2020 –</span><span class="desc">Summer Research Intern, Nokia Bell Labs (APSS Lab)</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jun 2018–Mar 2019 –</span><span class="desc">Research Intern, Mobile Communications Network Lab, NCTU</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2018–Dec 2018 –</span><span class="desc">Research Intern, Industrial Technology Research Institute (ITRI)</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Sep 2017–Dec 2018 –</span><span class="desc">Undergraduate Researcher, Collaborative Vision Lab, NCTU</span></li>
       </ul>
     </section>
     <section id="education">
       <h2>Education</h2>
       <ul>
-        <li><i class="fas fa-graduation-cap"></i>Oct 2021–Sep 2025 – Ph.D., Engineering Technology (Electrical Engineering), KU Leuven (expected)</li>
-        <li><i class="fas fa-graduation-cap"></i>Sep 2019–Sep 2021 – M.Sc., Computer Science (Cum laude), KU Leuven</li>
-        <li><i class="fas fa-graduation-cap"></i>Apr 2019–Sep 2019 – Exchange Program, RWTH Aachen</li>
-        <li><i class="fas fa-graduation-cap"></i>Sep 2015–Jun 2019 – B.Sc., Computer Science & Engineering, NCTU (GPA 4.06/4.3)</li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Oct 2021–Sep 2025 –</span><span class="desc">Ph.D., Engineering Technology (Dept. of Electrical Engineering), KU Leuven (expected)</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2019–Sep 2021 –</span><span class="desc">M.Sc., Computer Science (Cum laude), KU Leuven</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Apr 2019–Sep 2019 –</span><span class="desc">Exchange Program, RWTH Aachen</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2015–Jun 2019 –</span><span class="desc">B.Sc., Computer Science & Engineering, NCTU (GPA 4.06/4.3)</span></li>
       </ul>
     </section>
     <section id="awards">
       <h2>Honors &amp; Grants</h2>
       <ul>
-        <li><i class="fas fa-trophy"></i>2025 – FWO Travel Grant, Research Foundation Flanders for ICFOG 2025</li>
-        <li><i class="fas fa-trophy"></i>2019 – KU Leuven–Taiwan Scholarship (教育部百大留學獎學金)</li>
-        <li><i class="fas fa-trophy"></i>2018 – Highest Distinction Award, Department Graduation Project, NCTU</li>
-        <li><i class="fas fa-trophy"></i>2018 – Popular Award (2nd Runner-up), NCTU Graduation Project</li>
+        <li><i class="fas fa-trophy"></i><span class="date">2025 –</span><span class="desc">FWO Travel Grant, Research Foundation Flanders for ICFOG 2025</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2019 –</span><span class="desc">KU Leuven–Taiwan Scholarship (教育部百大留學獎學金)</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2018 –</span><span class="desc">Highest Distinction Award, Dept. Graduation Project, NCTU</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2018 –</span><span class="desc">Popular Award (2nd Runner-up), NCTU Graduation Project</span></li>
       </ul>
     </section>
     <section id="services">
       <h2>Academic Service</h2>
       <ul>
-        <li><i class="fas fa-book-open"></i>Reviewer – Scientific Reports (IF 4.996); IEEE Access (IF 3.367); Journal of NeuroEngineering and Rehabilitation (IF 4.712); Artificial Intelligence in Medicine (IF 7.752)</li>
-        <li><i class="fas fa-chalkboard"></i>Program Committee – IEEE EMBC 2024</li>
-        <li><i class="fas fa-user-graduate"></i>Master Thesis Co-supervisor, KU Leuven: Supervised 6 master students (Engineering Technology)</li>
-        <li><i class="fas fa-chalkboard-teacher"></i>Teaching Assistant, KU Leuven:
+        <li><i class="fas fa-book-open"></i><span class="desc">Reviewer – Scientific Reports (IF 3.8); IEEE Access (IF 3.4); Artificial Intelligence in Medicine (IF 6.1); IEEE EMBC 2024 Conference</span></li>
+        <li><i class="fas fa-user-graduate"></i><span class="desc">Master Thesis Co-supervisor, KU Leuven: Supervised 6 master students (Engineering Technology)</span></li>
+        <li><i class="fas fa-chalkboard-teacher"></i><span class="desc">Teaching Assistant, KU Leuven:
           <ul>
             <li>Pathways to Sustainability (2021)</li>
             <li>Machine Learning (2022, 2023, 2024)</li>
             <li>Engineering Experience II – Data Acquisition (2022)</li>
             <li>Applied AI: Academic Perspectives – ML in Healthcare (2022, 2023)</li>
           </ul>
-        </li>
+        </span></li>
       </ul>
     </section>
     <section id="publications">
@@ -139,10 +131,61 @@
     </section>
   </main>
   <script>
-    // Click-the-dot game
-    (function(){const area=document.getElementById('game-area'),scoreEl=document.getElementById('score-display'),score=[0];function spawn(){area.innerHTML='';const d=document.createElement('div');d.className='dot';const s=20;const x=Math.random()*(area.clientWidth-s),y=Math.random()*(area.clientHeight-s);d.style.left=x+'px';d.style.top=y+'px';area.appendChild(d);d.onclick=()=>{score[0]++;scoreEl.textContent='Score: '+score[0];spawn()}}spawn();})();
+    // Reaction Time Test Game
+    (function() {
+      const area = document.getElementById('reaction-area');
+      const text = document.getElementById('reaction-text');
+      const result = document.getElementById('reaction-result');
+      let startTime, bestTime = localStorage.getItem('bestReaction') || null;
+      if (bestTime) result.textContent = `Best: ${bestTime} ms`;
+      function startTest() {
+        text.textContent = 'Wait...';
+        area.style.background = 'var(--color-gray2)';
+        const delay = Math.random() * 2000 + 1000;
+        setTimeout(() => {
+          area.style.background = 'var(--color-accent)';
+          text.textContent = 'Click!';
+          startTime = Date.now();
+        }, delay);
+      }
+      area.addEventListener('click', () => {
+        if (!startTime) return;
+        const time = Date.now() - startTime;
+        text.textContent = `${time} ms`;
+        startTime = null;
+        if (!bestTime || time < bestTime) {
+          bestTime = time;
+          localStorage.setItem('bestReaction', bestTime);
+          result.textContent = `Best: ${bestTime} ms`;
+        }
+        setTimeout(startTest, 1000);
+      });
+      startTest();
+    })();
     // Load publications
-    async function loadPublications(){const res=await fetch('publications.json?t='+Date.now()),data=await res.json();data.publications.sort((a,b)=>parseInt(b.year||0)-parseInt(a.year||0));const list=document.getElementById('pub-list');list.innerHTML='';data.publications.forEach(pub=>{const auth=pub.authors.split(/, | and /g).map(n=>n.trim()).map(n=>n.includes('Yang')?`<strong>${n}</strong>`:n).join(', ');const journal=pub.journal||'Unknown Venue',year=pub.year||'n.d.';const li=document.createElement('li');li.innerHTML=`<i class="fas fa-file-alt"></i>${year}&nbsp;–&nbsp;${auth}, “${pub.title},” <em>${journal}</em>. <a href="${pub.url}" target="_blank">Read Paper</a> <span class="citations">(${pub.citations} citations)</span>`;list.appendChild(li)});}loadPublications();
+    async function loadPublications() {
+      const res = await fetch('publications.json?t=' + Date.now());
+      const data = await res.json();
+      data.publications.sort((a,b) => parseInt(b.year || 0) - parseInt(a.year || 0));
+      const list = document.getElementById('pub-list'); list.innerHTML = '';
+      data.publications.forEach(pub => {
+        const auth = pub.authors.split(/, | and /g)
+          .map(n => n.trim())
+          .map(n => n.includes('Yang') ? `<strong>${n}</strong>` : n)
+          .join(', ');
+        const journal = pub.journal || 'Unknown Venue';
+        const year = pub.year || 'n.d.';
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <i class="fas fa-file-alt"></i>
+          <span class="desc">${auth}, <em>${journal}</em>, ${year}.</span>
+          <a href="${pub.url}" target="_blank">Read Paper</a>
+          <span class="citations">(${pub.citations} citations)</span>
+        `;
+        list.appendChild(li);
+      });
+    }
+    loadPublications();
   </script>
 </body>
 </html>
