@@ -1,0 +1,52 @@
+{
+  "publications": [
+    {
+      "authors": "Yang, P.-K., Onal, P., et al.",
+      "year": "2024",
+      "title": "Multimodal Temporal Graph Convolutional Network for Human Intention Forecasting",
+      "journal": "(under review)",
+      "url": "#",
+      "citations": 0
+    },
+    {
+      "authors": "Yang, P.-K., Filtjens, B., et al.",
+      "year": "2024",
+      "title": "Multimodal Freezing of Gait Detection: Analyzing the Benefits of Physiological Data",
+      "journal": "(under review)",
+      "url": "#",
+      "citations": 0
+    },
+    {
+      "authors": "Yang, P.-K., Filtjens, B., et al.",
+      "year": "2024",
+      "title": "Automatic Detection and Assessment of Freezing of Gait Manifestations",
+      "journal": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "url": "https://doi.org/10.1109/TNSRE.2024.3431208",
+      "citations": 0
+    },
+    {
+      "authors": "Yang, P.-K., Filtjens, B., et al.",
+      "year": "2024",
+      "title": "Freezing of gait assessment with IMUs and deep learning: Effect of tasks, medication states, and stops",
+      "journal": "Journal of NeuroEngineering and Rehabilitation",
+      "url": "https://doi.org/10.1186/s12984-024-01320-1",
+      "citations": 0
+    },
+    {
+      "authors": "Filtjens, B., Yang, P.-K., et al.",
+      "year": "2023",
+      "title": "Automated freezing of gait assessment with deep learning and data augmentation",
+      "journal": "Proceedings of the 2023 IEEE 19th International Conference on Body Sensor Networks",
+      "url": "https://doi.org/10.1109/BSN58485.2023.10330987",
+      "citations": 0
+    },
+    {
+      "authors": "Yang, P.-K., Alvarado Rodriguez, O. L., et al.",
+      "year": "2022",
+      "title": "Touching the Explanations: Explaining Movie Recommendation Scores in Mobile AR",
+      "journal": "Proceedings of the IEEE International Conference on AI and Virtual Reality",
+      "url": "https://doi.org/10.1109/AIVR56993.2022.00032",
+      "citations": 0
+    }
+  ]
+}
