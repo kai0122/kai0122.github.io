@@ -1,51 +1,99 @@
 {
   "publications": [
     {
-      "authors": "Yang, P.-K., Onal, P., et al.",
-      "year": "2024",
-      "title": "Multimodal Temporal Graph Convolutional Network for Human Intention Forecasting",
-      "journal": "(under review)",
-      "url": "#",
+      "authors": "Po-Kai Yang and Benjamin Filtjens and Pieter Ginis and Maaike Goris and Alice Nieuwboer and Moran Gilat and Peter Slaets and Bart Vanrumste",
+      "year": "",
+      "title": "Freezing of gait assessment with inertial measurement units and deep learning: effect of tasks, medication states, and stops",
+      "journal": "",
+      "url": "https://link.springer.com/article/10.1186/s12984-024-01320-1",
+      "citations": 15
+    },
+    {
+      "authors": "Po-Kai Yang and Benjamin Filtjens and Pieter Ginis and Maaike Goris and Alice Nieuwboer and Moran Gilat and Peter Slaets and Bart Vanrumste",
+      "year": "",
+      "title": "Automatic detection and assessment of freezing of gait manifestations",
+      "journal": "",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10604853/",
+      "citations": 6
+    },
+    {
+      "authors": "Po-Kai Yang and Benjamin Filtjens and Pieter Ginis and Maaike Goris and Alice Nieuwboer and Moran Gilat and Peter Slaets and Bart Vanrumste",
+      "year": "",
+      "title": "Multimodal Freezing of Gait Detection: Analyzing the Benefits and Limitations of Physiological Data",
+      "journal": "",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10902623/",
+      "citations": 2
+    },
+    {
+      "authors": "Po-Kai Yang and Oscar Luis Alvarado Rodriguez and Francisco Gutiérrez and Katrien Verbert",
+      "year": "",
+      "title": "Touching the Explanations: Explaining Movie Recommendation Scores in Mobile Augmented Reality",
+      "journal": "",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10024447/",
+      "citations": 2
+    },
+    {
+      "authors": "Benjamin Filtjens and Po-Kai Yang and Maaike Goris and Moran Gilat and Niklas Kempynck and Pieter Ginis and Alice Nieuwboer and Peter Slaets and Bart Vanrumste",
+      "year": "",
+      "title": "Automated freezing of gait assessment with deep learning and data augmentation from simulated inertial measurement unit data",
+      "journal": "",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10330987/",
+      "citations": 1
+    },
+    {
+      "authors": "Po-Kai Yang and Benjamin Filtjens and Pieter Ginis and Maaike Goris and Moran Gilat and Alice Nieuwboer and Peter Slaets and Bart Vanrumste",
+      "year": "",
+      "title": "Automated freezing of gait assessment in Parkinson's disease using inertial measurement units and deep learning",
+      "journal": "",
+      "url": "https://scholar.google.com/scholar?cluster=669455215489714483&hl=en&oi=scholarr",
+      "citations": 1
+    },
+    {
+      "authors": "Maaike Goris and Po-Kai Yang and Pieter Ginis and Benjamin Filtjens and Clint Hansen and Christian Schlenstedt and Jeff M Hausdorff and Walter Maetsler and Wim Vandenberghe and Moran Gilat",
+      "year": "",
+      "title": "Can a deep learning algorithm assess freezing of gait during a turning task in people with Parkinson’s disease?",
+      "journal": "",
+      "url": "https://scholar.google.com/scholar?cluster=6131879175500659525&hl=en&oi=scholarr",
       "citations": 0
     },
     {
-      "authors": "Yang, P.-K., Filtjens, B., et al.",
-      "year": "2024",
-      "title": "Multimodal Freezing of Gait Detection: Analyzing the Benefits of Physiological Data",
-      "journal": "(under review)",
-      "url": "#",
+      "authors": "Maaike Goris and Po-Kai Yang and Pieter Ginis and Benjamin Filtjens and Bart Vanrumste and Alice Nieuwboer and Moran Gilat",
+      "year": "",
+      "title": "Automatic detection of Freezing of gait in Parkinson’s disease with IMU: validation of a deep learning algorithm in the home",
+      "journal": "",
+      "url": "https://scholar.google.com/scholar?cluster=2423835789335965580&hl=en&oi=scholarr",
       "citations": 0
     },
     {
-      "authors": "Yang, P.-K., Filtjens, B., et al.",
-      "year": "2024",
-      "title": "Automatic Detection and Assessment of Freezing of Gait Manifestations",
-      "journal": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "url": "https://doi.org/10.1109/TNSRE.2024.3431208",
+      "authors": "Po-Kai Yang and Benjamin Filtjens and Pinar Onal and Kevin Langlois and Joost Geeroms and Tom Verstraten and Bart Vanrumste",
+      "year": "",
+      "title": "A Comparative Study of Multi-Modal Data for Human Action Forecasting in Robotic Assistive Devices",
+      "journal": "",
+      "url": "https://researchportal.vub.be/files/106507872/poster_ai4exo_v4.pdf",
       "citations": 0
     },
     {
-      "authors": "Yang, P.-K., Filtjens, B., et al.",
-      "year": "2024",
-      "title": "Freezing of gait assessment with IMUs and deep learning: Effect of tasks, medication states, and stops",
-      "journal": "Journal of NeuroEngineering and Rehabilitation",
-      "url": "https://doi.org/10.1186/s12984-024-01320-1",
+      "authors": "Benjamin Filtjens and Pieter Ginis and Po Kai Yang and Nitesh Ghosh and Alice Nieuwboer and Bart Vanrumste and Peter Slaets",
+      "year": "",
+      "title": "Automatic freezing of gait annotation with deep learning and simulated inertial measurement unit data",
+      "journal": "",
+      "url": "https://scholar.google.com/scholar?cluster=10904140343362864419&hl=en&oi=scholarr",
       "citations": 0
     },
     {
-      "authors": "Filtjens, B., Yang, P.-K., et al.",
-      "year": "2023",
-      "title": "Automated freezing of gait assessment with deep learning and data augmentation",
-      "journal": "Proceedings of the 2023 IEEE 19th International Conference on Body Sensor Networks",
-      "url": "https://doi.org/10.1109/BSN58485.2023.10330987",
+      "authors": "Benjamin Filtjens and Pieter Ginis and Po Kai Yang and Nitesh Ghosh and Alice Nieuwboer and Peter Slaets and Bart Vanrumste",
+      "year": "",
+      "title": "Automatic gait assessment of people with Parkinson's disease and freezing of gait with motion capture and deep learning",
+      "journal": "",
+      "url": "https://scholar.google.com/scholar?cluster=3267344796385059806&hl=en&oi=scholarr",
       "citations": 0
     },
     {
-      "authors": "Yang, P.-K., Alvarado Rodriguez, O. L., et al.",
-      "year": "2022",
-      "title": "Touching the Explanations: Explaining Movie Recommendation Scores in Mobile AR",
-      "journal": "Proceedings of the IEEE International Conference on AI and Virtual Reality",
-      "url": "https://doi.org/10.1109/AIVR56993.2022.00032",
+      "authors": "Po-Kai Yang and Benjamin Filtjens and Pieter Ginis and Alice Nieuwboer and Peter Slaets and Bart Vanrumste",
+      "year": "",
+      "title": "Freezing-of-gait detection for Parkinson’s Disease with RGB videos",
+      "journal": "",
+      "url": "https://scholar.google.com/scholar?cluster=764369054064081553&hl=en&oi=scholarr",
       "citations": 0
     }
   ]

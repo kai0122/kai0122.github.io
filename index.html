@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Po-Kai Yang – CV</title>
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {
       --color-dark: #463f3a;
@@ -35,8 +34,7 @@
     }
     .profile-pic {
       width: 150px; height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
+      border-radius: 50%; object-fit: cover;
       margin-bottom: 0.5rem;
     }
     .sidebar h1 {
@@ -54,8 +52,7 @@
     }
     .sidebar p i, .sidebar a i {
       margin-right: 0.5rem;
-      width: 1rem;
-      text-align: center;
+      width: 1rem; text-align: center;
     }
     .sidebar a:hover, .sidebar p:hover {
       text-decoration: underline;
@@ -64,6 +61,9 @@
       margin-left: 280px;
       padding: 2rem 1rem;
       max-width: 900px;
+    }
+    main section {
+      padding-left: 1rem;
     }
     section + section {
       margin-top: 2rem;
@@ -96,31 +96,17 @@
     <img class="profile-pic" src="photo.jpg" alt="Po-Kai Yang" />
     <h1>Po-Kai Yang</h1>
     <p><i class="fas fa-map-marker-alt"></i>Leuven, Belgium</p>
-    <p><i class="fas fa-envelope"></i>
-      <a href="mailto:po-kai.yang@kuleuven.be">po-kai.yang@kuleuven.be</a>
-    </p>
+    <p><i class="fas fa-envelope"></i><a href="mailto:po-kai.yang@kuleuven.be"> po-kai.yang@kuleuven.be</a></p>
     <p><i class="fas fa-phone"></i>+32 456 388 594</p>
     <p><i class="fas fa-phone"></i>+886 988 335 302</p>
-    <a href="https://orcid.org/0000-0003-0649-9263" target="_blank">
-      <i class="fab fa-orcid"></i>ORCID
-    </a>
-    <a href="https://scholar.google.com/citations?user=0gl__ukAAAAJ&hl=zh-TW"
-       target="_blank">
-      <i class="fas fa-graduation-cap"></i>Google Scholar
-    </a>
-    <a href="https://www.linkedin.com/in/po-kai-yang-a41921176/" target="_blank">
-      <i class="fab fa-linkedin"></i>LinkedIn
-    </a>
-    <a href="https://github.com/kai0122" target="_blank">
-      <i class="fab fa-github"></i>GitHub
-    </a>
-    <a href="https://twitter.com/iampokaiyang" target="_blank">
-      <i class="fab fa-twitter"></i>@iampokaiyang
-    </a>
+    <a href="https://orcid.org/0000-0003-0649-9263" target="_blank"><i class="fab fa-orcid"></i>ORCID</a>
+    <a href="https://scholar.google.com/citations?user=0gl__ukAAAAJ&hl=zh-TW" target="_blank"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
+    <a href="https://www.linkedin.com/in/po-kai-yang-a41921176/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
+    <a href="https://github.com/kai0122" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+    <a href="https://twitter.com/iampokaiyang" target="_blank"><i class="fab fa-twitter"></i>@iampokaiyang</a>
   </aside>
 
   <main>
-    <!-- Updates -->
     <section id="updates">
       <h2>Updates</h2>
       <ul>
@@ -129,33 +115,82 @@
       </ul>
     </section>
 
-    <!-- Experience -->
     <section id="experience">
       <h2>Professional Experience</h2>
-      <!-- (copy your timeline items here exactly as before) -->
+      <div class="timeline-item">
+        <p class="title">Master Student, HCI Lab (Augment Group), KU Leuven</p>
+        <p class="subtitle">Jul 2020 – Jun 2021</p>
+        <p>Thesis: “Touch the explanations”: Justifying movie recommendations with AR explanations</p>
+      </div>
+      <div class="timeline-item">
+        <p class="title">Summer Research Intern, Nokia Bell Labs (APSS Lab)</p>
+        <p class="subtitle">Jul 2020 – Aug 2020</p>
+        <p>Developed cross-platform MR experiences for HoloLens and Android</p>
+      </div>
+      <div class="timeline-item">
+        <p class="title">Intern, Mobile Communications Network Lab, NCTU</p>
+        <p class="subtitle">Jun 2018 – Mar 2019</p>
+        <p>Unified hologram gaming platform with IoT integration</p>
+      </div>
+      <div class="timeline-item">
+        <p class="title">Intern, Industrial Technology Research Institute (ITRI)</p>
+        <p class="subtitle">Jul 2018 – Dec 2018</p>
+        <p>Created AI-driven interactive game merging virtual and real environments</p>
+      </div>
+      <div class="timeline-item">
+        <p class="title">Undergraduate Student, Collaborative Vision Lab, NCTU</p>
+        <p class="subtitle">Sep 2017 – Dec 2018</p>
+        <p>Developed multi-user VR positioning system in Unity3D</p>
+      </div>
     </section>
 
-    <!-- Education -->
     <section id="education">
       <h2>Education</h2>
-      <!-- (your education items) -->
+      <div class="timeline-item">
+        <p class="title">Ph.D. in Engineering Technology (Electrical Engineering), KU Leuven</p>
+        <p class="subtitle">Oct 2021 – Sep 2025 (expected)</p>
+        <ul>
+          <li>Freezing of Gait Detection: AI models for detecting freezing of gait in Parkinson’s disease using IMU data</li>
+          <li>Human Intention Prediction: Multimodal data for predicting human intentions in exoskeleton applications</li>
+          <li>Platform Valorization: Commercializing AI-driven platform for freezing of gait detection</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <p class="title">M.S. in Computer Science (Cum laude), KU Leuven</p>
+        <p class="subtitle">Sep 2019 – Sep 2021</p>
+      </div>
+      <div class="timeline-item">
+        <p class="title">Worldwide Exchange Program, RWTH Aachen</p>
+        <p class="subtitle">Apr 2019 – Sep 2019</p>
+      </div>
+      <div class="timeline-item">
+        <p class="title">B.S. in Computer Science and Engineering, National Chiao Tong University</p>
+        <p class="subtitle">Sep 2015 – Jun 2019</p>
+        <ul>
+          <li>GPA: 4.06/4.3 (3.88/4.0)</li>
+          <li>Awards: Highest Distinction Award (Dept Graduation Project, 2018); Popular Award (2nd Runner-up, 2018)</li>
+        </ul>
+      </div>
     </section>
 
-    <!-- Honors -->
     <section id="awards">
-      <h2>Honors &amp; Funding</h2>
-      <!-- (your awards list) -->
+      <h2>Honors & Funding</h2>
+      <ul>
+        <li>Highest Distinction Award, Department Graduation Project, NCTU (2018)</li>
+        <li>Popular Award (2nd Runner-up), NCTU Graduation Project (2018)</li>
+      </ul>
     </section>
 
-    <!-- Service -->
     <section id="services">
       <h2>Academic Service</h2>
-      <!-- (your service list) -->
+      <ul>
+        <li>2025: Reviewer, Scientific Reports; Artificial Intelligence In Medicine (AIIM)</li>
+        <li>2024: Reviewer, Scientific Reports; IEEE Access; IEEE EMBC 2024</li>
+      </ul>
     </section>
 
-    <!-- Publications -->
     <section id="publications">
-      <h2>Publications &amp; Citations</h2>
+      <h2>Publications & Citations</h2>
       <ul id="pub-list">
         <li>Loading publications and citation metrics…</li>
       </ul>
