@@ -1,1 +1,184 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Po-Kai Yang - CV</title>
+  <style>
+    :root {
+      --color-dark: #463f3a;
+      --color-gray1: #8a817c;
+      --color-gray2: #bcb8b1;
+      --color-light: #f4f3ee;
+      --color-accent: #e0afa0;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--color-dark);
+      background-color: var(--color-light);
+      line-height: 1.6;
+    }
+    header {
+      background-color: var(--color-dark);
+      color: var(--color-light);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    .contact {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: var(--color-gray2);
+    }
+    .social {
+      margin-top: 1rem;
+    }
+    .social a {
+      margin: 0 0.5rem;
+      color: var(--color-accent);
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section + section {
+      margin-top: 2rem;
+      border-top: 1px solid var(--color-gray2);
+      padding-top: 2rem;
+    }
+    h2 {
+      color: var(--color-dark);
+      font-size: 1.75rem;
+      border-left: 4px solid var(--color-accent);
+      padding-left: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    .timeline-item {
+      margin-bottom: 1rem;
+    }
+    .timeline-item .title {
+      font-weight: bold;
+      color: var(--color-dark);
+    }
+    .timeline-item .subtitle {
+      color: var(--color-gray1);
+      font-style: italic;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Po-Kai Yang</h1>
+    <p class="contact">
+      Leuven, Belgium &bull; <a href="mailto:po-kai.yang@kuleuven.be">po-kai.yang@kuleuven.be</a> &bull; +32 456 388 594 &bull; +886 988 335 302
+    </p>
+    <div class="social">
+      <a href="https://orcid.org/0000-0003-0649-9263" target="_blank">ORCID</a>
+      <a href="https://www.linkedin.com/in/po-kai-yang-a41921176/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/kai0122" target="_blank">GitHub</a>
+      <a href="https://twitter.com/iampokaiyang" target="_blank">Twitter</a>
+    </div>
+  </header>
+  <main>
+    <section id="education">
+      <h2>Education</h2>
+      <div class="timeline-item">
+        <p class="title">Ph.D. in Engineering Technology (Electrical Engineering), KU Leuven</p>
+        <p class="subtitle">Oct 2021 – Sep 2025 (expected)</p>
+        <p>Topic: Machine Learning for Wearable Sensors in Healthcare Applications</p>
+        <ul>
+          <li>Freezing of Gait Detection: AI models for detecting freezing of gait in Parkinson's disease using IMU data</li>
+          <li>Human Intention Prediction: Multimodal data for predicting human intentions in exoskeleton applications</li>
+          <li>Platform Valorization: Commercializing AI-driven platform for freezing of gait detection</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <p class="title">M.S. in Computer Science (Cum laude), KU Leuven</p>
+        <p class="subtitle">Sep 2019 – Sep 2021</p>
+      </div>
+      <div class="timeline-item">
+        <p class="title">Worldwide Exchange Program, RWTH Aachen</p>
+        <p class="subtitle">Apr 2019 – Sep 2019</p>
+      </div>
+      <div class="timeline-item">
+        <p class="title">B.S. in Computer Science and Engineering, National Chiao Tong University</p>
+        <p class="subtitle">Sep 2015 – Jun 2019</p>
+        <p>Overall GPA: 4.06/4.3 (3.88/4.0); Major GPA: 4.09/4.3</p>
+        <p>Awards: Highest Distinction Award (Dept Graduation Project, 2018); Popular Award (2nd Runner-up, 2018)</p>
+      </div>
+    </section>
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="timeline-item">
+        <p class="title">Master Student, HCI Lab (Augment Group), KU Leuven</p>
+        <p class="subtitle">Jul 2020 – Jun 2021</p>
+        <p>Thesis: “Touch the explanations”: Justifying movie recommendations with AR explanations</p>
+      </div>
+      <div class="timeline-item">
+        <p class="title">Summer Research Intern, Nokia Bell Labs (APSS Lab)</p>
+        <p class="subtitle">Jul 2020 – Aug 2020</p>
+        <p>Developed cross-platform MR experiences for HoloLens and Android</p>
+      </div>
+      <div class="timeline-item">
+        <p class="title">Intern, Mobile Communications Network Lab, NCTU</p>
+        <p class="subtitle">Jun 2018 – Mar 2019</p>
+        <p>Unified hologram gaming platform with IoT integration</p>
+      </div>
+      <div class="timeline-item">
+        <p class="title">Intern, Industrial Technology Research Institute (ITRI)</p>
+        <p class="subtitle">Jul 2018 – Dec 2018</p>
+        <p>Created AI-driven interactive game merging virtual and real environments</p>
+      </div>
+      <div class="timeline-item">
+        <p class="title">Undergraduate Student, Collaborative Vision Lab, NCTU</p>
+        <p class="subtitle">Sep 2017 – Dec 2018</p>
+        <p>Developed multi-user VR positioning system in Unity3D</p>
+      </div>
+    </section>
+    <section id="publications">
+      <h2>Publications</h2>
+      <ul>
+        <li>Yang, P-K., Onal, P., et al. (2024). Multimodal Temporal Graph Convolutional Network for Human Intention Forecasting. (under review)</li>
+        <li>Yang, P-K., Filtjens, B., et al. (2024). Multimodal Freezing of Gait Detection: Analyzing the Benefits of Physiological Data. (under review)</li>
+        <li>Yang, P-K., Filtjens, B., et al. (2024). Automatic Detection and Assessment of Freezing of Gait Manifestations. <em>IEEE Trans. on Neural Systems and Rehabilitation Engineering</em>, 32, 2699-2708. doi:10.1109/TNSRE.2024.3431208</li>
+        <li>Yang, P-K., Filtjens, B., et al. (2024). Freezing of gait assessment with IMUs and deep learning: Effect of tasks, medication states, and stops. <em>Journal of NeuroEngineering and Rehabilitation</em>, 21(1). doi:10.1186/s12984-024-01320-1</li>
+        <li>Filtjens, B., Yang, P-K., et al. (2023). Automated freezing of gait assessment with deep learning and data augmentation. In <em>2023 IEEE 19th Int. Conf. on Body Sensor Networks</em>. doi:10.1109/BSN58485.2023.10330987</li>
+        <li>Yang, P-K., Alvarado Rodriguez, O.L., et al. (2022). Touching the Explanations: Explaining Movie Recommendation Scores in Mobile AR. In <em>IEEE Int. Conf. on AI and Virtual Reality</em>. doi:10.1109/AIVR56993.2022.00032</li>
+      </ul>
+    </section>
+    <section id="reviewer">
+      <h2>Peer Reviewer</h2>
+      <p>2025: Scientific Reports, Artificial Intelligence In Medicine (AIIM)</p>
+      <p>2024: Scientific Reports, IEEE Access, IEEE EMBC 2024</p>
+    </section>
+    <section id="skills">
+      <h2>Languages & Skills</h2>
+      <ul>
+        <li>Chinese/Taiwanese: Native</li>
+        <li>English: Fluent (TOEFL iBT: 102, TOEIC: 870)</li>
+        <li>German: Basic (GOETHE-ZERTIFIKAT A2, SPRACHCAFFE A1.2)</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
