@@ -31,10 +31,9 @@
     p.intro a { color: var(--color-accent); text-decoration: none; }
     p.intro a:hover { text-decoration: underline; }
     ul { list-style: none; padding: 0; }
-    /* Aligned lists */
     ul li { display: flex; align-items: flex-start; margin-bottom: 0.8rem; }
     ul li i { margin-right: 0.5rem; color: var(--color-accent); margin-top: 0.2rem; }
-    ul li span.date { flex: 0 0 10rem; font-weight: bold; }
+    ul li span.date { flex: 0 0 12rem; font-weight: bold; }
     ul li span.desc { flex: 1; }
     /* Publications */
     #pub-list li { display: flex; align-items: baseline; white-space: normal; margin-bottom: 0.5rem; }
@@ -47,13 +46,12 @@
     #knight-game { margin-top: auto; text-align: center; width: 100%; padding-bottom: 1rem; }
     #knight-game h3 { color: var(--color-light); margin-bottom: 0.5rem; }
     #board { display: grid; grid-template-columns: repeat(7, 30px); grid-template-rows: repeat(7, 30px); gap: 2px; margin: 0 auto; }
-    .square { width: 30px; height: 30px; background: var(--color-light); position: relative; }
+    .square { width: 30px; height: 30px; background: var(--color-light); position: relative; cursor: pointer; }
     .square.visited { background: var(--color-gray2); }
     .square.next { background: var(--color-accent); }
     .square.start { border: 2px solid var(--color-accent); }
     .panda { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.2rem; }
-    #move-count { margin-top: 0.5rem; color: var(--color-light); font-weight: bold; }
-    #message { margin-top: 0.5rem; color: var(--color-light); }
+    #move-count, #message { margin-top: 0.5rem; color: var(--color-light); font-weight: bold; }
     #restart-btn { margin-top: 0.5rem; padding: 0.3rem 0.6rem; background: var(--color-accent); border: none; color: var(--color-light); border-radius: 4px; cursor: pointer; }
   </style>
 </head>
@@ -70,13 +68,12 @@
     <a href="https://linkedin.com/in/po-kai-yang-a41921176"><i class="fab fa-linkedin"></i>LinkedIn</a>
     <a href="https://github.com/kai0122"><i class="fab fa-github"></i>GitHub</a>
     <a href="https://twitter.com/iampokaiyang"><i class="fab fa-twitter"></i>@iampokaiyang</a>
-
     <div id="knight-game">
       <h3>Knight's Tour Puzzle</h3>
       <div id="board"></div>
       <div id="move-count">Moves: 0</div>
       <div id="message"></div>
-      <button id="restart-btn">Restart</button>
+      <button id="restart-btn" style="display:none;">Restart</button>
     </div>
   </aside>
 
@@ -85,7 +82,41 @@
       <h2>About Me</h2>
       <p class="intro">I am currently a Ph.D. student in the <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a> at KU Leuven, under the supervision of <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>. My research focuses on artificial intelligence for healthcare applications. As part of the <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG-IT project</a>, I develop deep learning methods to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.</p>
     </section>
-    <!-- Recent News, Experience, Education, Honors blocks unchanged here for brevity -->
+    <section id="updates">
+      <h2>Recent News</h2>
+      <ul>
+        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025  </span><span class="desc"><strong>Poster</strong> at The International Consortium on Freezing of Gait (ICFOG 2025), Atlanta, GA</span></li>
+        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025  </span><span class="desc"><strong>Poster</strong> at The International Society of Posture and Gait Research (ISPGR 2025), Maastricht, Netherlands</span></li>
+      </ul>
+    </section>
+    <section id="experience">
+      <h2>Experience</h2>
+      <ul>
+        <li><i class="fas fa-briefcase"></i><span class="date">Oct 2021 – Sep 2025  </span><span class="desc">Ph.D. Researcher, KU Leuven, Belgium</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2020 – Aug 2020  </span><span class="desc">Summer Research Intern, Nokia Bell Labs (APSS Lab)</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jun 2018 – Mar 2019  </span><span class="desc">Research Intern, Mobile Communications Network Lab, NCTU</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2018 – Dec 2018  </span><span class="desc">Research Intern, Industrial Technology Research Institute (ITRI)</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Sep 2017 – Dec 2018  </span><span class="desc">Undergraduate Researcher, Collaborative Vision Lab, NCTU</span></li>
+      </ul>
+    </section>
+    <section id="education">
+      <h2>Education</h2>
+      <ul>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Oct 2021 – Sep 2025  </span><span class="desc">Ph.D., Engineering Technology (Dept. of Electrical Engineering), KU Leuven (expected)</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2019 – Sep 2021  </span><span class="desc">M.Sc., Computer Science (Cum laude), KU Leuven</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Apr 2019 – Sep 2019  </span><span class="desc">Exchange Program, RWTH Aachen</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2015 – Jun 2019  </span><span class="desc">B.Sc., Computer Science & Engineering, NCTU (GPA 4.06/4.3)</span></li>
+      </ul>
+    </section>
+    <section id="awards">
+      <h2>Honors &amp; Grants</h2>
+      <ul>
+        <li><i class="fas fa-trophy"></i><span class="date">2025  </span><span class="desc">FWO Travel Grant, Research Foundation Flanders for ICFOG 2025</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2019  </span><span class="desc">KU Leuven–Taiwan Scholarship (教育部百大留學獎學金)</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2018  </span><span class="desc">Highest Distinction Award, Dept. Graduation Project, NCTU</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2018  </span><span class="desc">Popular Award (2nd Runner-up), NCTU Graduation Project</span></li>
+      </ul>
+    </section>
     <section id="services">
       <h2>Academic Service</h2>
       <ul>
@@ -107,107 +138,73 @@
       <ul id="pub-list"><li>Loading publications…</li></ul>
     </section>
   </main>
-
   <script>
     // Knight's Tour Game Logic (7×7)
     (function() {
       const size = 7;
       const board = document.getElementById('board');
       const moveCountEl = document.getElementById('move-count');
-      const messageEl = document.getElementById('message');
+      const msgEl = document.getElementById('message');
       const restartBtn = document.getElementById('restart-btn');
       let current, visited, moves;
 
       function idx(x, y) { return y * size + x; }
-
       function init() {
         board.innerHTML = '';
         visited = Array(size * size).fill(false);
         moves = 0;
         current = { x: 0, y: 0 };
-        messageEl.textContent = '';
+        msgEl.textContent = '';
         moveCountEl.textContent = 'Moves: 0';
         restartBtn.style.display = 'none';
-        buildBoard();
-        highlight();
+        buildBoard(); highlight();
       }
-
       function buildBoard() {
-        for (let y = 0; y < size; y++) {
-          for (let x = 0; x < size; x++) {
-            const sq = document.createElement('div');
-            sq.className = 'square';
-            sq.dataset.x = x;
-            sq.dataset.y = y;
-            sq.addEventListener('click', onSquareClick);
-            board.appendChild(sq);
-          }
+        for (let y=0; y<size; y++) for (let x=0; x<size; x++) {
+          const sq = document.createElement('div'); sq.className='square';
+          sq.dataset.x=x; sq.dataset.y=y;
+          sq.addEventListener('click', onSquareClick);
+          board.appendChild(sq);
         }
       }
-
       function highlight() {
-        // Clear classes
-        board.childNodes.forEach((sq, i) => {
-          sq.classList.remove('visited', 'next', 'start');
-        });
-        // Mark visited
-        visited[idx(current.x, current.y)] = true;
-        board.childNodes.forEach((sq, i) => {
-          if (visited[i]) sq.classList.add('visited');
-        });
-        // Mark start
+        board.childNodes.forEach((sq,i)=>{ sq.classList.remove('visited','next','start'); });
+        visited[idx(current.x,current.y)] = true;
+        board.childNodes.forEach((sq,i)=>{ if(visited[i]) sq.classList.add('visited'); });
         board.childNodes[idx(0,0)].classList.add('start');
-        // Compute next moves
-        const movesArr = [];
-        [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]].forEach(([dx,dy]) => {
-          const nx = current.x + dx, ny = current.y + dy;
-          if (nx>=0 && nx<size && ny>=0 && ny<size && !visited[idx(nx,ny)]) {
-            movesArr.push({ nx, ny });
-            board.childNodes[idx(nx, ny)].classList.add('next');
+        let nextCount=0;
+        [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]].forEach(([dx,dy])=>{
+          const nx=current.x+dx, ny=current.y+dy;
+          if(nx>=0&&nx<size&&ny>=0&&ny<size&&!visited[idx(nx,ny)]){
+            board.childNodes[idx(nx,ny)].classList.add('next'); nextCount++;
           }
         });
-        if (movesArr.length === 0) finish();
+        if(nextCount===0) {
+          if(visited.every(v=>v)) msgEl.textContent=`Congrats! Completed in ${moves} moves.`;
+          else msgEl.textContent=`No moves left! You visited ${moves+1}/${size*size}. Try again.`;
+          restartBtn.style.display='block';
+        }
       }
-
       function onSquareClick(e) {
-        const x = +e.currentTarget.dataset.x;
-        const y = +e.currentTarget.dataset.y;
-        if (!e.currentTarget.classList.contains('next')) return;
-        current = { x, y };
-        moves++;
-        moveCountEl.textContent = `Moves: ${moves}`;
+        const x=+e.currentTarget.dataset.x, y=+e.currentTarget.dataset.y;
+        if(!e.currentTarget.classList.contains('next')) return;
+        current={x,y}; moves++; moveCountEl.textContent=`Moves: ${moves}`;
         highlight();
       }
-
-      function finish() {
-        messageEl.textContent = `Congratulations! You completed the tour in ${moves} moves.`;
-        restartBtn.style.display = 'block';
-      }
-
       restartBtn.addEventListener('click', init);
       init();
     })();
-
-    // Load publications (unchanged)
+    // Load publications
     async function loadPublications() {
-      const res = await fetch('publications.json?t=' + Date.now());
+      const res = await fetch('publications.json?t='+Date.now());
       const data = await res.json();
-      data.publications.sort((a, b) => parseInt(b.year || 0) - parseInt(a.year || 0));
-      const list = document.getElementById('pub-list');
-      list.innerHTML = '';
-      data.publications.forEach(pub => {
-        const auth = pub.authors.split(/, | and /g)
-          .map(n => n.trim())
-          .map(n => n.includes('Yang') ? `<strong>${n}</strong>` : n)
-          .join(', ');
-        const journal = pub.journal || 'Unknown Venue';
-        const li = document.createElement('li');
-        li.innerHTML = `
-          <i class="fas fa-file-alt"></i>
-          <span class="desc">${auth}, <em>${journal}</em>.</span>
-          <a href="${pub.url}" target="_blank">Read Paper</a>
-          <span class="citations">(${pub.citations} citations)</span>
-        `;
+      data.publications.sort((a,b)=>parseInt(b.year||0)-parseInt(a.year||0));
+      const list = document.getElementById('pub-list'); list.innerHTML='';
+      data.publications.forEach(pub=>{
+        const auth=pub.authors.split(/, | and /g).map(n=>n.trim()).map(n=>n.includes('Yang')?`<strong>${n}</strong>`:n).join(', ');
+        const journal=pub.journal||'Unknown Venue';
+        const li=document.createElement('li');
+        li.innerHTML=`<i class="fas fa-file-alt"></i><span class="desc">${auth}, <em>${journal}</em>.</span><a href="${pub.url}" target="_blank">Read Paper</a> <span class="citations">(${pub.citations} citations)</span>`;
         list.appendChild(li);
       });
     }
