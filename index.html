@@ -218,7 +218,7 @@
         board.childNodes.forEach((sq, i) => { if (visited[i]) sq.classList.add('visited'); });
         // Place panda icon
         const pandaImg = document.createElement('img');
-        pandaImg.src = './panda-bear.png';
+        pandaImg.src = './panda.png';
         pandaImg.className = 'panda';
         board.childNodes[idx(current.x, current.y)].appendChild(pandaImg);
         // Mark start
