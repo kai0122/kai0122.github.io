@@ -31,6 +31,7 @@
     p.intro a { color: var(--color-accent); text-decoration: none; }
     p.intro a:hover { text-decoration: underline; }
     ul { list-style: none; padding: 0; }
+    /* Aligned lists */
     ul li { display: flex; align-items: flex-start; margin-bottom: 0.8rem; }
     ul li i { margin-right: 0.5rem; color: var(--color-accent); margin-top: 0.2rem; }
     ul li span.date { flex: 0 0 10rem; font-weight: bold; }
@@ -42,19 +43,18 @@
     #pub-list li a:hover { text-decoration: underline; }
     #pub-list li em { margin-left: 0.5rem; font-style: italic; }
     #pub-list li .citations { margin-left: 0.5rem; color: var(--color-gray1); font-size: 0.9rem; }
-    /* Knight's Tour Game */
+    /* Knight's Tour Game (7×7) */
     #knight-game { margin-top: auto; text-align: center; width: 100%; padding-bottom: 1rem; }
     #knight-game h3 { color: var(--color-light); margin-bottom: 0.5rem; }
-    #board { display: grid; grid-template-columns: repeat(8, 30px); grid-template-rows: repeat(8, 30px); gap: 1px; margin: 0 auto; }
-    .square { width: 30px; height: 30px; background: var(--color-light); position: relative; cursor: pointer; }
-    .square:nth-child(odd) { background: var(--color-gray2); }
-    .visited { background: var(--color-gray1) !important; }
-    .next-move { outline: 2px solid var(--color-accent); }
-    .panda { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.2rem; color: var(--color-accent); }
+    #board { display: grid; grid-template-columns: repeat(7, 30px); grid-template-rows: repeat(7, 30px); gap: 2px; margin: 0 auto; }
+    .square { width: 30px; height: 30px; background: var(--color-light); position: relative; }
+    .square.visited { background: var(--color-gray2); }
+    .square.next { background: var(--color-accent); }
+    .square.start { border: 2px solid var(--color-accent); }
+    .panda { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.2rem; }
     #move-count { margin-top: 0.5rem; color: var(--color-light); font-weight: bold; }
-    #win-message { margin-top: 0.5rem; color: var(--color-accent); font-weight: bold; display: none; }
-    #restart-btn { margin-top: 0.5rem; padding: 0.3rem 0.6rem; background: var(--color-accent); color: var(--color-light); border: none; border-radius: 4px; cursor: pointer; display: none; }
-    #restart-btn:hover { opacity: 0.9; }
+    #message { margin-top: 0.5rem; color: var(--color-light); }
+    #restart-btn { margin-top: 0.5rem; padding: 0.3rem 0.6rem; background: var(--color-accent); border: none; color: var(--color-light); border-radius: 4px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -70,11 +70,12 @@
     <a href="https://linkedin.com/in/po-kai-yang-a41921176"><i class="fab fa-linkedin"></i>LinkedIn</a>
     <a href="https://github.com/kai0122"><i class="fab fa-github"></i>GitHub</a>
     <a href="https://twitter.com/iampokaiyang"><i class="fab fa-twitter"></i>@iampokaiyang</a>
+
     <div id="knight-game">
       <h3>Knight's Tour Puzzle</h3>
       <div id="board"></div>
       <div id="move-count">Moves: 0</div>
-      <div id="win-message">Congratulations! You completed the tour!</div>
+      <div id="message"></div>
       <button id="restart-btn">Restart</button>
     </div>
   </aside>
@@ -84,22 +85,54 @@
       <h2>About Me</h2>
       <p class="intro">I am currently a Ph.D. student in the <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a> at KU Leuven, under the supervision of <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>. My research focuses on artificial intelligence for healthcare applications. As part of the <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG-IT project</a>, I develop deep learning methods to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.</p>
     </section>
-    <!-- All other sections remain unchanged -->
+    <!-- Recent News, Experience, Education, Honors blocks unchanged here for brevity -->
+    <section id="services">
+      <h2>Academic Service</h2>
+      <ul>
+        <li><i class="fas fa-book-open"></i><span class="desc"><strong>Reviewer – Journals:</strong> Scientific Reports (IF 3.8); IEEE Access (IF 3.4); Artificial Intelligence in Medicine (IF 6.1)</span></li>
+        <li><i class="fas fa-comments"></i><span class="desc"><strong>Reviewer – Conferences:</strong> IEEE EMBC 2024</span></li>
+        <li><i class="fas fa-user-graduate"></i><span class="desc">Master Thesis Co-supervisor: Supervised 6 master students (Engineering Technology)</span></li>
+        <li><i class="fas fa-chalkboard-teacher"></i><span class="desc">Teaching Assistant, KU Leuven:
+            <ul>
+              <li>Pathways to Sustainability (2021)</li>
+              <li>Machine Learning (2022, 2023, 2024)</li>
+              <li>Engineering Experience II – Data Acquisition (2022)</li>
+              <li>Applied AI: Academic Perspectives – ML in Healthcare (2022, 2023)</li>
+            </ul>
+        </span></li>
+      </ul>
+    </section>
+    <section id="publications">
+      <h2>Publications &amp; Citations</h2>
+      <ul id="pub-list"><li>Loading publications…</li></ul>
+    </section>
   </main>
 
   <script>
-    // Knight's Tour Game Logic (8×8) with tracking, highlights, restart
+    // Knight's Tour Game Logic (7×7)
     (function() {
-      const size = 8;
+      const size = 7;
       const board = document.getElementById('board');
-      let current = {x: 0, y: 0};
-      let moves = 0;
-      const visited = Array(size).fill(null).map(() => Array(size).fill(false));
+      const moveCountEl = document.getElementById('move-count');
+      const messageEl = document.getElementById('message');
+      const restartBtn = document.getElementById('restart-btn');
+      let current, visited, moves;
 
       function idx(x, y) { return y * size + x; }
 
-      function createBoard() {
+      function init() {
         board.innerHTML = '';
+        visited = Array(size * size).fill(false);
+        moves = 0;
+        current = { x: 0, y: 0 };
+        messageEl.textContent = '';
+        moveCountEl.textContent = 'Moves: 0';
+        restartBtn.style.display = 'none';
+        buildBoard();
+        highlight();
+      }
+
+      function buildBoard() {
         for (let y = 0; y < size; y++) {
           for (let x = 0; x < size; x++) {
             const sq = document.createElement('div');
@@ -112,83 +145,73 @@
         }
       }
 
-      function placePanda() {
-        document.querySelectorAll('.panda').forEach(el => el.remove());
-        const sel = board.children[idx(current.x, current.y)];
-        const panda = document.createElement('span');
-        panda.className = 'panda';
-        panda.textContent = '🐼';
-        sel.appendChild(panda);
-      }
-
-      function highlightMoves() {
-        clearHighlights();
-        const movesArr = getMoves(current.x, current.y);
-        movesArr.forEach(({x, y}) => {
-          if (!visited[y][x]) {
-            board.children[idx(x,y)].classList.add('next-move');
+      function highlight() {
+        // Clear classes
+        board.childNodes.forEach((sq, i) => {
+          sq.classList.remove('visited', 'next', 'start');
+        });
+        // Mark visited
+        visited[idx(current.x, current.y)] = true;
+        board.childNodes.forEach((sq, i) => {
+          if (visited[i]) sq.classList.add('visited');
+        });
+        // Mark start
+        board.childNodes[idx(0,0)].classList.add('start');
+        // Compute next moves
+        const movesArr = [];
+        [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]].forEach(([dx,dy]) => {
+          const nx = current.x + dx, ny = current.y + dy;
+          if (nx>=0 && nx<size && ny>=0 && ny<size && !visited[idx(nx,ny)]) {
+            movesArr.push({ nx, ny });
+            board.childNodes[idx(nx, ny)].classList.add('next');
           }
         });
-      }
-
-      function clearHighlights() {
-        document.querySelectorAll('.next-move').forEach(el => el.classList.remove('next-move'));
-      }
-
-      function getMoves(x, y) {
-        const deltas = [[2,1],[1,2],[-1,2],[-2,1],[-2,-1],[-1,-2],[1,-2],[2,-1]];
-        return deltas.map(([dx,dy]) => ({x: x+dx, y: y+dy}))
-          .filter(p => p.x>=0 && p.x<size && p.y>=0 && p.y<size);
+        if (movesArr.length === 0) finish();
       }
 
       function onSquareClick(e) {
         const x = +e.currentTarget.dataset.x;
         const y = +e.currentTarget.dataset.y;
-        const valid = getMoves(current.x, current.y)
-          .some(p => p.x===x && p.y===y);
-        if (!valid) return;
-        // Move panda
-        current = {x, y};
-        visited[y][x] = true;
+        if (!e.currentTarget.classList.contains('next')) return;
+        current = { x, y };
         moves++;
-        document.getElementById('move-count').textContent = `Moves: ${moves}`;
-        board.children[idx(x,y)].classList.add('visited');
-        placePanda();
-        clearHighlights();
-        checkWin();
+        moveCountEl.textContent = `Moves: ${moves}`;
+        highlight();
       }
 
-      function checkWin() {
-        const allVisited = visited.flat().every(v => v);
-        if (allVisited) {
-          document.getElementById('win-message').style.display = 'block';
-          document.getElementById('restart-btn').style.display = 'block';
-        } else {
-          highlightMoves();
-        }
+      function finish() {
+        messageEl.textContent = `Congratulations! You completed the tour in ${moves} moves.`;
+        restartBtn.style.display = 'block';
       }
 
-      function restart() {
-        current = {x: 0, y: 0};
-        moves = 0;
-        document.getElementById('move-count').textContent = 'Moves: 0';
-        visited.forEach(row => row.fill(false));
-        document.getElementById('win-message').style.display = 'none';
-        document.getElementById('restart-btn').style.display = 'none';
-        createBoard();
-        document.querySelectorAll('.square').forEach(sq => sq.classList.remove('visited'));
-        visited[0][0] = true;
-        placePanda();
-        highlightMoves();
-      }
-
-      createBoard();
-      visited[0][0] = true;
-      placePanda();
-      highlightMoves();
-
-      document.getElementById('restart-btn').addEventListener('click', restart);
+      restartBtn.addEventListener('click', init);
+      init();
     })();
+
+    // Load publications (unchanged)
+    async function loadPublications() {
+      const res = await fetch('publications.json?t=' + Date.now());
+      const data = await res.json();
+      data.publications.sort((a, b) => parseInt(b.year || 0) - parseInt(a.year || 0));
+      const list = document.getElementById('pub-list');
+      list.innerHTML = '';
+      data.publications.forEach(pub => {
+        const auth = pub.authors.split(/, | and /g)
+          .map(n => n.trim())
+          .map(n => n.includes('Yang') ? `<strong>${n}</strong>` : n)
+          .join(', ');
+        const journal = pub.journal || 'Unknown Venue';
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <i class="fas fa-file-alt"></i>
+          <span class="desc">${auth}, <em>${journal}</em>.</span>
+          <a href="${pub.url}" target="_blank">Read Paper</a>
+          <span class="citations">(${pub.citations} citations)</span>
+        `;
+        list.appendChild(li);
+      });
+    }
+    loadPublications();
   </script>
 </body>
 </html>
