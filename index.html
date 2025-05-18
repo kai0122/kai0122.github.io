@@ -16,21 +16,12 @@
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Arial, sans-serif; color: var(--color-dark); background: var(--color-light); }
     /* Sidebar */
-    .sidebar {
-      position: fixed; top: 0; left: 0;
-      width: 260px; height: 100vh;
-      padding: 2rem 1rem 1rem;
-      background: var(--color-dark);
-      color: var(--color-light);
-      display: flex; flex-direction: column; align-items: center;
-      overflow-y: auto;
-    }
+    .sidebar { position: fixed; top: 0; left: 0; width: 260px; height: 100vh; padding: 2rem 1rem 1rem; background: var(--color-dark); color: var(--color-light); display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
     .sidebar img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; }
     .sidebar h1 { margin: 0.5rem 0 1rem; font-size: 1.8rem; text-align: center; }
     .sidebar p, .sidebar a { margin: 0.3rem 0; color: var(--color-light); font-size: 0.95rem; text-decoration: none; display: flex; align-items: center; }
     .sidebar p i, .sidebar a i { margin-right: 0.5rem; width: 1rem; }
     .sidebar a:hover { text-decoration: underline; }
-
     /* Main content */
     main { margin-left: 280px; padding: 2rem; max-width: 900px; }
     section + section { margin-top: 2rem; border-top: 1px solid var(--color-gray2); padding-top: 1.5rem; }
@@ -44,7 +35,6 @@
     ul li i { margin-right: 0.5rem; color: var(--color-accent); margin-top: 0.2rem; }
     ul li span.date { flex: 0 0 12rem; font-weight: bold; }
     ul li span.desc { flex: 1; }
-
     /* Publications */
     #pub-list li { display: flex; align-items: baseline; white-space: normal; margin-bottom: 0.5rem; }
     #pub-list li i { margin-right: 0.5rem; color: var(--color-accent); }
@@ -52,7 +42,6 @@
     #pub-list li a:hover { text-decoration: underline; }
     #pub-list li em { margin-left: 0.5rem; font-style: italic; }
     #pub-list li .citations { margin-left: 0.5rem; color: var(--color-gray1); font-size: 0.9rem; }
-
     /* Knight's Tour Game (7×7) */
     #knight-game { margin-top: auto; text-align: center; width: 100%; padding-bottom: 1rem; }
     #knight-game h3 { color: var(--color-light); margin-bottom: 0.5rem; }
@@ -64,7 +53,6 @@
     .panda { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.2rem; }
     #move-count, #message, #global-count { margin-top: 0.5rem; color: var(--color-light); font-weight: bold; }
     #restart-btn, #rules-btn { margin: 0.3rem; padding: 0.3rem 0.6rem; background: var(--color-accent); border: none; color: var(--color-light); border-radius: 4px; cursor: pointer; }
-
     /* Responsive */
     @media(max-width: 768px) {
       .sidebar { position: relative; width: 100%; height: auto; padding-top: 1rem; }
@@ -98,11 +86,85 @@
   </aside>
 
   <main>
-    <!-- All sections (About, News, Experience, Education, Awards, Services, Publications) here unchanged -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p class="intro">
+        I am currently a Ph.D. student in the
+        <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a>
+        at KU Leuven, under the supervision of
+        <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>.
+        My research focuses on artificial intelligence for healthcare applications. As part of the
+        <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG-IT project</a>,
+        I develop deep learning methods to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.
+      </p>
+    </section>
+
+    <section id="updates">
+      <h2>Recent News</h2>
+      <ul>
+        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster</strong> at The International Consortium on Freezing of Gait (ICFOG 2025), Atlanta, GA</span></li>
+        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster</strong> at The International Society of Posture and Gait Research (ISPGR 2025), Maastricht, Netherlands</span></li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <ul>
+        <li><i class="fas fa-briefcase"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D. Researcher, KU Leuven, Belgium</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2020 – Aug 2020</span><span class="desc">Summer Research Intern, Nokia Bell Labs (APSS Lab)</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jun 2018 – Mar 2019</span><span class="desc">Research Intern, Mobile Communications Network Lab, NCTU</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2018 – Dec 2018</span><span class="desc">Research Intern, Industrial Technology Research Institute (ITRI)</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Sep 2017 – Dec 2018</span><span class="desc">Undergraduate Researcher, Collaborative Vision Lab, NCTU</span></li>
+      </ul>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <ul>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D., Engineering Technology (Dept. of Electrical Engineering), KU Leuven (expected)</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2019 – Sep 2021</span><span class="desc">M.Sc., Computer Science (Cum laude), KU Leuven</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Apr 2019 – Sep 2019</span><span class="desc">Exchange Program, RWTH Aachen</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2015 – Jun 2019</span><span class="desc">B.Sc., Computer Science & Engineering, NCTU (GPA 4.06/4.3)</span></li>
+      </ul>
+    </section>
+
+    <section id="awards">
+      <h2>Honors &amp; Grants</h2>
+      <ul>
+        <li><i class="fas fa-trophy"></i><span class="date">2025</span><span class="desc">FWO Travel Grant, Research Foundation Flanders for ICFOG 2025</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2019</span><span class="desc">KU Leuven–Taiwan Scholarship (教育部百大留學獎學金)</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Highest Distinction Award, Dept. Graduation Project, NCTU</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Popular Award (2nd Runner-up), NCTU Graduation Project</span></li>
+      </ul>
+    </section>
+
+    <section id="services">
+      <h2>Academic Service</h2>
+      <ul>
+        <li><i class="fas fa-book-open"></i><span class="desc"><strong>Reviewer – Journals:</strong> Scientific Reports (IF 3.8); IEEE Access (IF 3.4); Artificial Intelligence in Medicine (IF 6.1)</span></li>
+        <li><i class="fas fa-comments"></i><span class="desc"><strong>Reviewer – Conferences:</strong> IEEE EMBC 2024</span></li>
+        <li><i class="fas fa-user-graduate"></i><span class="desc">Master Thesis Co-supervisor: Supervised 6 master students (Engineering Technology)</span></li>
+        <li><i class="fas fa-chalkboard-teacher"></i><span class="desc">Teaching Assistant, KU Leuven:
+            <ul>
+              <li>Pathways to Sustainability (2021)</li>
+              <li>Machine Learning (2022, 2023, 2024)</li>
+              <li>Engineering Experience II – Data Acquisition (2022)</li>
+              <li>Applied AI: Academic Perspectives – ML in Healthcare (2022, 2023)</li>
+            </ul>
+        </span></li>
+      </ul>
+    </section>
+
+    <section id="publications">
+      <h2>Publications &amp; Citations</h2>
+      <ul id="pub-list">
+        <li>Loading publications…</li>
+      </ul>
+    </section>
   </main>
 
   <script>
-    // Knight's Tour Game Logic (7×7) with Rules & Global Count
+    // Knight's Tour Game Logic (7×7) with rules & global count
     (function() {
       const size = 7;
       const board = document.getElementById('board');
@@ -113,70 +175,119 @@
       const globalEl = document.getElementById('global-count');
       let current, visited, moves, globalCount;
 
-      function idx(x,y){return y*size+x;}
+      function idx(x, y) { return y * size + x; }
 
-      function init(){
+      function init() {
         board.innerHTML = '';
-        visited = Array(size*size).fill(false);
+        visited = Array(size * size).fill(false);
         moves = 0;
-        current = {x:0,y:0};
-        msgEl.textContent=''; moveCountEl.textContent='Moves: 0';
-        restartBtn.style.display='none';
-        buildBoard(); highlight();
+        current = { x: 0, y: 0 };
+        msgEl.textContent = '';
+        moveCountEl.textContent = 'Moves: 0';
+        restartBtn.style.display = 'none';
+        buildBoard();
+        highlight();
       }
-      function buildBoard(){
-        for(let y=0;y<size;y++){
-          for(let x=0;x<size;x++){
-            const sq=document.createElement('div'); sq.className='square';
-            sq.dataset.x=x; sq.dataset.y=y;
-            sq.addEventListener('click', onClick);
+
+      function buildBoard() {
+        for (let y = 0; y < size; y++) {
+          for (let x = 0; x < size; x++) {
+            const sq = document.createElement('div');
+            sq.className = 'square';
+            sq.dataset.x = x;
+            sq.dataset.y = y;
+            sq.addEventListener('click', onSquareClick);
             board.appendChild(sq);
-          }}
+          }
+        }
       }
-      function highlight(){
-        board.childNodes.forEach((sq,i)=>sq.classList.remove('visited','next','start'));
-        visited[idx(current.x,current.y)]=true;
-        board.childNodes.forEach((sq,i)=>visited[i]&&sq.classList.add('visited'));
-        board.childNodes[idx(0,0)].classList.add('start');
-        let nextCount=0;
-        [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]].forEach(([dx,dy])=>{
-          const nx=current.x+dx,ny=current.y+dy;
-          if(nx>=0&&nx<size&&ny>=0&&ny<size&&!visited[idx(nx,ny)]){
-            board.childNodes[idx(nx,ny)].classList.add('next'); nextCount++;}
+
+      function highlight() {
+        board.childNodes.forEach((sq, i) => {
+          sq.classList.remove('visited', 'next', 'start');
         });
-        if(nextCount===0){
-          if(visited.every(v=>v)) finish(true);
+        visited[idx(current.x, current.y)] = true;
+        board.childNodes.forEach((sq, i) => {
+          if (visited[i]) sq.classList.add('visited');
+        });
+        board.childNodes[idx(0, 0)].classList.add('start');
+
+        let nextCount = 0;
+        [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]].forEach(([dx, dy]) => {
+          const nx = current.x + dx;
+          const ny = current.y + dy;
+          if (nx >= 0 && nx < size && ny >= 0 && ny < size && !visited[idx(nx, ny)]) {
+            board.childNodes[idx(nx, ny)].classList.add('next');
+            nextCount++;
+          }
+        });
+
+        if (nextCount === 0) {
+          if (visited.every(v => v)) finish(true);
           else finish(false);
         }
       }
-      function onClick(e){
-        if(!e.currentTarget.classList.contains('next')) return;
-        const x=+e.currentTarget.dataset.x, y=+e.currentTarget.dataset.y;
-        current={x,y}; moves++; moveCountEl.textContent=`Moves: ${moves}`;
+
+      function onSquareClick(e) {
+        if (!e.currentTarget.classList.contains('next')) return;
+        const x = +e.currentTarget.dataset.x;
+        const y = +e.currentTarget.dataset.y;
+        current = { x, y };
+        moves++;
+        moveCountEl.textContent = `Moves: ${moves}`;
         highlight();
       }
-      function finish(win){
-        msgEl.textContent = win
-          ? `Congratulations! You completed the tour in ${moves} moves.`
-          : `No moves left! You visited ${moves+1}/${size*size}. Please try again.`;
-        if(win){
-          globalCount = parseInt(localStorage.getItem('globalCount')||0)+1;
-          localStorage.setItem('globalCount',globalCount);
+
+      function finish(win) {
+        if (win) {
+          msgEl.textContent = `Congratulations! You completed the tour in ${moves} moves.`;
+          globalCount = parseInt(localStorage.getItem('globalCount') || 0) + 1;
+          localStorage.setItem('globalCount', globalCount);
           globalEl.textContent = `Completed by: ${globalCount} players`;
+        } else {
+          msgEl.textContent = `No moves left! You visited ${moves+1}/${size*size}. Please try again.`;
         }
-        restartBtn.style.display='block';
+        restartBtn.style.display = 'block';
       }
-      rulesBtn.addEventListener('click', ()=>{
-        alert('Start at the top-left square with the panda. Click valid knight moves (L-shape) to tour every square once.');
+
+      rulesBtn.addEventListener('click', () => {
+        alert('Start at the top-left square with the panda. Click valid knight moves (L shape) to tour every square once.');
       });
+
       restartBtn.addEventListener('click', init);
-      // init global count
-      globalCount = parseInt(localStorage.getItem('globalCount')||0);
+
+      // initialize global count
+      globalCount = parseInt(localStorage.getItem('globalCount') || 0);
       globalEl.textContent = `Completed by: ${globalCount} players`;
+
       init();
     })();
 
-    // Load publications omitted for brevity
+    // Load publications
+    async function loadPublications() {
+      const res = await fetch('publications.json?t=' + Date.now());
+      const data = await res.json();
+      data.publications.sort((a, b) => parseInt(b.year || 0) - parseInt(a.year || 0));
+      const list = document.getElementById('pub-list');
+      list.innerHTML = '';
+      data.publications.forEach(pub => {
+        const auth = pub.authors.split(/, | and /g)
+          .map(n => n.trim())
+          .map(n => n.includes('Yang') ? `<strong>${n}</strong>` : n)
+          .join(', ');
+        const title = pub.title;
+        const journal = pub.journal || 'Unknown Venue';
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <i class="fas fa-file-alt"></i>
+          <span class="desc">${auth}, “${title},” <em>${journal}</em>.</span>
+          <a href="${pub.url}" target="_blank">Read Paper</a>
+          <span class="citations">(${pub.citations} citations)</span>
+        `;
+        list.appendChild(li);
+      });
+    }
+    loadPublications();
   </script>
 </body>
 </html>
