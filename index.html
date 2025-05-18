@@ -68,9 +68,8 @@
 
     <!-- Hamster feeding game widget -->
     <div id="hamster-game">
-      <img id="hamster-img" src="hamster1.png" alt="Hamster" />
-      <button id="feed-btn">Feed the Hamster</button>
-      <p>Fed <span id="feed-count">0</span> times.</p>
+      <!-- Embedded hamster widget from megapx -->
+      <script type="text/javascript" src="https://3a4dca9a4f04c1d5be02-31f4d9f35ab1ca0f5155a398c553ada3.ssl.cf2.rackcdn.com/hamster.js"></script>
     </div>
   </aside>
 
@@ -78,24 +77,8 @@
     <!-- existing content sections -->
   </main>
 
-  <script>
-    // Hamster feed game logic
-    (function() {
-      const countEl = document.getElementById('feed-count');
-      const btn     = document.getElementById('feed-btn');
-      const img     = document.getElementById('hamster-img');
-      // Preload hamster states (ensure you add these to your repo)
-      const states = ['hamster1.png','hamster2.png','hamster3.png','hamster4.png'];
-      let count = parseInt(localStorage.getItem('hamsterFeedCount')) || 0;
-      countEl.textContent = count;
-      btn.addEventListener('click', () => {
-        count++;
-        localStorage.setItem('hamsterFeedCount', count);
-        countEl.textContent = count;
-        const idx = Math.min(count, states.length - 1);
-        img.src = states[idx];
-      });
-    })();
-  </script>
+  <!-- No additional JS needed; hamster.js handles the interactive feed count -->
+</body>
+</html>
 </body>
 </html>
