@@ -15,14 +15,7 @@
     }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Arial, sans-serif; color: var(--color-dark); background: var(--color-light); }
-    .sidebar {
-      position: fixed; top: 0; left: 0;
-      width: 260px; height: 100vh;
-      padding: 1rem; background: var(--color-dark);
-      color: var(--color-light); display: flex;
-      flex-direction: column; align-items: center;
-      overflow-y: auto;
-    }
+    .sidebar { position: fixed; top: 0; left: 0; width: 260px; height: 100vh; padding: 1rem; background: var(--color-dark); color: var(--color-light); display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
     .sidebar img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; }
     .sidebar h1 { margin: 0.5rem 0; font-size: 1.8rem; text-align: center; }
     .sidebar p, .sidebar a { margin: 0.3rem 0; color: var(--color-light); font-size: 0.95rem; text-decoration: none; display: flex; align-items: center; }
@@ -33,13 +26,13 @@
     section { padding-left: 1rem; }
     h2 { font-size: 1.6rem; color: var(--color-dark); border-left: 4px solid var(--color-accent); padding-left: 0.5rem; }
     p.intro { font-size: 1rem; line-height: 1.5; margin-bottom: 1rem; }
+    p.intro a { color: var(--color-accent); text-decoration: none; }
+    p.intro a:hover { text-decoration: underline; }
     ul { list-style: none; padding: 0; }
     ul li { margin-bottom: 0.8rem; display: flex; align-items: flex-start; }
     ul li i { margin-right: 0.5rem; color: var(--color-accent); margin-top: 0.2rem; }
     /* Publications Flex */
-    #pub-list li {
-      display: flex; flex-wrap: wrap; align-items: baseline;
-    }
+    #pub-list li { display: flex; flex-wrap: wrap; align-items: baseline; }
     #pub-list li i { margin-top: 0.1rem; }
     #pub-list li em, #pub-list li .citations, #pub-list li a { margin-left: 0.25rem; margin-right: 0.5rem; white-space: nowrap; }
     #pub-list li a { color: var(--color-accent); font-weight: bold; text-decoration: none; }
@@ -61,53 +54,52 @@
     <a href="https://github.com/kai0122" target="_blank"><i class="fab fa-github"></i>GitHub</a>
     <a href="https://twitter.com/iampokaiyang" target="_blank"><i class="fab fa-twitter"></i>@iampokaiyang</a>
   </aside>
-
   <main>
     <section id="about">
       <h2>About Me</h2>
       <p class="intro">
-        I am a Ph.D. candidate in the <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e‑Media Research Lab</a> at KU Leuven, supervised by <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>.
-        My research at the <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG‑IT project</a> combines deep learning, AI, and immersive technologies to automatically detect and evaluate freezing of gait in Parkinson’s disease via wearable sensors.
+        I am currently a Ph.D. student in the <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e‑Media Research Lab</a> at KU Leuven, under the supervision of <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>.
+        My research focuses on artificial intelligence for healthcare applications. As part of the <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG‑IT project</a>, I develop deep learning methods to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.
       </p>
     </section>
     <section id="updates">
       <h2>Recent News</h2>
       <ul>
-        <li><i class="fas fa-bullhorn"></i>Poster at ICFOG 2025 (June 2025, Atlanta, GA)</li>
-        <li><i class="fas fa-bullhorn"></i>Poster at ISPGR 2025 (June 2025)</li>
+        <li><i class="fas fa-bullhorn"></i>June 2025 – Poster at ICFOG 2025 (Atlanta, GA)</li>
+        <li><i class="fas fa-bullhorn"></i>June 2025 – Poster at ISPGR 2025</li>
       </ul>
     </section>
     <section id="experience">
       <h2>Professional Experience</h2>
       <ul>
-        <li><i class="fas fa-briefcase"></i>Master Student, HCI Lab (Augment Group), KU Leuven (Jul 2020–Jun 2021)</li>
-        <li><i class="fas fa-briefcase"></i>Summer Intern, Nokia Bell Labs (APSS Lab) (Jul 2020–Aug 2020)</li>
-        <li><i class="fas fa-briefcase"></i>Intern, Mobile Communications Network Lab, NCTU (Jun 2018–Mar 2019)</li>
-        <li><i class="fas fa-briefcase"></i>Intern, ITRI (Jul 2018–Dec 2018)</li>
-        <li><i class="fas fa-briefcase"></i>Undergrad Research, Collaborative Vision Lab, NCTU (Sep 2017–Dec 2018)</li>
+        <li><i class="fas fa-briefcase"></i>Jul 2020–Jun 2021 – Master Student, HCI Lab (Augment Group), KU Leuven</li>
+        <li><i class="fas fa-briefcase"></i>Jul 2020–Aug 2020 – Summer Intern, Nokia Bell Labs (APSS Lab)</li>
+        <li><i class="fas fa-briefcase"></i>Jun 2018–Mar 2019 – Intern, Mobile Communications Network Lab, NCTU</li>
+        <li><i class="fas fa-briefcase"></i>Jul 2018–Dec 2018 – Intern, ITRI</li>
+        <li><i class="fas fa-briefcase"></i>Sep 2017–Dec 2018 – Undergrad Research, Collaborative Vision Lab, NCTU</li>
       </ul>
     </section>
     <section id="education">
       <h2>Education</h2>
       <ul>
-        <li><i class="fas fa-graduation-cap"></i>Ph.D., Engineering Technology (Electrical), KU Leuven (Oct 2021–Sep 2025 expected)</li>
-        <li><i class="fas fa-graduation-cap"></i>M.S. Computer Science (Cum laude), KU Leuven (Sep 2019–Sep 2021)</li>
-        <li><i class="fas fa-graduation-cap"></i>Exchange, RWTH Aachen (Apr 2019–Sep 2019)</li>
-        <li><i class="fas fa-graduation-cap"></i>B.S. Comp Sci & Eng, NCTU (Sep 2015–Jun 2019); GPA 4.06/4.3</li>
+        <li><i class="fas fa-graduation-cap"></i>Oct 2021–Sep 2025 – Ph.D., Engineering Technology (Electrical), KU Leuven (expected)</li>
+        <li><i class="fas fa-graduation-cap"></i>Sep 2019–Sep 2021 – M.S. Computer Science (Cum laude), KU Leuven</li>
+        <li><i class="fas fa-graduation-cap"></i>Apr 2019–Sep 2019 – Exchange, RWTH Aachen</li>
+        <li><i class="fas fa-graduation-cap"></i>Sep 2015–Jun 2019 – B.S. Comp Sci & Eng, NCTU; GPA 4.06/4.3</li>
       </ul>
     </section>
     <section id="awards">
       <h2>Honors &amp; Grants</h2>
       <ul>
-        <li><i class="fas fa-trophy"></i>Highest Distinction Award, NCTU Dept. Project (2018)</li>
-        <li><i class="fas fa-trophy"></i>Popular Award (2nd Runner-up), NCTU (2018)</li>
+        <li><i class="fas fa-trophy"></i>2018 – Highest Distinction Award, NCTU Dept. Project</li>
+        <li><i class="fas fa-trophy"></i>2018 – Popular Award (2nd Runner-up), NCTU</li>
       </ul>
     </section>
     <section id="services">
       <h2>Academic Service</h2>
       <ul>
-        <li><i class="fas fa-user-edit"></i>Reviewer: Scientific Reports; AI in Medicine (2025)</li>
-        <li><i class="fas fa-user-edit"></i>Reviewer: Scientific Reports; IEEE Access; IEEE EMBC (2024)</li>
+        <li><i class="fas fa-user-edit"></i>2025 – Reviewer: Scientific Reports; AI in Medicine</li>
+        <li><i class="fas fa-user-edit"></i>2024 – Reviewer: Scientific Reports; IEEE Access; IEEE EMBC</li>
       </ul>
     </section>
     <section id="publications">
@@ -121,16 +113,13 @@
     async function loadPublications() {
       const res = await fetch('publications.json?t=' + Date.now());
       const data = await res.json();
+      data.publications.sort((a,b) => parseInt(b.year || '0') - parseInt(a.year || '0'));
       const list = document.getElementById('pub-list'); list.innerHTML = '';
       data.publications.forEach(pub => {
         const authors = pub.authors.split(/, | and /g).map(n => n.trim()).map(n => n.includes('Yang') ? `<strong>${n}</strong>` : n).join(', ');
-        const journal = pub.journal || 'Unknown Venue';
-        const year = pub.year || 'n.d.';
+        const journal = pub.journal || 'Unknown Venue'; const year = pub.year || 'n.d.';
         const li = document.createElement('li');
-        li.innerHTML = `<i class="fas fa-file-alt"></i> ${authors}, “${pub.title},”
-          <em>${journal}</em>, ${year}.
-          <a href="${pub.url}" target="_blank">Read Paper</a>
-          <span class="citations">(${pub.citations} citations)</span>`;
+        li.innerHTML = `<i class="fas fa-file-alt"></i> ${year} – ${authors}, “${pub.title},” <em>${journal}</em>. <a href="${pub.url}" target="_blank">Read Paper</a> <span class="citations">(${pub.citations} citations)</span>`;
         list.appendChild(li);
       });
     }
