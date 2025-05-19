@@ -32,7 +32,7 @@ jobs:
       # 4. Run your generator with a 1 000 000 cap
       - name: Generate tours.json
         run: |
-          python generate_tours.py 1000000
+          python generate_tours.py 3000000
 
       # 5. Commit & push tours.json if it changed
       - name: Commit and push tours.json
