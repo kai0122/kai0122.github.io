@@ -13,7 +13,7 @@
       --color-light:  #f4f3ee;
       --color-accent: #e0afa0;
     }
-    *, *::before, *::after { box-sizing: border-box; }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -47,15 +47,10 @@
       display: flex; align-items: center;
     }
     .sidebar p i { margin-right: .5rem; width: 1rem; }
-    .sidebar p a {
-      color: var(--color-accent);
-      text-decoration: none;
-    }
+    .sidebar p a { color: var(--color-accent); text-decoration: none; }
     .sidebar a {
-      margin: .3rem 0;
-      color: var(--color-light);
-      font-size: .95rem;
-      text-decoration: none;
+      margin: .3rem 0; color: var(--color-light);
+      font-size: .95rem; text-decoration: none;
       display: flex; align-items: center;
     }
     .sidebar a:hover { text-decoration: underline; }
@@ -64,10 +59,10 @@
       display: flex; gap: .5rem; margin: .5rem 0;
     }
     .social-icons a {
-      color: var(--color-light);
-      font-size: 1.5rem;
+      color: var(--color-light); font-size: 1.5rem;
     }
 
+    /* Knight’s Tour */
     #knight-game {
       margin-top: auto; width: 100%;
       display: flex; flex-direction: column; align-items: center;
@@ -86,10 +81,6 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    #hint-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
     #board {
       display: grid;
       grid-template-columns: repeat(7,30px);
@@ -97,9 +88,10 @@
       gap: 2px;
     }
     .square {
-      width:30px; height:30px;
+      width: 30px; height: 30px;
       background: var(--color-light);
-      position: relative; cursor: pointer;
+      position: relative;
+      cursor: pointer;
     }
     .square.visited { background: var(--color-gray2); }
     .square.next    { background: var(--color-accent); }
@@ -129,8 +121,7 @@
     }
     section { padding-left: 1rem; }
     h2 {
-      font-size: 1.6rem;
-      color: var(--color-dark);
+      font-size: 1.6rem; color: var(--color-dark);
       border-left: 4px solid var(--color-accent);
       padding-left: .5rem;
     }
@@ -138,7 +129,8 @@
       font-size: 1rem; line-height: 1.5; margin-bottom: 1rem;
     }
     p.intro a {
-      color: var(--color-accent); text-decoration: none;
+      color: var(--color-accent);
+      text-decoration: none;
     }
     p.intro a:hover { text-decoration: underline; }
 
@@ -175,10 +167,8 @@
       margin-right: .5rem; color: var(--color-accent);
     }
     #pub-list li a {
-      color: var(--color-accent);
-      font-weight: bold;
-      text-decoration: none;
-      margin-left: .5rem;
+      color: var(--color-accent); font-weight: bold;
+      text-decoration: none; margin-left: .5rem;
     }
     #pub-list li a:hover { text-decoration: underline; }
     #pub-list li em {
@@ -188,7 +178,7 @@
       margin-left: .5rem; color: var(--color-gray1); font-size: .9rem;
     }
 
-    @media(max-width:768px) {
+    @media(max-width:768px){
       .sidebar {
         position: relative; width: 100%; height: auto; padding-top: 1rem;
       }
@@ -219,7 +209,7 @@
       <h3>Knight’s Tour Puzzle</h3>
       <div class="button-group">
         <button id="rules-btn">Rules</button>
-        <button id="hint-btn" disabled>Hint</button>
+        <button id="hint-btn">Hint</button>
       </div>
       <div id="board"></div>
       <div id="move-count">Moves: 0</div>
@@ -229,22 +219,45 @@
   </aside>
 
   <main>
-    <!-- About, News, Experience, Education, Awards, Services as before -->
+    <!-- CV sections: About, News, Experience, Education, Awards, Services -->
     <section id="about">
       <h2>About Me</h2>
       <p class="intro">
         I am currently a Ph.D. student in the
-        <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a>
-        at KU Leuven, under the supervision of
-        <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>.
-        My research focuses on artificial intelligence for healthcare applications...
+        <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">
+          e-Media Research Lab
+        </a> at KU Leuven, supervised by
+        <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">
+          Prof. Dr. Bart Vanrumste
+        </a>. My research focuses on AI for healthcare. As part of the
+        <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">
+          FOG-IT project
+        </a>, I develop deep-learning methods to detect and assess freezing of gait in Parkinson’s disease.
       </p>
     </section>
     <section id="updates">
       <h2>Recent News</h2>
       <ul>
-        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster presentation</strong> at <a href="https://icfog.org/meetings/icfog2025/" target="_blank">ICFOG 2025</a>, Atlanta, GA, USA</span></li>
-        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster presentation</strong> at <a href="https://ispgr.org/2025-world-congress/" target="_blank">ISPGR 2025</a>, Maastricht, Netherlands</span></li>
+        <li>
+          <i class="fas fa-bullhorn"></i>
+          <span class="date">June 2025</span>
+          <span class="desc">
+            <strong>Poster presentation</strong> at
+            <a href="https://icfog.org/meetings/icfog2025/" target="_blank">
+              ICFOG 2025
+            </a>, Atlanta, USA
+          </span>
+        </li>
+        <li>
+          <i class="fas fa-bullhorn"></i>
+          <span class="date">June 2025</span>
+          <span class="desc">
+            <strong>Poster presentation</strong> at
+            <a href="https://ispgr.org/2025-world-congress/" target="_blank">
+              ISPGR 2025
+            </a>, Maastricht, Netherlands
+          </span>
+        </li>
       </ul>
     </section>
     <!-- ... other CV sections ... -->
@@ -261,7 +274,8 @@
       [1,2],[2,1],[-1,2],[-2,1],
       [1,-2],[2,-1],[-1,-2],[-2,-1]
     ];
-    let nextMap = [], visited, current, moves;
+    let visited, current, moves;
+
     const board    = document.getElementById('board');
     const moveEl   = document.getElementById('move-count');
     const msgEl    = document.getElementById('message');
@@ -271,30 +285,6 @@
 
     function idx(x,y){ return y*size + x; }
 
-    // Disable hint until tours.json is loaded
-    hintBtn.disabled = true;
-
-    fetch('tours.json')
-      .then(r=>r.json())
-      .then(data=>{
-        // build nextMap[index] = Set of all successor indices
-        nextMap = Array(size*size).fill(0).map(()=>new Set());
-        data.tours.forEach(tour=>{
-          for(let i=0;i<tour.length-1;i++){
-            const a = tour[i].y*size + tour[i].x;
-            const b = tour[i+1].y*size + tour[i+1].x;
-            nextMap[a].add(b);
-          }
-        });
-      })
-      .then(()=>{
-        hintBtn.disabled = false;
-      })
-      .catch(()=>{
-        console.warn('Could not load tours.json');
-        hintBtn.disabled = true;
-      });
-
     function init(){
       board.innerHTML = '';
       visited = Array(size*size).fill(false);
@@ -303,8 +293,8 @@
       moveEl.textContent = 'Moves: 0';
       msgEl.textContent  = '';
       restart.style.display = 'none';
-      for(let y=0;y<size;y++){
-        for(let x=0;x<size;x++){
+      for(let y=0; y<size; y++){
+        for(let x=0; x<size; x++){
           const sq = document.createElement('div');
           sq.className = 'square';
           sq.dataset.x = x; sq.dataset.y = y;
@@ -319,34 +309,69 @@
       board.querySelectorAll('.panda').forEach(e=>e.remove());
       board.childNodes.forEach(sq=>sq.classList.remove('visited','next','start','hint'));
       visited[idx(current.x,current.y)] = true;
-      board.childNodes.forEach((sq,i)=>{ if(visited[i]) sq.classList.add('visited'); });
+      board.childNodes.forEach((sq,i)=>{
+        if(visited[i]) sq.classList.add('visited');
+      });
       const panda = document.createElement('img');
-      panda.src='./panda.png'; panda.className='panda';
+      panda.src = './panda.png';
+      panda.className = 'panda';
       board.childNodes[idx(current.x,current.y)].appendChild(panda);
       board.childNodes[idx(0,0)].classList.add('start');
       knightMoves.forEach(([dx,dy])=>{
-        const nx=current.x+dx, ny=current.y+dy;
-        if(nx>=0&&nx<size&&ny>=0&&ny<size&&!visited[idx(nx,ny)]){
-          board.childNodes[idx(nx,ny)].classList.add('next');
+        const nx=current.x+dx, ny=current.y+dy, id=idx(nx,ny);
+        if(nx>=0&&nx<size&&ny>=0&&ny<size && !visited[id]){
+          board.childNodes[id].classList.add('next');
         }
       });
     }
 
     function onClick(e){
       if(!e.currentTarget.classList.contains('next')) return;
-      current = { x:+e.currentTarget.dataset.x, y:+e.currentTarget.dataset.y };
+      current = {
+        x: +e.currentTarget.dataset.x,
+        y: +e.currentTarget.dataset.y
+      };
       moves++;
       moveEl.textContent = `Moves: ${moves}`;
       highlight();
     }
 
+    // backtracking check
+    function canComplete(x, y, vis, depth){
+      if(depth === size*size) return true;
+      const cands = [];
+      knightMoves.forEach(([dx,dy])=>{
+        const nx=x+dx, ny=y+dy, id=idx(nx,ny);
+        if(nx>=0&&nx<size&&ny>=0&&ny<size && !vis[id]){
+          let deg=0;
+          knightMoves.forEach(([adx,ady])=>{
+            const ax=nx+adx, ay=ny+ady, aid=idx(ax,ay);
+            if(ax>=0&&ax<size&&ay>=0&&ay<size && !vis[aid]) deg++;
+          });
+          cands.push({nx,ny,deg});
+        }
+      });
+      cands.sort((a,b)=>a.deg-b.deg);
+      for(const {nx,ny} of cands){
+        const id=idx(nx,ny);
+        vis[id]=true;
+        if(canComplete(nx,ny,vis,depth+1)) return true;
+        vis[id]=false;
+      }
+      return false;
+    }
+
     function showHints(){
-      if(hintBtn.disabled) return;
       board.childNodes.forEach(sq=>sq.classList.remove('hint'));
-      const curr = idx(current.x,current.y);
-      nextMap[curr].forEach(id=>{
-        if(!visited[id]){
-          board.childNodes[id].classList.add('hint');
+      const baseVis = visited.slice();
+      board.childNodes.forEach((sq,i)=>{
+        if(sq.classList.contains('next')){
+          baseVis[i] = true;
+          const x = +sq.dataset.x, y = +sq.dataset.y;
+          if(canComplete(x,y,baseVis,moves+1)){
+            sq.classList.add('hint');
+          }
+          baseVis[i] = false;
         }
       });
     }
@@ -359,7 +384,7 @@
     }
 
     rulesBtn.addEventListener('click', ()=>{
-      alert('Start at top-left. Move in L-shapes (knight moves) to visit all squares once.');
+      alert('Start at top-left with the panda. Move in L-shapes (knight moves) to visit all squares once.');
     });
     hintBtn.addEventListener('click', showHints);
     restart.addEventListener('click', init);
@@ -367,7 +392,7 @@
     init();
   })();
 
-  // Publications loader
+  // load publications
   async function loadPublications(){
     try {
       const res = await fetch('publications.json?t='+Date.now());
@@ -376,13 +401,13 @@
       const ul = document.getElementById('pub-list');
       ul.innerHTML = '';
       data.publications.forEach(pub=>{
-        const authors = pub.authors.split(/, | and /g)
-          .map(n=> n.includes('Yang') ? `<strong>${n}</strong>` : n)
+        const auth = pub.authors.split(/, | and /g)
+          .map(n=>n.includes('Yang')?`<strong>${n}</strong>`:n)
           .join(', ');
         ul.insertAdjacentHTML('beforeend', `
           <li>
             <i class="fas fa-file-alt"></i>
-            <span class="desc">${authors}, “${pub.title},” <em>${pub.journal||'Unknown Venue'}</em>.</span>
+            <span class="desc">${auth}, “${pub.title},” <em>${pub.journal||'Unknown Venue'}</em>.</span>
             <a href="${pub.url}" target="_blank">Read Paper</a>
             <span class="citations">(${pub.citations} citations)</span>
           </li>
