@@ -1,0 +1,45 @@
+name: Generate Tours JSON
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'generate_tours.py'
+      - '.github/workflows/generate-tours.yml'
+
+jobs:
+  generate-tours:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the repo, with creds so we can push back
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: true
+
+      # 2. Set up Python
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      # 3. (Optional) install deps
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      # 4. Run your generator with a 1 000 000 cap
+      - name: Generate tours.json
+        run: |
+          python generate_tours.py 1000000
+
+      # 5. Commit & push tours.json if it changed
+      - name: Commit and push tours.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: regenerate tours.json"
+          file_pattern: "tours.json"
+          branch: main
+          author_name: github-actions
+          author_email: github-actions@github.com

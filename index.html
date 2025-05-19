@@ -38,8 +38,7 @@
       margin-bottom: .5rem;
     }
     .sidebar h1 {
-      margin: .5rem 0 1rem;
-      font-size: 1.8rem; text-align: center;
+      margin: .5rem 0 1rem; font-size: 1.8rem; text-align: center;
     }
     .sidebar p {
       margin: .3rem 0; font-size: .95rem;
@@ -145,13 +144,37 @@
       position: relative; padding-left: 1.2rem; margin-bottom: .4rem;
     }
     ul ul li::before {
-      content: "•"; position: absolute; left:0; top:.2rem;
-      color: var(--color-accent);
+      content: "•"; position: absolute; left:0; top:.2rem; color: var(--color-accent);
     }
     .desc a {
       color: var(--color-accent); text-decoration: none;
     }
     .desc a:hover { text-decoration: underline; }
+
+    #pub-list li {
+      display: flex; align-items: baseline; margin-bottom: .5rem;
+    }
+    #pub-list li i {
+      margin-right: .5rem; color: var(--color-accent);
+    }
+    #pub-list li a {
+      color: var(--color-accent); font-weight: bold;
+      text-decoration: none; margin-left: .5rem;
+    }
+    #pub-list li a:hover { text-decoration: underline; }
+    #pub-list li em {
+      margin-left: .5rem; font-style: italic;
+    }
+    #pub-list li .citations {
+      margin-left: .5rem; color: var(--color-gray1); font-size: .9rem;
+    }
+
+    @media(max-width:768px){
+      .sidebar {
+        position: relative; width: 100%; height: auto; padding-top: 1rem;
+      }
+      main { margin-left: 0; }
+    }
   </style>
 </head>
 <body>
@@ -159,7 +182,9 @@
     <img class="profile" src="photo.jpg" alt="Po-Kai Yang">
     <h1>Po-Kai Yang</h1>
     <p><i class="fas fa-map-marker-alt"></i>Leuven, Belgium</p>
-    <p><i class="fas fa-envelope"></i><a href="mailto:po-kai.yang@kuleuven.be">po-kai.yang@kuleuven.be</a></p>
+    <p><i class="fas fa-envelope"></i>
+      <a href="mailto:po-kai.yang@kuleuven.be">po-kai.yang@kuleuven.be</a>
+    </p>
     <p><i class="fas fa-phone"></i>+32 456 388 594</p>
     <p><i class="fas fa-phone"></i>+886 988 335 302</p>
 
@@ -190,17 +215,98 @@
       <p class="intro">
         I am currently a Ph.D. student in the
         <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a>
-        at KU Leuven under Prof. Dr. Bart Vanrumste. My research focuses on AI for healthcare…
+        at KU Leuven, under the supervision of
+        <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>.
+        My research focuses on artificial intelligence for healthcare applications...
       </p>
     </section>
     <section id="updates">
       <h2>Recent News</h2>
       <ul>
-        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster presentation</strong> at <a href="https://icfog.org/meetings/icfog2025/" target="_blank">ICFOG 2025</a>, Atlanta, USA</span></li>
-        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster presentation</strong> at <a href="https://ispgr.org/2025-world-congress/" target="_blank">ISPGR 2025</a>, Maastricht, Netherlands</span></li>
+        <li>
+          <i class="fas fa-bullhorn"></i>
+          <span class="date">June 2025</span>
+          <span class="desc">
+            <strong>Poster presentation</strong> at
+            <a href="https://icfog.org/meetings/icfog2025/" target="_blank">ICFOG 2025</a>, Atlanta, USA
+          </span>
+        </li>
+        <li>
+          <i class="fas fa-bullhorn"></i>
+          <span class="date">June 2025</span>
+          <span class="desc">
+            <strong>Poster presentation</strong> at
+            <a href="https://ispgr.org/2025-world-congress/" target="_blank">ISPGR 2025</a>, Maastricht, Netherlands
+          </span>
+        </li>
       </ul>
     </section>
-    <!-- Experience, Education, Awards, Services, Publications omitted for brevity -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <ul>
+        <li><i class="fas fa-briefcase"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D. Researcher, KU Leuven</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2020 – Aug 2020</span><span class="desc">Summer Intern, Nokia Bell Labs (APSS Lab), Antwerp</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jun 2018 – Mar 2019</span><span class="desc">Research Intern, Mobile Comms Network Lab, NCTU</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2018 – Dec 2018</span><span class="desc">Intern, ITRI, Taiwan</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Sep 2017 – Dec 2018</span><span class="desc">Undergrad Researcher, NCTU</span></li>
+      </ul>
+    </section>
+    <section id="education">
+      <h2>Education</h2>
+      <ul>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D., Eng. Tech., KU Leuven (exp.)</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2019 – Sep 2021</span><span class="desc">M.Sc. CS (Cum laude), KU Leuven</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Apr 2019 – Sep 2019</span><span class="desc">Exchange, RWTH Aachen</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2015 – Jun 2019</span><span class="desc">B.Sc. CS&E, NCTU (GPA 4.06/4.3)</span></li>
+      </ul>
+    </section>
+    <section id="awards">
+      <h2>Honors & Grants</h2>
+      <ul>
+        <li><i class="fas fa-trophy"></i><span class="date">2025</span><span class="desc">FWO Travel Grant for ICFOG 2025</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2019</span><span class="desc">KU Leuven–Taiwan Scholarship</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Highest Distinction Award, NCTU</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Popular Award (2nd Runner-up), NCTU</span></li>
+      </ul>
+    </section>
+    <section id="services">
+      <h2>Academic Service</h2>
+      <ul>
+        <li><i class="fas fa-book-open"></i>
+          <span class="desc"><strong>Reviewer – Journals:</strong>
+            <ul>
+              <li>Scientific Reports</li>
+              <li>IEEE Access</li>
+              <li>Artificial Intelligence in Medicine</li>
+            </ul>
+          </span>
+        </li>
+        <li><i class="fas fa-comments"></i>
+          <span class="desc"><strong>Reviewer – Conferences:</strong>
+            <ul><li>IEEE EMBC 2024</li></ul>
+          </span>
+        </li>
+        <li><i class="fas fa-user-graduate"></i>
+          <span class="desc"><strong>Master Thesis Co-supervisor:</strong>
+            <ul><li>Supervised 6 master students</li></ul>
+          </span>
+        </li>
+        <li><i class="fas fa-chalkboard-teacher"></i>
+          <span class="desc"><strong>Teaching Assistant:</strong>
+            <ul>
+              <li>Pathways to Sustainability (2021)</li>
+              <li>Machine Learning (2022–2024)</li>
+              <li>Engineering Experience II (2022)</li>
+              <li>Applied AI: ML in Healthcare (2022–2023)</li>
+            </ul>
+          </span>
+        </li>
+      </ul>
+    </section>
+    <section id="publications">
+      <h2>Publications & Citations</h2>
+      <ul id="pub-list"><li>Loading publications…</li></ul>
+    </section>
   </main>
 
   <script>
@@ -210,7 +316,6 @@
       [1,2],[2,1],[-1,2],[-2,1],
       [1,-2],[2,-1],[-1,-2],[-2,-1]
     ];
-
     let tours = [], activeTours = [], path = [];
     let visited = [], current, moves;
 
@@ -223,21 +328,20 @@
 
     function idx(x,y){ return y*size + x; }
 
-    // 1. load the 12 000 complete tours
+    // load the 12 000 complete tours
     fetch('tours.json')
-      .then(r => r.json())
-      .then(data => { tours = data.tours; })
-      .then(() => {
+      .then(r=>r.json())
+      .then(data=>{ tours = data.tours; })
+      .then(()=>{
         hintBtn.disabled = false;
         startGame();
       })
-      .catch(err => {
+      .catch(err=>{
         console.warn('Could not load tours.json', err);
         startGame();
       });
 
     function startGame(){
-      // reset everything
       visited = Array(size*size).fill(false);
       current = { x:0, y:0 };
       moves   = 0;
@@ -247,14 +351,12 @@
       msgEl.textContent  = '';
       restart.style.display = 'none';
 
-      // build grid
       board.innerHTML = '';
       for(let y=0; y<size; y++){
         for(let x=0; x<size; x++){
           const sq = document.createElement('div');
           sq.className = 'square';
-          sq.dataset.x = x;
-          sq.dataset.y = y;
+          sq.dataset.x = x; sq.dataset.y = y;
           sq.addEventListener('click', onSquareClick);
           board.appendChild(sq);
         }
@@ -263,51 +365,49 @@
     }
 
     function highlight(){
-      // clear pandas & classes
-      board.querySelectorAll('.panda').forEach(el=>el.remove());
+      board.querySelectorAll('.panda').forEach(e=>e.remove());
       board.childNodes.forEach(sq=>sq.classList.remove('visited','next','start','hint'));
 
-      // mark visited
       visited[idx(current.x,current.y)] = true;
       board.childNodes.forEach((sq,i)=>{
         if(visited[i]) sq.classList.add('visited');
       });
 
-      // place panda
       const panda = document.createElement('img');
-      panda.src = './panda.png';
-      panda.className = 'panda';
+      panda.src = './panda.png'; panda.className = 'panda';
       board.childNodes[idx(current.x,current.y)].appendChild(panda);
 
-      // mark start
       board.childNodes[idx(0,0)].classList.add('start');
 
-      // show only legal knight moves
       knightMoves.forEach(([dx,dy])=>{
-        const nx = current.x + dx,
-              ny = current.y + dy,
-              id = idx(nx,ny);
+        const nx = current.x+dx, ny = current.y+dy, id = idx(nx,ny);
         if(nx>=0&&nx<size&&ny>=0&&ny<size && !visited[id]){
           board.childNodes[id].classList.add('next');
         }
       });
+
+      // if no next moves, show finish message
+      const nextEls = board.querySelectorAll('.square.next');
+      if(nextEls.length === 0){
+        const visitedCount = visited.filter(v=>v).length;
+        msgEl.textContent = visitedCount === size*size
+          ? `Congratulations! Completed in ${moves} moves.`
+          : `No moves left! Visited ${visitedCount}/${size*size}. Try again.`;
+        restart.style.display = 'block';
+      }
     }
 
     function onSquareClick(e){
       if(!e.currentTarget.classList.contains('next')) return;
-      // update position
       const x = +e.currentTarget.dataset.x,
             y = +e.currentTarget.dataset.y;
       current = { x, y };
       moves++;
       moveEl.textContent = `Moves: ${moves}`;
-      // append to path
-      path.push({ x,y });
-      // filter activeTours by prefix = path
+      path.push({ x, y });
       activeTours = activeTours.filter(tour => {
         for(let i=0;i<path.length;i++){
-          if(tour[i].x !== path[i].x || tour[i].y !== path[i].y)
-            return false;
+          if(tour[i].x!==path[i].x || tour[i].y!==path[i].y) return false;
         }
         return true;
       });
@@ -325,17 +425,44 @@
           if(!visited[id]) nextSet.add(id);
         }
       });
-      nextSet.forEach(id => {
+      nextSet.forEach(id=>{
         board.childNodes[id].classList.add('hint');
       });
     }
 
     rulesBtn.addEventListener('click', ()=>{
-      alert('Start at (0,0) with the panda. Move in L-shapes to visit all squares once.');
+      alert('Start at (0,0). Move in L-shapes to visit all squares once.');
     });
     hintBtn.addEventListener('click', showHints);
     restart.addEventListener('click', startGame);
   })();
+
+  // load publications (unchanged)
+  async function loadPublications(){
+    try {
+      const res = await fetch('publications.json?t='+Date.now());
+      const data = await res.json();
+      data.publications.sort((a,b)=>+b.year - +a.year);
+      const ul = document.getElementById('pub-list');
+      ul.innerHTML = '';
+      data.publications.forEach(pub=>{
+        const authors = pub.authors.split(/, | and /g)
+          .map(n=> n.includes('Yang')? `<strong>${n}</strong>` : n)
+          .join(', ');
+        ul.insertAdjacentHTML('beforeend', `
+          <li>
+            <i class="fas fa-file-alt"></i>
+            <span class="desc">${authors}, “${pub.title},” <em>${pub.journal||'Unknown Venue'}</em>.</span>
+            <a href="${pub.url}" target="_blank">Read Paper</a>
+            <span class="citations">(${pub.citations} citations)</span>
+          </li>
+        `);
+      });
+    } catch {
+      document.getElementById('pub-list').innerHTML = '<li>Failed to load publications.</li>';
+    }
+  }
+  loadPublications();
   </script>
 </body>
 </html>
