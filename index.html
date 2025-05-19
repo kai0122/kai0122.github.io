@@ -25,35 +25,20 @@
       display: flex; flex-direction: column; align-items: center;
       overflow-y: auto;
     }
-    .sidebar img.profile {
-      width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: .5rem;
-    }
-    .sidebar h1 {
-      margin: .5rem 0 1rem; font-size: 1.8rem; text-align: center;
-    }
-    .sidebar p {
-      margin: .3rem 0; font-size: .95rem; display: flex; align-items: center;
-    }
+    .sidebar img.profile { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: .5rem; }
+    .sidebar h1 { margin: .5rem 0 1rem; font-size: 1.8rem; text-align: center; }
+    .sidebar p { margin: .3rem 0; font-size: .95rem; display: flex; align-items: center; }
     .sidebar p i { margin-right: .5rem; width: 1rem; }
     .sidebar p a { color: var(--color-accent); text-decoration: none; }
-    .sidebar a {
-      margin: .3rem 0; color: var(--color-light);
-      font-size: .95rem; text-decoration: none; display: flex; align-items: center;
-    }
+    .sidebar a { margin: .3rem 0; color: var(--color-light); text-decoration: none; display: flex; align-items: center; }
     .sidebar a:hover { text-decoration: underline; }
 
     /* Social icons */
-    .social-icons {
-      display: flex; gap: .5rem; margin: .5rem 0;
-    }
-    .social-icons a {
-      color: var(--color-light); font-size: 1.5rem;
-    }
+    .social-icons { display: flex; gap: .5rem; margin: .5rem 0; }
+    .social-icons a { color: var(--color-light); font-size: 1.5rem; }
 
     /* Buttons */
-    .button-group {
-      display: flex; gap: .3rem; margin-bottom: .5rem;
-    }
+    .button-group { display: flex; gap: .3rem; margin-bottom: .5rem; }
     #rules-btn, #hint-btn, #restart-btn {
       padding: .3rem .6rem; background: var(--color-accent);
       border: none; color: var(--color-light); border-radius: 4px; cursor: pointer;
@@ -102,33 +87,23 @@
     p.intro a { color: var(--color-accent); text-decoration: none; }
     p.intro a:hover { text-decoration: underline; }
     ul { list-style: none; padding: 0; }
-    ul li {
-      display: flex; align-items: flex-start; margin-bottom: .8rem;
-    }
-    ul li i {
-      margin-right: .5rem; color: var(--color-accent); margin-top: .2rem;
-    }
+    ul li { display: flex; align-items: flex-start; margin-bottom: .8rem; }
+    ul li i { margin-right: .5rem; color: var(--color-accent); margin-top: .2rem; }
     ul li span.date { flex: 0 0 12rem; font-weight: bold; }
     ul li span.desc { flex: 1; }
-    ul ul {
-      list-style: none; margin-left: 1.5rem; padding-left: 0;
-    }
+    ul ul { list-style: none; margin-left: 1.5rem; padding-left: 0; }
     ul ul li {
       position: relative; padding-left: 1.2rem; margin-bottom: .4rem;
     }
     ul ul li::before {
-      content: "•"; position: absolute; left: 0; top: .2rem;
-      color: var(--color-accent);
+      content: "•"; position: absolute; left: 0; top: .2rem; color: var(--color-accent);
     }
     .desc a { color: var(--color-accent); text-decoration: none; }
     .desc a:hover { text-decoration: underline; }
-    #pub-list li {
-      display: flex; align-items: baseline; margin-bottom: .5rem;
-    }
+    #pub-list li { display: flex; align-items: baseline; margin-bottom: .5rem; }
     #pub-list li i { margin-right: .5rem; color: var(--color-accent); }
     #pub-list li a {
-      color: var(--color-accent); font-weight: bold;
-      text-decoration: none; margin-left: .5rem;
+      color: var(--color-accent); font-weight: bold; text-decoration: none; margin-left: .5rem;
     }
     #pub-list li a:hover { text-decoration: underline; }
     #pub-list li em { margin-left: .5rem; font-style: italic; }
@@ -137,9 +112,7 @@
     }
 
     @media(max-width:768px){
-      .sidebar {
-        position: relative; width: 100%; height: auto; padding-top: 1rem;
-      }
+      .sidebar { position: relative; width: 100%; height: auto; padding-top: 1rem; }
       main { margin-left: 0; }
     }
   </style>
@@ -215,7 +188,7 @@
       </ul>
     </section>
 
-    <!-- Experience, Education, Awards, Services unchanged -->
+    <!-- Other sections unchanged -->
 
     <section id="publications">
       <h2>Publications & Citations</h2>
@@ -230,129 +203,152 @@
       [1,2],[2,1],[-1,2],[-2,1],
       [1,-2],[2,-1],[-1,-2],[-2,-1]
     ];
-    let nextMap = [], prevHintIds = [];
-
-    // Precompute all valid next-steps from tours.json
-    fetch('tours.json')
-      .then(r => r.json())
-      .then(data => {
-        nextMap = Array(size*size).fill(0).map(() => new Set());
-        data.tours.forEach(tour => {
-          for (let i = 0; i < tour.length - 1; i++) {
-            const a = tour[i].y * size + tour[i].x;
-            const b = tour[i+1].y * size + tour[i+1].x;
-            nextMap[a].add(b);
-          }
-        });
-      })
-      .catch(() => console.warn('Could not load tours.json'));
-
-    const board     = document.getElementById('board');
-    const moveEl    = document.getElementById('move-count');
-    const msgEl     = document.getElementById('message');
-    const restart   = document.getElementById('restart-btn');
-    const rulesBtn  = document.getElementById('rules-btn');
-    const hintBtn   = document.getElementById('hint-btn');
+    let tours = [], activeTours = [], path = [];
     let current, visited, moves;
 
-    function idx(x,y) { return y * size + x; }
+    const board    = document.getElementById('board');
+    const moveEl   = document.getElementById('move-count');
+    const msgEl    = document.getElementById('message');
+    const restart  = document.getElementById('restart-btn');
+    const rulesBtn = document.getElementById('rules-btn');
+    const hintBtn  = document.getElementById('hint-btn');
+    let prevHints = [];
 
-    function init(){
-      board.innerHTML = '';
+    function idx(x,y){ return y*size + x; }
+
+    // 1. load full tours
+    fetch('tours.json')
+      .then(r=>r.json())
+      .then(data=>{
+        tours = data.tours;
+        start();
+      })
+      .catch(()=>{
+        console.warn('Could not load tours.json');
+        tours = [];
+        start();
+      });
+
+    function start(){
+      // reset state
       visited = Array(size*size).fill(false);
       current = { x:0, y:0 };
       moves   = 0;
+      path    = [{ x:0, y:0 }];
+      activeTours = tours.slice();
       moveEl.textContent = 'Moves: 0';
       msgEl.textContent  = '';
       restart.style.display = 'none';
+      prevHints = [];
 
-      // build 7×7 grid
-      for (let y=0; y<size; y++){
-        for (let x=0; x<size; x++){
+      // build grid
+      board.innerHTML = '';
+      for(let y=0;y<size;y++){
+        for(let x=0;x<size;x++){
           const sq = document.createElement('div');
           sq.className = 'square';
-          sq.dataset.x = x; sq.dataset.y = y;
-          sq.addEventListener('click', onClick);
+          sq.dataset.x = x;
+          sq.dataset.y = y;
+          sq.addEventListener('click', onSquareClick);
           board.appendChild(sq);
         }
       }
       highlight();
     }
 
-    function setHint(ids){
-      // clear old
-      prevHintIds.forEach(id => board.childNodes[id].classList.remove('hint'));
-      prevHintIds = ids;
-      // add new
-      ids.forEach(id => board.childNodes[id].classList.add('hint'));
-    }
-
     function highlight(){
-      // remove panda & reset classes
-      board.querySelectorAll('.panda').forEach(e => e.remove());
-      board.childNodes.forEach(sq => sq.classList.remove('visited','next','start','hint'));
+      // clear old
+      board.querySelectorAll('.panda').forEach(e=>e.remove());
+      board.childNodes.forEach(sq=>{
+        sq.classList.remove('visited','next','start','hint');
+      });
 
       // mark visited
       visited[idx(current.x,current.y)] = true;
-      board.childNodes.forEach((sq,i) => {
-        if (visited[i]) sq.classList.add('visited');
+      board.childNodes.forEach((sq,i)=>{
+        if(visited[i]) sq.classList.add('visited');
       });
 
-      // place panda
+      // panda
       const panda = document.createElement('img');
       panda.src = './panda.png'; panda.className = 'panda';
       board.childNodes[idx(current.x,current.y)].appendChild(panda);
 
-      // mark start
+      // start
       board.childNodes[idx(0,0)].classList.add('start');
 
-      // show next knight moves
-      knightMoves.forEach(([dx,dy]) => {
-        const nx = current.x + dx, ny = current.y + dy, id = idx(nx,ny);
-        if (nx>=0 && nx<size && ny>=0 && ny<size && !visited[id]) {
+      // next moves
+      let hasNext = false;
+      knightMoves.forEach(([dx,dy])=>{
+        const nx = current.x+dx, ny = current.y+dy, id = idx(nx,ny);
+        if(nx>=0&&nx<size&&ny>=0&&ny<size && !visited[id]){
           board.childNodes[id].classList.add('next');
+          hasNext = true;
         }
       });
+      if(!hasNext) finish();
 
-      // clear any old hints
-      setHint([]);
+      // clear old hints
+      prevHints.forEach(id=>board.childNodes[id].classList.remove('hint'));
+      prevHints = [];
     }
 
-    function onClick(e){
-      if (!e.currentTarget.classList.contains('next')) return;
-      current = {
-        x: +e.currentTarget.dataset.x,
-        y: +e.currentTarget.dataset.y
-      };
+    function onSquareClick(e){
+      if(!e.currentTarget.classList.contains('next')) return;
+      const x = +e.currentTarget.dataset.x,
+            y = +e.currentTarget.dataset.y,
+            id = idx(x,y);
+
+      current = { x, y };
       moves++;
       moveEl.textContent = `Moves: ${moves}`;
+      path.push({ x, y });
+
+      // filter tours by prefix
+      activeTours = activeTours.filter(t=>{
+        for(let i=0;i<path.length;i++){
+          if(t[i].x !== path[i].x || t[i].y !== path[i].y) return false;
+        }
+        return true;
+      });
+
       highlight();
     }
 
     function showHints(){
-      if (!nextMap.length) {
-        alert('Hint data not loaded yet.');
-        return;
-      }
-      const currId = idx(current.x,current.y);
-      const ids = [...nextMap[currId]].filter(id => !visited[id]);
-      setHint(ids);
+      // clear old
+      prevHints.forEach(id=>board.childNodes[id].classList.remove('hint'));
+      prevHints = [];
+
+      // collect all next steps from activeTours
+      const nextIds = new Set();
+      activeTours.forEach(t=>{
+        if(t.length > path.length){
+          const p = t[path.length];
+          const id = p.y*size + p.x;
+          if(!visited[id]) nextIds.add(id);
+        }
+      });
+
+      // mark them
+      nextIds.forEach(id=>{
+        board.childNodes[id].classList.add('hint');
+        prevHints.push(id);
+      });
     }
 
     function finish(){
-      msgEl.textContent = visited.every(v => v)
+      msgEl.textContent = visited.every(v=>v)
         ? `Congratulations! Completed in ${moves} moves.`
         : `No moves left! Visited ${moves+1}/${size*size}. Try again.`;
       restart.style.display = 'block';
     }
 
-    rulesBtn.addEventListener('click', () =>
-      alert('Start at top-left with the panda. Move in L-shapes (knight moves) to visit all squares once.')
-    );
+    rulesBtn.addEventListener('click', ()=> {
+      alert('Start at top-left with the panda. Move in L-shapes to visit all squares once.');
+    });
     hintBtn.addEventListener('click', showHints);
-    restart.addEventListener('click', init);
-
-    init();
+    restart.addEventListener('click', start);
   })();
 
   // Load publications
@@ -363,9 +359,9 @@
       data.publications.sort((a,b)=>+b.year - +a.year);
       const ul = document.getElementById('pub-list');
       ul.innerHTML = '';
-      data.publications.forEach(pub => {
+      data.publications.forEach(pub=>{
         const authors = pub.authors.split(/, | and /g)
-          .map(n => n.includes('Yang') ? `<strong>${n}</strong>` : n)
+          .map(n=>n.includes('Yang')?`<strong>${n}</strong>`:n)
           .join(', ');
         ul.insertAdjacentHTML('beforeend', `
           <li>
