@@ -25,61 +25,126 @@
       display: flex; flex-direction: column; align-items: center;
       overflow-y: auto;
     }
-    .sidebar img.profile { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: .5rem; }
-    .sidebar h1 { margin: .5rem 0 1rem; font-size: 1.8rem; text-align: center; }
-    .sidebar p { margin: .3rem 0; font-size: .95rem; display: flex; align-items: center; }
+    .sidebar img.profile {
+      width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: .5rem;
+    }
+    .sidebar h1 {
+      margin: .5rem 0 1rem; font-size: 1.8rem; text-align: center;
+    }
+    .sidebar p {
+      margin: .3rem 0; font-size: .95rem; display: flex; align-items: center;
+    }
     .sidebar p i { margin-right: .5rem; width: 1rem; }
     .sidebar p a { color: var(--color-accent); text-decoration: none; }
-    .sidebar a { margin: .3rem 0; color: var(--color-light); font-size: .95rem; text-decoration: none; display: flex; align-items: center; }
+    .sidebar a {
+      margin: .3rem 0; color: var(--color-light);
+      font-size: .95rem; text-decoration: none; display: flex; align-items: center;
+    }
     .sidebar a:hover { text-decoration: underline; }
 
     /* Social icons */
-    .social-icons { display: flex; gap: .5rem; margin: .5rem 0; }
-    .social-icons a { color: var(--color-light); font-size: 1.5rem; display: inline-flex; align-items: center; justify-content: center; }
+    .social-icons {
+      display: flex; gap: .5rem; margin: .5rem 0;
+    }
+    .social-icons a {
+      color: var(--color-light); font-size: 1.5rem;
+    }
 
-    /* Button group */
-    .button-group { display: flex; gap: .3rem; margin-bottom: .5rem; }
+    /* Buttons */
+    .button-group {
+      display: flex; gap: .3rem; margin-bottom: .5rem;
+    }
+    #rules-btn, #hint-btn, #restart-btn {
+      padding: .3rem .6rem; background: var(--color-accent);
+      border: none; color: var(--color-light); border-radius: 4px; cursor: pointer;
+    }
 
     /* Knight's Tour */
     #knight-game { margin-top: auto; width: 100%; display: flex; flex-direction: column; align-items: center; }
     #knight-game h3 { color: var(--color-light); margin-bottom: .5rem; }
-    #board { display: grid; grid-template-columns: repeat(7,30px); grid-template-rows: repeat(7,30px); gap:2px; }
-    .square { width:30px; height:30px; background:var(--color-light); position:relative; cursor:pointer; }
+    #board {
+      display: grid;
+      grid-template-columns: repeat(7,30px);
+      grid-template-rows:    repeat(7,30px);
+      gap: 2px;
+    }
+    .square {
+      width:30px; height:30px; background:var(--color-light);
+      position:relative; cursor:pointer;
+    }
     .square.visited { background:var(--color-gray2); }
     .square.next    { background:var(--color-accent); }
     .square.start   { border:2px solid var(--color-accent); }
     .square.hint    { background:var(--color-gray1); border:3px solid var(--color-accent); }
-    .panda { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:20px; height:20px; }
-    #move-count,#message { margin-top:.5rem; color:var(--color-light); font-weight:bold; }
-    #restart-btn,#rules-btn,#hint-btn { padding:.3rem .6rem; background:var(--color-accent); border:none; color:var(--color-light); border-radius:4px; cursor:pointer; }
+    .panda {
+      position:absolute; top:50%; left:50%;
+      transform:translate(-50%,-50%); width:20px; height:20px;
+    }
+    #move-count, #message {
+      margin-top:.5rem; color:var(--color-light); font-weight:bold;
+    }
 
     /* Main content */
-    main { margin-left:300px; padding:2rem; max-width:1200px; }
-    section+section { margin-top:2rem; border-top:1px solid var(--color-gray2); padding-top:1.5rem; }
-    section { padding-left:1rem; }
-    h2 { font-size:1.6rem; color:var(--color-dark); border-left:4px solid var(--color-accent); padding-left:.5rem; }
-    p.intro { font-size:1rem; line-height:1.5; margin-bottom:1rem; }
-    p.intro a { color:var(--color-accent); text-decoration:none; }
-    p.intro a:hover { text-decoration:underline; }
-    ul { list-style:none; padding:0; }
-    ul li { display:flex; align-items:flex-start; margin-bottom:.8rem; }
-    ul li i { margin-right:.5rem; color:var(--color-accent); margin-top:.2rem; }
-    ul li span.date { flex:0 0 12rem; font-weight:bold; }
-    ul li span.desc { flex:1; }
-    ul ul { list-style:none; margin-left:1.5rem; padding-left:0; }
-    ul ul li { position:relative; padding-left:1.2rem; margin-bottom:.4rem; }
-    ul ul li::before { content:"•"; position:absolute; left:0; top:.2rem; color:var(--color-accent); }
-    .desc a { color:var(--color-accent); text-decoration:none; }
-    .desc a:hover { text-decoration:underline; }
-    #pub-list li { display:flex; align-items:baseline; white-space:normal; margin-bottom:.5rem; }
-    #pub-list li i { margin-right:.5rem; color:var(--color-accent); }
-    #pub-list li a { color:var(--color-accent); font-weight:bold; text-decoration:none; margin-left:.5rem; }
-    #pub-list li a:hover { text-decoration:underline; }
-    #pub-list li em { margin-left:.5rem; font-style:italic; }
-    #pub-list li .citations { margin-left:.5rem; color:var(--color-gray1); font-size:.9rem; }
-    @media(max-width:768px){ .sidebar{position:relative;width:100%;height:auto;padding-top:1rem;} main{margin-left:0;} }
+    main {
+      margin-left: 300px; padding: 2rem; max-width: 1200px;
+    }
+    section + section {
+      margin-top: 2rem; border-top: 1px solid var(--color-gray2); padding-top: 1.5rem;
+    }
+    section { padding-left: 1rem; }
+    h2 {
+      font-size: 1.6rem; color: var(--color-dark);
+      border-left: 4px solid var(--color-accent); padding-left: .5rem;
+    }
+    p.intro {
+      font-size: 1rem; line-height: 1.5; margin-bottom: 1rem;
+    }
+    p.intro a { color: var(--color-accent); text-decoration: none; }
+    p.intro a:hover { text-decoration: underline; }
+    ul { list-style: none; padding: 0; }
+    ul li {
+      display: flex; align-items: flex-start; margin-bottom: .8rem;
+    }
+    ul li i {
+      margin-right: .5rem; color: var(--color-accent); margin-top: .2rem;
+    }
+    ul li span.date { flex: 0 0 12rem; font-weight: bold; }
+    ul li span.desc { flex: 1; }
+    ul ul {
+      list-style: none; margin-left: 1.5rem; padding-left: 0;
+    }
+    ul ul li {
+      position: relative; padding-left: 1.2rem; margin-bottom: .4rem;
+    }
+    ul ul li::before {
+      content: "•"; position: absolute; left: 0; top: .2rem;
+      color: var(--color-accent);
+    }
+    .desc a { color: var(--color-accent); text-decoration: none; }
+    .desc a:hover { text-decoration: underline; }
+    #pub-list li {
+      display: flex; align-items: baseline; margin-bottom: .5rem;
+    }
+    #pub-list li i { margin-right: .5rem; color: var(--color-accent); }
+    #pub-list li a {
+      color: var(--color-accent); font-weight: bold;
+      text-decoration: none; margin-left: .5rem;
+    }
+    #pub-list li a:hover { text-decoration: underline; }
+    #pub-list li em { margin-left: .5rem; font-style: italic; }
+    #pub-list li .citations {
+      margin-left: .5rem; color: var(--color-gray1); font-size: .9rem;
+    }
+
+    @media(max-width:768px){
+      .sidebar {
+        position: relative; width: 100%; height: auto; padding-top: 1rem;
+      }
+      main { margin-left: 0; }
+    }
   </style>
 </head>
+
 <body>
   <aside class="sidebar">
     <img class="profile" src="photo.jpg" alt="Po-Kai Yang">
@@ -88,6 +153,7 @@
     <p><i class="fas fa-envelope"></i><a href="mailto:po-kai.yang@kuleuven.be">po-kai.yang@kuleuven.be</a></p>
     <p><i class="fas fa-phone"></i>+32 456 388 594</p>
     <p><i class="fas fa-phone"></i>+886 988 335 302</p>
+
     <div class="social-icons">
       <a href="https://orcid.org/0000-0003-0649-9263"><i class="fab fa-orcid"></i></a>
       <a href="https://scholar.google.com/citations?user=0gl__ukAAAAJ&hl=zh-TW"><i class="fas fa-graduation-cap"></i></a>
@@ -95,6 +161,7 @@
       <a href="https://github.com/kai0122"><i class="fab fa-github"></i></a>
       <a href="https://twitter.com/iampokaiyang"><i class="fab fa-twitter"></i></a>
     </div>
+
     <div id="knight-game">
       <h3>Knight's Tour Puzzle</h3>
       <div class="button-group">
@@ -116,9 +183,9 @@
         <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a>
         at KU Leuven, under the supervision of
         <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>.
-        My research focuses on AI for healthcare applications. As part of the
+        My research focuses on artificial intelligence for healthcare applications. As part of the
         <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG-IT project</a>,
-        I develop deep learning to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.
+        I develop deep-learning methods to detect and assess freezing of gait in Parkinson’s disease.
       </p>
     </section>
 
@@ -148,7 +215,7 @@
       </ul>
     </section>
 
-    <!-- Other sections unchanged -->
+    <!-- Experience, Education, Awards, Services unchanged -->
 
     <section id="publications">
       <h2>Publications & Citations</h2>
@@ -159,168 +226,158 @@
   <script>
   (function(){
     const size = 7;
-    const knightMoves = [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]];
-    let tours = [], activeTours = [], path = [];
+    const knightMoves = [
+      [1,2],[2,1],[-1,2],[-2,1],
+      [1,-2],[2,-1],[-1,-2],[-2,-1]
+    ];
+    let nextMap = [], prevHintIds = [];
 
-    // Load tours.json and kick off
+    // Precompute all valid next-steps from tours.json
     fetch('tours.json')
-      .then(r=>r.json())
-      .then(data=>{
-        tours = data.tours;
-        initGame();
+      .then(r => r.json())
+      .then(data => {
+        nextMap = Array(size*size).fill(0).map(() => new Set());
+        data.tours.forEach(tour => {
+          for (let i = 0; i < tour.length - 1; i++) {
+            const a = tour[i].y * size + tour[i].x;
+            const b = tour[i+1].y * size + tour[i+1].x;
+            nextMap[a].add(b);
+          }
+        });
       })
-      .catch(()=> {
-        console.warn('Could not load tours.json');
-        tours = [];
-        initGame();
-      });
+      .catch(() => console.warn('Could not load tours.json'));
 
-    const board    = document.getElementById('board');
-    const moveEl   = document.getElementById('move-count');
-    const msgEl    = document.getElementById('message');
-    const restart  = document.getElementById('restart-btn');
-    const rulesBtn = document.getElementById('rules-btn');
-    const hintBtn  = document.getElementById('hint-btn');
+    const board     = document.getElementById('board');
+    const moveEl    = document.getElementById('move-count');
+    const msgEl     = document.getElementById('message');
+    const restart   = document.getElementById('restart-btn');
+    const rulesBtn  = document.getElementById('rules-btn');
+    const hintBtn   = document.getElementById('hint-btn');
     let current, visited, moves;
 
-    function idx(x,y){ return y*size + x; }
+    function idx(x,y) { return y * size + x; }
 
-    function initGame(){
-      // Initialize state
+    function init(){
+      board.innerHTML = '';
       visited = Array(size*size).fill(false);
-      current = {x:0,y:0};
+      current = { x:0, y:0 };
       moves   = 0;
-      path    = [{x:0,y:0}];
-      activeTours = tours.slice();
       moveEl.textContent = 'Moves: 0';
       msgEl.textContent  = '';
       restart.style.display = 'none';
 
-      // Build board
-      board.innerHTML = '';
-      for(let y=0;y<size;y++){
-        for(let x=0;x<size;x++){
+      // build 7×7 grid
+      for (let y=0; y<size; y++){
+        for (let x=0; x<size; x++){
           const sq = document.createElement('div');
           sq.className = 'square';
-          sq.dataset.x = x;
-          sq.dataset.y = y;
-          sq.addEventListener('click', onSquareClick);
+          sq.dataset.x = x; sq.dataset.y = y;
+          sq.addEventListener('click', onClick);
           board.appendChild(sq);
         }
       }
       highlight();
     }
 
+    function setHint(ids){
+      // clear old
+      prevHintIds.forEach(id => board.childNodes[id].classList.remove('hint'));
+      prevHintIds = ids;
+      // add new
+      ids.forEach(id => board.childNodes[id].classList.add('hint'));
+    }
+
     function highlight(){
-      // Clear pandas & classes
-      board.querySelectorAll('.panda').forEach(e=>e.remove());
-      board.childNodes.forEach(sq=>sq.classList.remove('visited','next','start','hint'));
+      // remove panda & reset classes
+      board.querySelectorAll('.panda').forEach(e => e.remove());
+      board.childNodes.forEach(sq => sq.classList.remove('visited','next','start','hint'));
 
-      // Mark visited
+      // mark visited
       visited[idx(current.x,current.y)] = true;
-      board.childNodes.forEach((sq,i)=>{ if(visited[i]) sq.classList.add('visited'); });
+      board.childNodes.forEach((sq,i) => {
+        if (visited[i]) sq.classList.add('visited');
+      });
 
-      // Place panda
+      // place panda
       const panda = document.createElement('img');
       panda.src = './panda.png'; panda.className = 'panda';
       board.childNodes[idx(current.x,current.y)].appendChild(panda);
 
-      // Mark start
+      // mark start
       board.childNodes[idx(0,0)].classList.add('start');
 
-      // Show next moves
-      let hasNext = false;
-      knightMoves.forEach(([dx,dy])=>{
-        const nx = current.x+dx, ny = current.y+dy;
-        if(nx>=0&&nx<size&&ny>=0&&ny<size){
-          const id = idx(nx,ny);
-          if(!visited[id]){
-            board.childNodes[id].classList.add('next');
-            hasNext = true;
-          }
+      // show next knight moves
+      knightMoves.forEach(([dx,dy]) => {
+        const nx = current.x + dx, ny = current.y + dy, id = idx(nx,ny);
+        if (nx>=0 && nx<size && ny>=0 && ny<size && !visited[id]) {
+          board.childNodes[id].classList.add('next');
         }
       });
 
-      // If no moves left, finish
-      if(!hasNext) finish();
+      // clear any old hints
+      setHint([]);
     }
 
-    function onSquareClick(e){
-      if(!e.currentTarget.classList.contains('next')) return;
-      const x = +e.currentTarget.dataset.x, y = +e.currentTarget.dataset.y;
-      // Update state
-      current = {x,y};
+    function onClick(e){
+      if (!e.currentTarget.classList.contains('next')) return;
+      current = {
+        x: +e.currentTarget.dataset.x,
+        y: +e.currentTarget.dataset.y
+      };
       moves++;
       moveEl.textContent = `Moves: ${moves}`;
-      path.push({x,y});
-
-      // Filter activeTours to those matching our path
-      activeTours = activeTours.filter(tour => {
-        for(let i=0; i<path.length; i++){
-          if(tour[i].x !== path[i].x || tour[i].y !== path[i].y){
-            return false;
-          }
-        }
-        return true;
-      });
-
       highlight();
     }
 
     function showHints(){
-      // Clear previous hints
-      board.childNodes.forEach(sq=>sq.classList.remove('hint'));
-
-      const nextSet = new Set();
-      // For each remaining valid tour, pick the next position
-      activeTours.forEach(tour => {
-        if(tour.length > path.length){
-          const p = tour[path.length];
-          nextSet.add(p.y*size + p.x);
-        }
-      });
-
-      // Highlight all those next positions
-      nextSet.forEach(id => {
-        if(!visited[id]) board.childNodes[id].classList.add('hint');
-      });
+      if (!nextMap.length) {
+        alert('Hint data not loaded yet.');
+        return;
+      }
+      const currId = idx(current.x,current.y);
+      const ids = [...nextMap[currId]].filter(id => !visited[id]);
+      setHint(ids);
     }
 
     function finish(){
-      msgEl.textContent = visited.every(v=>v)
+      msgEl.textContent = visited.every(v => v)
         ? `Congratulations! Completed in ${moves} moves.`
         : `No moves left! Visited ${moves+1}/${size*size}. Try again.`;
       restart.style.display = 'block';
     }
 
-    rulesBtn.addEventListener('click', ()=>{
-      alert('Start at top-left with the panda. Move in L-shapes to visit all squares once.');
-    });
+    rulesBtn.addEventListener('click', () =>
+      alert('Start at top-left with the panda. Move in L-shapes (knight moves) to visit all squares once.')
+    );
     hintBtn.addEventListener('click', showHints);
-    restart.addEventListener('click', initGame);
+    restart.addEventListener('click', init);
+
+    init();
   })();
 
-  // Unchanged: load publications...
+  // Load publications
   async function loadPublications(){
     try {
-      const res=await fetch('publications.json?t='+Date.now());
-      const data=await res.json();
-      data.publications.sort((a,b)=>+b.year-+a.year);
-      const ul=document.getElementById('pub-list');
-      ul.innerHTML='';
-      data.publications.forEach(pub=>{
-        const auth = pub.authors.split(/, | and /g)
-          .map(n=>n.includes('Yang')?`<strong>${n}</strong>`:n).join(', ');
-        ul.insertAdjacentHTML('beforeend',`
+      const res = await fetch('publications.json?t='+Date.now());
+      const data = await res.json();
+      data.publications.sort((a,b)=>+b.year - +a.year);
+      const ul = document.getElementById('pub-list');
+      ul.innerHTML = '';
+      data.publications.forEach(pub => {
+        const authors = pub.authors.split(/, | and /g)
+          .map(n => n.includes('Yang') ? `<strong>${n}</strong>` : n)
+          .join(', ');
+        ul.insertAdjacentHTML('beforeend', `
           <li>
             <i class="fas fa-file-alt"></i>
-            <span class="desc">${auth}, “${pub.title},” <em>${pub.journal||'Unknown Venue'}</em>.</span>
+            <span class="desc">${authors}, “${pub.title},” <em>${pub.journal||'Unknown Venue'}</em>.</span>
             <a href="${pub.url}" target="_blank">Read Paper</a>
             <span class="citations">(${pub.citations} citations)</span>
-          </li>`);
+          </li>
+        `);
       });
     } catch {
-      document.getElementById('pub-list').innerHTML='<li>Failed to load publications.</li>';
+      document.getElementById('pub-list').innerHTML = '<li>Failed to load publications.</li>';
     }
   }
   loadPublications();
