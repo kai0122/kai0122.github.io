@@ -29,10 +29,11 @@
     .square { width: 30px; height: 30px; background: var(--color-light); position: relative; cursor: pointer; }
     .square.visited { background: var(--color-gray2); }
     .square.next { background: var(--color-accent); }
+    .square.hint { background: var(--color-gray1); }
     .square.start { border: 2px solid var(--color-accent); }
     .panda { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; }
     #move-count, #message { margin-top: 0.5rem; color: var(--color-light); font-weight: bold; }
-    #restart-btn, #rules-btn { margin: 0.3rem; padding: 0.3rem 0.6rem; background: var(--color-accent); border: none; color: var(--color-light); border-radius: 4px; cursor: pointer; }
+    #restart-btn, #rules-btn, #hint-btn { margin: 0.3rem; padding: 0.3rem 0.6rem; background: var(--color-accent); border: none; color: var(--color-light); border-radius: 4px; cursor: pointer; }
     /* Main content */
     main { margin-left: 260px; padding: 2rem; max-width: 1200px; }
     section + section { margin-top: 2rem; border-top: 1px solid var(--color-gray2); padding-top: 1.5rem; }
@@ -79,6 +80,7 @@
     <div id="knight-game">
       <h3>Knight's Tour Puzzle</h3>
       <button id="rules-btn">Rules</button>
+      <button id="hint-btn">Hint</button>
       <div id="board"></div>
       <div id="move-count">Moves: 0</div>
       <div id="message"></div>
@@ -86,92 +88,8 @@
     </div>
   </aside>
 
-  <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p class="intro">I am currently a Ph.D. student in the <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a> at KU Leuven, under the supervision of <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>. My research focuses on artificial intelligence for healthcare applications. As part of the <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG-IT project</a>, I develop deep learning methods to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.</p>
-    </section>
-    <section id="updates">
-      <h2>Recent News</h2>
-      <ul>
-        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster presentation</strong> at <a href="https://icfog.org/meetings/icfog2025/" target="_blank">The International Consortium on Freezing of Gait (ICFOG 2025)</a>, Atlanta, Georgia, USA</span></li>
-        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster presentation</strong> at <a href="https://ispgr.org/2025-world-congress/" target="_blank">The International Society of Posture and Gait Research (ISPGR 2025)</a>, Maastricht, Netherlands</span></li>
-      </ul>
-    </section>
-    <section id="experience">
-      <h2>Experience</h2>
-      <ul>
-        <li><i class="fas fa-briefcase"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D. Researcher, KU Leuven, Belgium</span></li>
-        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2020 – Aug 2020</span><span class="desc">Summer Research Intern, Nokia Bell Labs (APSS Lab), Antwerp, Belgium</span></li>
-        <li><i class="fas fa-briefcase"></i><span class="date">Jun 2018 – Mar 2019</span><span class="desc">Research Intern, Mobile Communications Network Lab, NCTU, Taiwan</span></li>
-        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2018 – Dec 2018</span><span class="desc">Research Intern, Industrial Technology Research Institute (ITRI), Taiwan</span></li>
-        <li><i class="fas fa-briefcase"></i><span class="date">Sep 2017 – Dec 2018</span><span class="desc">Undergraduate Researcher, Collaborative Vision Lab, NCTU, Taiwan</span></li>
-      </ul>
-    </section>
-    <section id="education">
-      <h2>Education</h2>
-      <ul>
-        <li><i class="fas fa-graduation-cap"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D., Engineering Technology (Dept. of Electrical Engineering), KU Leuven, Belgium (expected)</span></li>
-        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2019 – Sep 2021</span><span class="desc">M.Sc., Computer Science (Cum laude), KU Leuven, Belgium</span></li>
-        <li><i class="fas fa-graduation-cap"></i><span class="date">Apr 2019 – Sep 2019</span><span class="desc">Exchange Program, RWTH Aachen, Germany</span></li>
-        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2015 – Jun 2019</span><span class="desc">B.Sc., Computer Science & Engineering, NCTU, Taiwan (GPA 4.06/4.3)</span></li>
-      </ul>
-    </section>
-    <section id="awards">
-      <h2>Honors & Grants</h2>
-      <ul>
-        <li><i class="fas fa-trophy"></i><span class="date">2025</span><span class="desc">FWO Travel Grant, Research Foundation Flanders for ICFOG 2025</span></li>
-        <li><i class="fas fa-trophy"></i><span class="date">2019</span><span class="desc">KU Leuven–Taiwan Scholarship (教育部百大留學獎學金)</span></li>
-        <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Highest Distinction Award, Dept. Graduation Project, NCTU</span></li>
-        <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Popular Award (2nd Runner-up), NCTU Graduation Project</span></li>
-      </ul>
-    </section>
-    <section id="services">
-      <h2>Academic Service</h2>
-      <ul>
-        <li><i class="fas fa-book-open"></i>
-          <span class="desc"><strong>Reviewer – Journals:</strong>
-            <ul>
-              <li>Scientific Reports (IF 3.8)</li>
-              <li>IEEE Access (IF 3.4)</li>
-              <li>Artificial Intelligence in Medicine (IF 6.1)</li>
-            </ul>
-          </span>
-        </li>
-        <li><i class="fas fa-comments"></i>
-          <span class="desc"><strong>Reviewer – Conferences:</strong>
-            <ul>
-              <li>IEEE EMBC 2024</li>
-            </ul>
-          </span>
-        </li>
-        <li><i class="fas fa-user-graduate"></i>
-          <span class="desc"><strong>Master Thesis Co-supervisor:</strong>
-            <ul>
-              <li>Supervised 6 master students (Engineering Technology)</li>
-            </ul>
-          </span>
-        </li>
-        <li><i class="fas fa-chalkboard-teacher"></i>
-          <span class="desc"><strong>Teaching Assistant, KU Leuven:</strong>
-            <ul>
-              <li>Pathways to Sustainability (2021)</li>
-              <li>Machine Learning (2022, 2023, 2024)</li>
-              <li>Engineering Experience II – Data Acquisition (2022)</li>
-              <li>Applied AI: Academic Perspectives – ML in Healthcare (2022, 2023)</li>
-            </ul>
-          </span>
-        </li>
-      </ul>
-    </section>
-    <section id="publications">
-      <h2>Publications & Citations</h2>
-      <ul id="pub-list"><li>Loading publications…</li></ul>
-    </section>
-  </main>
-
   <script>
-    // Knight's Tour Game Logic (7×7) with panda icon
+    // Knight's Tour with Hint functionality
     (function() {
       const size = 7;
       const board = document.getElementById('board');
@@ -179,6 +97,7 @@
       const msgEl = document.getElementById('message');
       const restartBtn = document.getElementById('restart-btn');
       const rulesBtn = document.getElementById('rules-btn');
+      const hintBtn = document.getElementById('hint-btn');
       let current, visited, moves;
 
       function idx(x, y) { return y * size + x; }
@@ -208,7 +127,12 @@
         }
       }
 
+      function clearHints() {
+        board.querySelectorAll('.square.hint').forEach(sq => sq.classList.remove('hint'));
+      }
+
       function highlight() {
+        clearHints();
         // Remove old pandas
         board.querySelectorAll('.panda').forEach(el => el.remove());
         // Clear classes
@@ -218,12 +142,12 @@
         board.childNodes.forEach((sq, i) => { if (visited[i]) sq.classList.add('visited'); });
         // Place panda icon
         const pandaImg = document.createElement('img');
-        pandaImg.src = './panda.png';
+        pandaImg.src = './panda-bear.png';
         pandaImg.className = 'panda';
         board.childNodes[idx(current.x, current.y)].appendChild(pandaImg);
         // Mark start
         board.childNodes[idx(0,0)].classList.add('start');
-        // Highlight next moves
+        // Highlight next
         let nextCount = 0;
         [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]].forEach(([dx,dy]) => {
           const nx = current.x + dx, ny = current.y + dy;
@@ -253,11 +177,22 @@
       rulesBtn.addEventListener('click', () => {
         alert('Start at top-left with the panda. Move in L-shapes (knight moves) to visit all squares once.');
       });
+
+      hintBtn.addEventListener('click', () => {
+        clearHints();
+        [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]].forEach(([dx,dy]) => {
+          const nx = current.x + dx, ny = current.y + dy;
+          if (nx>=0 && nx<size && ny>=0 && ny<size && !visited[idx(nx,ny)]) {
+            board.childNodes[idx(nx,ny)].classList.add('hint');
+          }
+        });
+      });
+
       restartBtn.addEventListener('click', init);
       init();
     })();
 
-    // Load publications
+    // Load publications (unchanged)
     async function loadPublications() {
       try {
         const res = await fetch('publications.json?t=' + Date.now());
