@@ -116,9 +116,9 @@
         <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a>
         at KU Leuven, under the supervision of
         <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>.
-        My research focuses on AI for healthcare. As part of the
+        My research focuses on AI for healthcare applications. As part of the
         <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG-IT project</a>,
-        I develop deep learning to detect and assess freezing of gait in Parkinson’s disease.
+        I develop deep learning to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.
       </p>
     </section>
 
@@ -160,24 +160,20 @@
   (function(){
     const size = 7;
     const knightMoves = [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]];
-    let nextMap = [], prevHints = [];
+    let tours = [], activeTours = [], path = [];
 
-    // build nextMap once from tours.json
+    // Load tours.json and kick off
     fetch('tours.json')
       .then(r=>r.json())
       .then(data=>{
-        nextMap = Array(size*size).fill(0).map(()=>new Set());
-        data.tours.forEach(t=>{
-          t.forEach((p,i)=>{
-            if(i < t.length-1){
-              const a = p.y*size + p.x;
-              const b = t[i+1].y*size + t[i+1].x;
-              nextMap[a].add(b);
-            }
-          });
-        });
+        tours = data.tours;
+        initGame();
       })
-      .catch(()=>console.warn('Could not load tours.json'));
+      .catch(()=> {
+        console.warn('Could not load tours.json');
+        tours = [];
+        initGame();
+      });
 
     const board    = document.getElementById('board');
     const moveEl   = document.getElementById('move-count');
@@ -189,20 +185,26 @@
 
     function idx(x,y){ return y*size + x; }
 
-    function init(){
-      board.innerHTML = '';
+    function initGame(){
+      // Initialize state
       visited = Array(size*size).fill(false);
       current = {x:0,y:0};
-      moves = 0;
+      moves   = 0;
+      path    = [{x:0,y:0}];
+      activeTours = tours.slice();
       moveEl.textContent = 'Moves: 0';
       msgEl.textContent  = '';
       restart.style.display = 'none';
+
+      // Build board
+      board.innerHTML = '';
       for(let y=0;y<size;y++){
         for(let x=0;x<size;x++){
           const sq = document.createElement('div');
           sq.className = 'square';
-          sq.dataset.x = x; sq.dataset.y = y;
-          sq.addEventListener('click', onClick);
+          sq.dataset.x = x;
+          sq.dataset.y = y;
+          sq.addEventListener('click', onSquareClick);
           board.appendChild(sq);
         }
       }
@@ -210,15 +212,23 @@
     }
 
     function highlight(){
+      // Clear pandas & classes
       board.querySelectorAll('.panda').forEach(e=>e.remove());
       board.childNodes.forEach(sq=>sq.classList.remove('visited','next','start','hint'));
+
+      // Mark visited
       visited[idx(current.x,current.y)] = true;
       board.childNodes.forEach((sq,i)=>{ if(visited[i]) sq.classList.add('visited'); });
+
+      // Place panda
       const panda = document.createElement('img');
       panda.src = './panda.png'; panda.className = 'panda';
       board.childNodes[idx(current.x,current.y)].appendChild(panda);
+
+      // Mark start
       board.childNodes[idx(0,0)].classList.add('start');
 
+      // Show next moves
       let hasNext = false;
       knightMoves.forEach(([dx,dy])=>{
         const nx = current.x+dx, ny = current.y+dy;
@@ -230,38 +240,49 @@
           }
         }
       });
-      if(!hasNext) finish();
 
-      // clear any old hints
-      prevHints.forEach(id=>board.childNodes[id].classList.remove('hint'));
-      prevHints = [];
+      // If no moves left, finish
+      if(!hasNext) finish();
     }
 
-    function onClick(e){
+    function onSquareClick(e){
       if(!e.currentTarget.classList.contains('next')) return;
-      current = {
-        x: +e.currentTarget.dataset.x,
-        y: +e.currentTarget.dataset.y
-      };
+      const x = +e.currentTarget.dataset.x, y = +e.currentTarget.dataset.y;
+      // Update state
+      current = {x,y};
       moves++;
       moveEl.textContent = `Moves: ${moves}`;
+      path.push({x,y});
+
+      // Filter activeTours to those matching our path
+      activeTours = activeTours.filter(tour => {
+        for(let i=0; i<path.length; i++){
+          if(tour[i].x !== path[i].x || tour[i].y !== path[i].y){
+            return false;
+          }
+        }
+        return true;
+      });
+
       highlight();
     }
 
     function showHints(){
-      if(!nextMap.length){
-        alert('Hint data not loaded yet.');
-        return;
-      }
-      // remove old hints
-      prevHints.forEach(id=>board.childNodes[id].classList.remove('hint'));
-      prevHints = [];
-      const curr = idx(current.x,current.y);
-      nextMap[curr].forEach(id=>{
-        if(!visited[id]){
-          board.childNodes[id].classList.add('hint');
-          prevHints.push(id);
+      // Clear previous hints
+      board.childNodes.forEach(sq=>sq.classList.remove('hint'));
+
+      const nextSet = new Set();
+      // For each remaining valid tour, pick the next position
+      activeTours.forEach(tour => {
+        if(tour.length > path.length){
+          const p = tour[path.length];
+          nextSet.add(p.y*size + p.x);
         }
+      });
+
+      // Highlight all those next positions
+      nextSet.forEach(id => {
+        if(!visited[id]) board.childNodes[id].classList.add('hint');
       });
     }
 
@@ -272,23 +293,21 @@
       restart.style.display = 'block';
     }
 
-    rulesBtn.addEventListener('click',
-      ()=>alert('Start at top-left with the panda. Move in L-shapes to visit all squares once.')
-    );
+    rulesBtn.addEventListener('click', ()=>{
+      alert('Start at top-left with the panda. Move in L-shapes to visit all squares once.');
+    });
     hintBtn.addEventListener('click', showHints);
-    restart.addEventListener('click', init);
-
-    init();
+    restart.addEventListener('click', initGame);
   })();
 
-  // load publications
+  // Unchanged: load publications...
   async function loadPublications(){
     try {
-      const res = await fetch('publications.json?t='+Date.now());
-      const data = await res.json();
-      data.publications.sort((a,b)=>+b.year - +a.year);
-      const ul = document.getElementById('pub-list');
-      ul.innerHTML = '';
+      const res=await fetch('publications.json?t='+Date.now());
+      const data=await res.json();
+      data.publications.sort((a,b)=>+b.year-+a.year);
+      const ul=document.getElementById('pub-list');
+      ul.innerHTML='';
       data.publications.forEach(pub=>{
         const auth = pub.authors.split(/, | and /g)
           .map(n=>n.includes('Yang')?`<strong>${n}</strong>`:n).join(', ');
@@ -301,7 +320,7 @@
           </li>`);
       });
     } catch {
-      document.getElementById('pub-list').innerHTML = '<li>Failed to load publications.</li>';
+      document.getElementById('pub-list').innerHTML='<li>Failed to load publications.</li>';
     }
   }
   loadPublications();
