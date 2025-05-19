@@ -41,15 +41,13 @@
       margin: .5rem 0 1rem; font-size: 1.8rem; text-align: center;
     }
     .sidebar p {
-      margin: .3rem 0; font-size: .95rem;
-      display: flex; align-items: center;
+      margin: .3rem 0; font-size: .95rem; display: flex; align-items: center;
     }
     .sidebar p i { margin-right: .5rem; width: 1rem; }
     .sidebar p a { color: var(--color-accent); text-decoration: none; }
     .sidebar a {
       margin: .3rem 0; color: var(--color-light);
-      font-size: .95rem; text-decoration: none;
-      display: flex; align-items: center;
+      font-size: .95rem; text-decoration: none; display: flex; align-items: center;
     }
     .sidebar a:hover { text-decoration: underline; }
 
@@ -146,9 +144,7 @@
     ul ul li::before {
       content: "•"; position: absolute; left:0; top:.2rem; color: var(--color-accent);
     }
-    .desc a {
-      color: var(--color-accent); text-decoration: none;
-    }
+    .desc a { color: var(--color-accent); text-decoration: none; }
     .desc a:hover { text-decoration: underline; }
 
     #pub-list li {
@@ -182,9 +178,7 @@
     <img class="profile" src="photo.jpg" alt="Po-Kai Yang">
     <h1>Po-Kai Yang</h1>
     <p><i class="fas fa-map-marker-alt"></i>Leuven, Belgium</p>
-    <p><i class="fas fa-envelope"></i>
-      <a href="mailto:po-kai.yang@kuleuven.be">po-kai.yang@kuleuven.be</a>
-    </p>
+    <p><i class="fas fa-envelope"></i><a href="mailto:po-kai.yang@kuleuven.be">po-kai.yang@kuleuven.be</a></p>
     <p><i class="fas fa-phone"></i>+32 456 388 594</p>
     <p><i class="fas fa-phone"></i>+886 988 335 302</p>
 
@@ -217,9 +211,13 @@
         <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a>
         at KU Leuven, under the supervision of
         <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>.
-        My research focuses on artificial intelligence for healthcare applications...
+        My research focuses on artificial intelligence for healthcare applications.
+        As part of the
+        <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG-IT project</a>,
+        I develop deep learning methods to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.
       </p>
     </section>
+
     <section id="updates">
       <h2>Recent News</h2>
       <ul>
@@ -241,6 +239,7 @@
         </li>
       </ul>
     </section>
+
     <section id="experience">
       <h2>Experience</h2>
       <ul>
@@ -251,15 +250,17 @@
         <li><i class="fas fa-briefcase"></i><span class="date">Sep 2017 – Dec 2018</span><span class="desc">Undergrad Researcher, NCTU</span></li>
       </ul>
     </section>
+
     <section id="education">
       <h2>Education</h2>
       <ul>
-        <li><i class="fas fa-graduation-cap"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D., Eng. Tech., KU Leuven (exp.)</span></li>
-        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2019 – Sep 2021</span><span class="desc">M.Sc. CS (Cum laude), KU Leuven</span></li>
-        <li><i class="fas fa-graduation-cap"></i><span class="date">Apr 2019 – Sep 2019</span><span class="desc">Exchange, RWTH Aachen</span></li>
-        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2015 – Jun 2019</span><span class="desc">B.Sc. CS&E, NCTU (GPA 4.06/4.3)</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D., Engineering Technology, KU Leuven (expected)</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2019 – Sep 2021</span><span class="desc">M.Sc., Computer Science (Cum laude), KU Leuven</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Apr 2019 – Sep 2019</span><span class="desc">Exchange Program, RWTH Aachen, Germany</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2015 – Jun 2019</span><span class="desc">B.Sc., Computer Science & Engineering, NCTU (GPA 4.06/4.3)</span></li>
       </ul>
     </section>
+
     <section id="awards">
       <h2>Honors & Grants</h2>
       <ul>
@@ -269,6 +270,7 @@
         <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Popular Award (2nd Runner-up), NCTU</span></li>
       </ul>
     </section>
+
     <section id="services">
       <h2>Academic Service</h2>
       <ul>
@@ -303,6 +305,7 @@
         </li>
       </ul>
     </section>
+
     <section id="publications">
       <h2>Publications & Citations</h2>
       <ul id="pub-list"><li>Loading publications…</li></ul>
@@ -328,7 +331,7 @@
 
     function idx(x,y){ return y*size + x; }
 
-    // load the 12 000 complete tours
+    // load tours.json
     fetch('tours.json')
       .then(r=>r.json())
       .then(data=>{ tours = data.tours; })
@@ -386,7 +389,7 @@
         }
       });
 
-      // if no next moves, show finish message
+      // if no next moves, show message and reveal Restart
       const nextEls = board.querySelectorAll('.square.next');
       if(nextEls.length === 0){
         const visitedCount = visited.filter(v=>v).length;
@@ -399,12 +402,11 @@
 
     function onSquareClick(e){
       if(!e.currentTarget.classList.contains('next')) return;
-      const x = +e.currentTarget.dataset.x,
-            y = +e.currentTarget.dataset.y;
-      current = { x, y };
+      const x = +e.currentTarget.dataset.x, y = +e.currentTarget.dataset.y;
+      current = { x,y };
       moves++;
       moveEl.textContent = `Moves: ${moves}`;
-      path.push({ x, y });
+      path.push({ x,y });
       activeTours = activeTours.filter(tour => {
         for(let i=0;i<path.length;i++){
           if(tour[i].x!==path[i].x || tour[i].y!==path[i].y) return false;
@@ -437,7 +439,7 @@
     restart.addEventListener('click', startGame);
   })();
 
-  // load publications (unchanged)
+  // load publications
   async function loadPublications(){
     try {
       const res = await fetch('publications.json?t='+Date.now());
