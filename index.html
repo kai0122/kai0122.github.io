@@ -90,7 +90,7 @@
   </aside>
 
   <main>
-    <!-- ... your other sections (About, Updates, Experience, etc.) remain unchanged ... -->
+    <!-- (About, Updates, Experience, Education, Awards, Services...) -->
     <section id="publications">
       <h2>Publications & Citations</h2>
       <ul id="pub-list"><li>Loading publications…</li></ul>
@@ -98,8 +98,9 @@
   </main>
 
   <script>
-    (function() {
+    (function(){
       const size = 7;
+      const knightMoves = [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]];
       const board = document.getElementById('board');
       const moveCountEl = document.getElementById('move-count');
       const msgEl = document.getElementById('message');
@@ -108,14 +109,13 @@
       const hintBtn = document.getElementById('hint-btn');
       let current, visited, moves;
 
-      const knightMoves = [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]];
-      function idx(x, y) { return y * size + x; }
+      function idx(x,y){ return y*size + x; }
 
-      function init() {
+      function init(){
         board.innerHTML = '';
         visited = Array(size*size).fill(false);
         moves = 0;
-        current = { x: 0, y: 0 };
+        current = {x:0,y:0};
         msgEl.textContent = '';
         moveCountEl.textContent = 'Moves: 0';
         restartBtn.style.display = 'none';
@@ -123,114 +123,98 @@
         highlight();
       }
 
-      function buildBoard() {
-        for (let y = 0; y < size; y++) {
-          for (let x = 0; x < size; x++) {
+      function buildBoard(){
+        for(let y=0;y<size;y++){
+          for(let x=0;x<size;x++){
             const sq = document.createElement('div');
             sq.className = 'square';
             sq.dataset.x = x;
             sq.dataset.y = y;
-            sq.addEventListener('click', onSquareClick);
+            sq.addEventListener('click',onSquareClick);
             board.appendChild(sq);
           }
         }
       }
 
-      function highlight() {
-        board.querySelectorAll('.panda').forEach(el => el.remove());
-        board.childNodes.forEach(sq => sq.classList.remove('visited','next','start','hint'));
-        visited[idx(current.x, current.y)] = true;
-        board.childNodes.forEach((sq,i) => { if (visited[i]) sq.classList.add('visited'); });
-        const pandaImg = document.createElement('img');
-        pandaImg.src = './panda.png';
-        pandaImg.className = 'panda';
-        board.childNodes[idx(current.x, current.y)].appendChild(pandaImg);
+      function highlight(){
+        board.querySelectorAll('.panda').forEach(el=>el.remove());
+        board.childNodes.forEach(sq=>sq.classList.remove('visited','next','start','hint'));
+        visited[idx(current.x,current.y)] = true;
+        board.childNodes.forEach((sq,i)=>{ if(visited[i]) sq.classList.add('visited'); });
+        const panda = document.createElement('img');
+        panda.src = './panda.png';
+        panda.className = 'panda';
+        board.childNodes[idx(current.x,current.y)].appendChild(panda);
         board.childNodes[idx(0,0)].classList.add('start');
+
         let nextCount = 0;
-        knightMoves.forEach(([dx,dy]) => {
-          const nx = current.x+dx, ny = current.y+dy;
-          if (nx>=0&&nx<size&&ny>=0&&ny<size&&!visited[idx(nx,ny)]) {
+        knightMoves.forEach(([dx,dy])=>{
+          const nx=current.x+dx, ny=current.y+dy;
+          if(nx>=0&&nx<size&&ny>=0&&ny<size&&!visited[idx(nx,ny)]){
             board.childNodes[idx(nx,ny)].classList.add('next');
             nextCount++;
           }
         });
-        if (nextCount===0) finish();
+        if(nextCount===0) finish();
       }
 
-      function onSquareClick(e) {
-        if (!e.currentTarget.classList.contains('next')) return;
-        current = { x:+e.currentTarget.dataset.x, y:+e.currentTarget.dataset.y };
+      function onSquareClick(e){
+        if(!e.currentTarget.classList.contains('next')) return;
+        current = {x:+e.currentTarget.dataset.x, y:+e.currentTarget.dataset.y};
         moves++;
         moveCountEl.textContent = `Moves: ${moves}`;
         highlight();
       }
 
-      // Warnsdorff‐guided backtracking to test completion from any candidate
-      function canComplete(x, y, visitedArr, visitedCount) {
-        if (visitedCount === size*size) return true;
-        // build next candidates with onward‐move counts
+      function showHints(){
+        board.querySelectorAll('.hint').forEach(sq=>sq.classList.remove('hint'));
+        // gather candidates
         const cands = [];
-        knightMoves.forEach(([dx,dy]) => {
-          const nx = x+dx, ny = y+dy, id = idx(nx,ny);
-          if (nx>=0&&nx<size&&ny>=0&&ny<size&&!visitedArr[id]) {
-            let deg=0;
+        knightMoves.forEach(([dx,dy])=>{
+          const nx=current.x+dx, ny=current.y+dy;
+          if(nx>=0&&nx<size&&ny>=0&&ny<size&&!visited[idx(nx,ny)]){
+            // count onward moves
+            let deg = 0;
             knightMoves.forEach(([adx,ady])=>{
               const ax=nx+adx, ay=ny+ady;
-              if (ax>=0&&ax<size&&ay>=0&&ay<size&&!visitedArr[idx(ax,ay)]) deg++;
+              if(ax>=0&&ax<size&&ay>=0&&ay<size&&!visited[idx(ax,ay)]) deg++;
             });
-            cands.push({ nx, ny, deg });
+            cands.push({nx,ny,deg});
           }
         });
-        // Warnsdorff: try lowest‐degree first
-        cands.sort((a,b)=>a.deg-b.deg);
-        for (const {nx,ny} of cands) {
-          visitedArr[idx(nx,ny)] = true;
-          if (canComplete(nx,ny,visitedArr, visitedCount+1)) return true;
-          visitedArr[idx(nx,ny)] = false;
-        }
-        return false;
+        if(!cands.length) return;
+        // find minimum degree
+        const minDeg = Math.min(...cands.map(c=>c.deg));
+        // highlight only those with deg == minDeg
+        cands.filter(c=>c.deg===minDeg)
+             .forEach(c=> board.childNodes[idx(c.nx,c.ny)].classList.add('hint'));
       }
 
-      function showHints() {
-        board.querySelectorAll('.hint').forEach(sq=>sq.classList.remove('hint'));
-        // for each possible next, test if it can lead to full tour
-        knightMoves.forEach(([dx,dy])=>{
-          const nx = current.x+dx, ny = current.y+dy, id=idx(nx,ny);
-          if (nx>=0&&nx<size&&ny>=0&&ny<size&&!visited[id]) {
-            const copy = visited.slice();
-            copy[id] = true;
-            if ( canComplete(nx,ny, copy, moves+1) ) {
-              board.childNodes[id].classList.add('hint');
-            }
-          }
-        });
-      }
-
-      function finish() {
+      function finish(){
         msgEl.textContent = visited.every(v=>v)
           ? `Congratulations! Completed in ${moves} moves.`
           : `No moves left! Visited ${moves+1}/${size*size}. Try again.`;
         restartBtn.style.display = 'block';
       }
 
-      rulesBtn.addEventListener('click', ()=> {
+      rulesBtn.addEventListener('click',()=>{
         alert('Start at top-left with the panda. Move in L-shapes (knight moves) to visit all squares once.');
       });
-      hintBtn.addEventListener('click', showHints);
-      restartBtn.addEventListener('click', init);
+      hintBtn.addEventListener('click',showHints);
+      restartBtn.addEventListener('click',init);
 
       init();
     })();
 
-    // Load publications
-    async function loadPublications() {
-      try {
+    // publications loader (unchanged)…
+    async function loadPublications(){
+      try{
         const res = await fetch('publications.json?t='+Date.now());
         const data = await res.json();
         data.publications.sort((a,b)=>parseInt(b.year||'0')-parseInt(a.year||'0'));
         const list = document.getElementById('pub-list');
         list.innerHTML = '';
-        data.publications.forEach(pub => {
+        data.publications.forEach(pub=>{
           const auth = pub.authors.split(/, | and /g)
             .map(n=>n.trim())
             .map(n=>n.includes('Yang')?`<strong>${n}</strong>`:n)
@@ -244,8 +228,8 @@
           `;
           list.appendChild(li);
         });
-      } catch {
-        document.getElementById('pub-list').innerHTML = '<li>Failed to load publications.</li>';
+      }catch{
+        document.getElementById('pub-list').innerHTML='<li>Failed to load publications.</li>';
       }
     }
     loadPublications();
