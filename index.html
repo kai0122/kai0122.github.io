@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Po-Kai Yang – CV</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -16,13 +16,12 @@
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Arial, sans-serif; color: var(--color-dark); background: var(--color-light); }
     /* Sidebar */
-    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; padding: 2rem 1rem; background: var(--color-dark); color: var(--color-light); display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; padding: 2rem 1rem 1rem; background: var(--color-dark); color: var(--color-light); display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
     .sidebar img.profile { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; }
     .sidebar h1 { margin: 0.5rem 0 1rem; font-size: 1.8rem; text-align: center; }
     .sidebar p, .sidebar a { margin: 0.3rem 0; color: var(--color-light); font-size: 0.95rem; text-decoration: none; display: flex; align-items: center; }
     .sidebar p i, .sidebar a i { margin-right: 0.5rem; width: 1rem; }
     .sidebar a:hover { text-decoration: underline; }
-
     /* Knight's Tour Game */
     #knight-game { margin-top: auto; width: 100%; display: flex; flex-direction: column; align-items: center; }
     #knight-game h3 { color: var(--color-light); margin-bottom: 0.5rem; }
@@ -30,12 +29,11 @@
     .square { width: 30px; height: 30px; background: var(--color-light); position: relative; cursor: pointer; }
     .square.visited { background: var(--color-gray2); }
     .square.next { background: var(--color-accent); }
-    .square.hint { background: var(--color-light); box-shadow: inset 0 0 0 2px var(--color-accent); }
+    .square.hint { background: var(--color-gray1); }
     .square.start { border: 2px solid var(--color-accent); }
     .panda { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; }
     #move-count, #message { margin-top: 0.5rem; color: var(--color-light); font-weight: bold; }
-    #rules-btn, #hint-btn, #restart-btn { margin: 0.3rem; padding: 0.3rem 0.6rem; background: var(--color-accent); border: none; color: var(--color-light); border-radius: 4px; cursor: pointer; }
-
+    #restart-btn, #rules-btn, #hint-btn { margin: 0.3rem; padding: 0.3rem 0.6rem; background: var(--color-accent); border: none; color: var(--color-light); border-radius: 4px; cursor: pointer; }
     /* Main content */
     main { margin-left: 260px; padding: 2rem; max-width: 1200px; }
     section + section { margin-top: 2rem; border-top: 1px solid var(--color-gray2); padding-top: 1.5rem; }
@@ -49,21 +47,20 @@
     ul li i { margin-right: 0.5rem; color: var(--color-accent); margin-top: 0.2rem; }
     ul li span.date { flex: 0 0 12rem; font-weight: bold; }
     ul li span.desc { flex: 1; }
+    /* Nested bullet points */
     ul ul { list-style: none; margin-left: 1.5rem; padding-left: 0; }
     ul ul li { position: relative; padding-left: 1.2rem; margin-bottom: 0.4rem; }
     ul ul li::before { content: "•"; position: absolute; left: 0; top: 0.2rem; color: var(--color-accent); }
-
+    .desc a { color: var(--color-accent); text-decoration: none; }
+    .desc a:hover { text-decoration: underline; }
     /* Publications */
     #pub-list li { display: flex; align-items: baseline; white-space: normal; margin-bottom: 0.5rem; }
     #pub-list li i { margin-right: 0.5rem; color: var(--color-accent); }
     #pub-list li a { color: var(--color-accent); font-weight: bold; text-decoration: none; margin-left: 0.5rem; }
+    #pub-list li a:hover { text-decoration: underline; }
     #pub-list li em { margin-left: 0.5rem; font-style: italic; }
     #pub-list li .citations { margin-left: 0.5rem; color: var(--color-gray1); font-size: 0.9rem; }
-
-    @media(max-width: 768px) {
-      .sidebar { position: relative; width: 100%; height: auto; padding-top: 1rem; }
-      main { margin-left: 0; }
-    }
+    @media(max-width: 768px) { .sidebar { position: relative; width: 100%; height: auto; padding-top: 1rem; } main { margin-left: 0; } }
   </style>
 </head>
 <body>
@@ -94,88 +91,81 @@
   <main>
     <section id="about">
       <h2>About Me</h2>
-      <p class="intro">
-        I am currently a Ph.D. student in the
-        <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a>
-        at KU Leuven, under the supervision of
-        <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>.
-        My research focuses on AI for healthcare applications. As part of the
-        <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG-IT project</a>,
-        I develop deep learning methods to detect and assess freezing of gait in Parkinson’s disease.
-      </p>
+      <p class="intro">I am currently a Ph.D. student in the <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a> at KU Leuven, under the supervision of <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>. My research focuses on artificial intelligence for healthcare applications. As part of the <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG-IT project</a>, I develop deep learning methods to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.</p>
     </section>
-
     <section id="updates">
       <h2>Recent News</h2>
       <ul>
-        <li><i class="fas fa-bullhorn"></i>
-          <span class="date">June 2025</span>
-          <span class="desc"><strong>Poster</strong> at
-            <a href="https://icfog.org/meetings/icfog2025/" target="_blank">
-              The International Consortium on Freezing of Gait (ICFOG 2025)
-            </a>, Atlanta, Georgia, USA
-          </span>
-        </li>
-        <li><i class="fas fa-bullhorn"></i>
-          <span class="date">June 2025</span>
-          <span class="desc"><strong>Poster</strong> at
-            <a href="https://ispgr.org/2025-world-congress/" target="_blank">
-              The International Society of Posture and Gait Research (ISPGR 2025)
-            </a>, Maastricht, Netherlands
-          </span>
-        </li>
+        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster presentation</strong> at <a href="https://icfog.org/meetings/icfog2025/" target="_blank">The International Consortium on Freezing of Gait (ICFOG 2025)</a>, Atlanta, Georgia, USA</span></li>
+        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster presentation</strong> at <a href="https://ispgr.org/2025-world-congress/" target="_blank">The International Society of Posture and Gait Research (ISPGR 2025)</a>, Maastricht, Netherlands</span></li>
       </ul>
     </section>
-
     <section id="experience">
       <h2>Experience</h2>
       <ul>
         <li><i class="fas fa-briefcase"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D. Researcher, KU Leuven, Belgium</span></li>
-        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2020 – Aug 2020</span><span class="desc">Summer Intern, Nokia Bell Labs (APSS Lab), Antwerp, Belgium</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2020 – Aug 2020</span><span class="desc">Summer Research Intern, Nokia Bell Labs (APSS Lab), Antwerp, Belgium</span></li>
         <li><i class="fas fa-briefcase"></i><span class="date">Jun 2018 – Mar 2019</span><span class="desc">Research Intern, Mobile Communications Network Lab, NCTU, Taiwan</span></li>
-        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2018 – Dec 2018</span><span class="desc">Research Intern, ITRI, Taiwan</span></li>
-        <li><i class="fas fa-briefcase"></i><span class="date">Sep 2017 – Dec 2018</span><span class="desc">Undergrad Researcher, Collaborative Vision Lab, NCTU, Taiwan</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2018 – Dec 2018</span><span class="desc">Research Intern, Industrial Technology Research Institute (ITRI), Taiwan</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Sep 2017 – Dec 2018</span><span class="desc">Undergraduate Researcher, Collaborative Vision Lab, NCTU, Taiwan</span></li>
       </ul>
     </section>
-
     <section id="education">
       <h2>Education</h2>
       <ul>
-        <li><i class="fas fa-graduation-cap"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D., Engineering Technology (Dept. Electrical Engineering), KU Leuven (expected)</span></li>
-        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2019 – Sep 2021</span><span class="desc">M.Sc., Computer Science (Cum laude), KU Leuven</span></li>
-        <li><i class="fas fa-graduation-cap"></i><span class="date">Apr 2019 – Sep 2019</span><span class="desc">Exchange, RWTH Aachen, Germany</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D., Engineering Technology (Dept. of Electrical Engineering), KU Leuven, Belgium (expected)</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2019 – Sep 2021</span><span class="desc">M.Sc., Computer Science (Cum laude), KU Leuven, Belgium</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Apr 2019 – Sep 2019</span><span class="desc">Exchange Program, RWTH Aachen, Germany</span></li>
         <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2015 – Jun 2019</span><span class="desc">B.Sc., Computer Science & Engineering, NCTU, Taiwan (GPA 4.06/4.3)</span></li>
       </ul>
     </section>
-
     <section id="awards">
       <h2>Honors & Grants</h2>
       <ul>
-        <li><i class="fas fa-trophy"></i><span class="date">2025</span><span class="desc">FWO Travel Grant (ICFOG 2025)</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2025</span><span class="desc">FWO Travel Grant, Research Foundation Flanders for ICFOG 2025</span></li>
         <li><i class="fas fa-trophy"></i><span class="date">2019</span><span class="desc">KU Leuven–Taiwan Scholarship (教育部百大留學獎學金)</span></li>
-        <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Highest Distinction, Graduation Project, NCTU</span></li>
-        <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Popular Award (2nd Runner-up), NCTU project</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Highest Distinction Award, Dept. Graduation Project, NCTU</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Popular Award (2nd Runner-up), NCTU Graduation Project</span></li>
       </ul>
     </section>
-
     <section id="services">
       <h2>Academic Service</h2>
       <ul>
-        <li><i class="fas fa-book-open"></i><span class="desc"><strong>Reviewer – Journals:</strong>
-          <ul><li>Scientific Reports (IF 3.8)</li><li>IEEE Access (IF 3.4)</li><li>Artificial Intelligence in Medicine (IF 6.1)</li></ul>
-        </span></li>
-        <li><i class="fas fa-comments"></i><span class="desc"><strong>Reviewer – Conferences:</strong>
-          <ul><li>IEEE EMBC 2024</li></ul>
-        </span></li>
-        <li><i class="fas fa-user-graduate"></i><span class="desc"><strong>Master Thesis Co-supervisor:</strong>
-          <ul><li>Supervised 6 master students (Engineering Technology)</li></ul>
-        </span></li>
-        <li><i class="fas fa-chalkboard-teacher"></i><span class="desc"><strong>Teaching Assistant:</strong>
-          <ul><li>Pathways to Sustainability (2021)</li><li>Machine Learning (2022–24)</li><li>Engineering Experience II – Data Acquisition (2022)</li><li>Applied AI: ML in Healthcare (2022–23)</li></ul>
-        </span></li>
+        <li><i class="fas fa-book-open"></i>
+          <span class="desc"><strong>Reviewer – Journals:</strong>
+            <ul>
+              <li>Scientific Reports (IF 3.8)</li>
+              <li>IEEE Access (IF 3.4)</li>
+              <li>Artificial Intelligence in Medicine (IF 6.1)</li>
+            </ul>
+          </span>
+        </li>
+        <li><i class="fas fa-comments"></i>
+          <span class="desc"><strong>Reviewer – Conferences:</strong>
+            <ul>
+              <li>IEEE EMBC 2024</li>
+            </ul>
+          </span>
+        </li>
+        <li><i class="fas fa-user-graduate"></i>
+          <span class="desc"><strong>Master Thesis Co-supervisor:</strong>
+            <ul>
+              <li>Supervised 6 master students (Engineering Technology)</li>
+            </ul>
+          </span>
+        </li>
+        <li><i class="fas fa-chalkboard-teacher"></i>
+          <span class="desc"><strong>Teaching Assistant, KU Leuven:</strong>
+            <ul>
+              <li>Pathways to Sustainability (2021)</li>
+              <li>Machine Learning (2022, 2023, 2024)</li>
+              <li>Engineering Experience II – Data Acquisition (2022)</li>
+              <li>Applied AI: Academic Perspectives – ML in Healthcare (2022, 2023)</li>
+            </ul>
+          </span>
+        </li>
       </ul>
     </section>
-
     <section id="publications">
       <h2>Publications & Citations</h2>
       <ul id="pub-list"><li>Loading publications…</li></ul>
@@ -183,129 +173,119 @@
   </main>
 
   <script>
-    window.addEventListener('load', () => {
-      // Knight's Tour logic
+    // Knight's Tour Game Logic (7×7) with panda icon
+    (function() {
       const size = 7;
       const board = document.getElementById('board');
       const moveCountEl = document.getElementById('move-count');
       const msgEl = document.getElementById('message');
       const restartBtn = document.getElementById('restart-btn');
       const rulesBtn = document.getElementById('rules-btn');
-      const hintBtn = document.getElementById('hint-btn');
       let current, visited, moves;
 
-      function idx(x,y){ return y*size + x; }
-      function count(x,y,vis) {
-        return [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]]
-          .filter(([dx,dy])=>{ const nx=x+dx, ny=y+dy; return nx>=0&&nx<size&&ny>=0&&ny<size&&!vis[idx(nx,ny)]; })
-          .length;
-      }
-      function solve(x,y,vis,path) {
-        if(path.length===size*size) return path;
-        const movesList = [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]]
-          .map(([dx,dy])=>({nx:x+dx,ny:y+dy}))
-          .filter(p=>p.nx>=0&&p.nx<size&&p.ny>=0&&p.ny<size&&!vis[idx(p.nx,p.ny)])
-          .map(p=>({...p,deg:count(p.nx,p.ny,vis)}))
-          .sort((a,b)=>a.deg-b.deg);
-        for(const m of movesList){
-          vis[idx(m.nx,m.ny)]=true;
-          const sol=solve(m.nx,m.ny,vis,path.concat([{x:m.nx,y:m.ny}]));
-          if(sol) return sol;
-          vis[idx(m.nx,m.ny)]=false;
-        }
-        return null;
+      function idx(x, y) { return y * size + x; }
+
+      function init() {
+        board.innerHTML = '';
+        visited = Array(size * size).fill(false);
+        moves = 0;
+        current = { x: 0, y: 0 };
+        msgEl.textContent = '';
+        moveCountEl.textContent = 'Moves: 0';
+        restartBtn.style.display = 'none';
+        buildBoard();
+        highlight();
       }
 
-      function initGame(){
-        board.innerHTML='';
-        visited=Array(size*size).fill(false);
-        moves=0; current={x:0,y:0};
-        moveCountEl.textContent='Moves: 0';
-        msgEl.textContent='';
-        restartBtn.style.display='none';
-        for(let y=0;y<size;y++){
-          for(let x=0;x<size;x++){
-            const sq=document.createElement('div');
-            sq.className='square';
-            sq.dataset.x=x; sq.dataset.y=y;
-            sq.addEventListener('click',onClick);
+      function buildBoard() {
+        for (let y = 0; y < size; y++) {
+          for (let x = 0; x < size; x++) {
+            const sq = document.createElement('div');
+            sq.className = 'square';
+            sq.dataset.x = x;
+            sq.dataset.y = y;
+            sq.addEventListener('click', onSquareClick);
             board.appendChild(sq);
           }
         }
+      }
+
+      function highlight() {
+        // Remove old pandas
+        board.querySelectorAll('.panda').forEach(el => el.remove());
+        // Clear classes
+        board.childNodes.forEach(sq => sq.classList.remove('visited','next','start'));
+        // Mark visited
+        visited[idx(current.x, current.y)] = true;
+        board.childNodes.forEach((sq, i) => { if (visited[i]) sq.classList.add('visited'); });
+        // Place panda icon
+        const pandaImg = document.createElement('img');
+        pandaImg.src = './panda.png';
+        pandaImg.className = 'panda';
+        board.childNodes[idx(current.x, current.y)].appendChild(pandaImg);
+        // Mark start
+        board.childNodes[idx(0,0)].classList.add('start');
+        // Highlight next moves
+        let nextCount = 0;
+        [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]].forEach(([dx,dy]) => {
+          const nx = current.x + dx, ny = current.y + dy;
+          if (nx>=0 && nx<size && ny>=0 && ny<size && !visited[idx(nx,ny)]) {
+            board.childNodes[idx(nx,ny)].classList.add('next');
+            nextCount++;
+          }
+        });
+        if (nextCount === 0) finish();
+      }
+
+      function onSquareClick(e) {
+        if (!e.currentTarget.classList.contains('next')) return;
+        current = { x: +e.currentTarget.dataset.x, y: +e.currentTarget.dataset.y };
+        moves++;
+        moveCountEl.textContent = `Moves: ${moves}`;
         highlight();
       }
 
-      function clearHints(){
-        board.querySelectorAll('.square.hint').forEach(sq=>sq.classList.remove('hint'));
-      }
-      function highlight(){
-        clearHints();
-        board.querySelectorAll('.panda').forEach(el=>el.remove());
-        board.childNodes.forEach(sq=>sq.classList.remove('visited','next','start'));
-        visited[idx(current.x,current.y)] = true;
-        board.childNodes.forEach((sq,i)=>visited[i]&&sq.classList.add('visited'));
-        const img=new Image(); img.src='./panda.png'; img.className='panda';
-        board.childNodes[idx(current.x,current.y)].appendChild(img);
-        board.childNodes[idx(0,0)].classList.add('start');
-        const avail=[[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]]
-          .map(([dx,dy])=>({nx:current.x+dx,ny:current.y+dy}))
-          .filter(m=>m.nx>=0&&m.nx<size&&m.ny>=0&&m.ny<size&&!visited[idx(m.nx,m.ny)]);
-        avail.forEach(m=>board.childNodes[idx(m.nx,m.ny)].classList.add('next'));
-        const visCopy=visited.slice();
-        const sol=solve(current.x,current.y,visCopy, []);
-        if(sol && sol[0]){
-          const {x:nx,y:ny}=sol[0];
-          board.childNodes[idx(nx,ny)].classList.add('hint');
-        }
-        if(avail.length===0) finish();
-      }
-      function onClick(e){
-        if(!e.currentTarget.classList.contains('next')) return;
-        current={x:+e.currentTarget.dataset.x,y:+e.currentTarget.dataset.y};
-        moves++; moveCountEl.textContent=`Moves: ${moves}`;
-        highlight();
-      }
-      function finish(){
-        msgEl.textContent=visited.every(v=>v)
+      function finish() {
+        msgEl.textContent = visited.every(v => v)
           ? `Congratulations! Completed in ${moves} moves.`
           : `No moves left! Visited ${moves+1}/${size*size}. Try again.`;
-        restartBtn.style.display='block';
+        restartBtn.style.display = 'block';
       }
-      rulesBtn.addEventListener('click',()=>alert(
-        'Start at top-left with the panda. Move like a knight to visit each square exactly once.'
-      ));
-      hintBtn.addEventListener('click',highlight);
-      restartBtn.addEventListener('click',initGame);
-      initGame();
 
-      // Load publications
-      async function loadPublications(){
-        try {
-          const res = await fetch('publications.json?'+Date.now());
-          if(!res.ok) throw new Error();
-          const data = await res.json();
-          data.publications.sort((a,b)=>parseInt(b.year||0)-parseInt(a.year||0));
-          const list = document.getElementById('pub-list');
-          list.innerHTML = '';
-          data.publications.forEach(pub=>{
-            const auth = pub.authors.split(/, | and /g)
-              .map(n=>n.includes('Yang')?`<strong>${n}</strong>`:n)
-              .join(', ');
-            const li = document.createElement('li');
-            li.innerHTML = `
-              <i class="fas fa-file-alt"></i>
-              <span class="desc">${auth}, “${pub.title},” <em>${pub.journal||'Unknown Venue'}</em>.</span>
-              <a href="${pub.url}" target="_blank">Read Paper</a>
-              <span class="citations">(${pub.citations} citations)</span>
-            `;
-            list.appendChild(li);
-          });
-        } catch {
-          document.getElementById('pub-list').innerHTML = '<li>Failed to load publications.</li>';
-        }
+      rulesBtn.addEventListener('click', () => {
+        alert('Start at top-left with the panda. Move in L-shapes (knight moves) to visit all squares once.');
+      });
+      restartBtn.addEventListener('click', init);
+      init();
+    })();
+
+    // Load publications
+    async function loadPublications() {
+      try {
+        const res = await fetch('publications.json?t=' + Date.now());
+        const data = await res.json();
+        data.publications.sort((a,b) => parseInt(b.year||'0')-parseInt(a.year||'0'));
+        const list = document.getElementById('pub-list');
+        list.innerHTML = '';
+        data.publications.forEach(pub => {
+          const auth = pub.authors.split(/, | and /g)
+            .map(n=>n.trim())
+            .map(n=>n.includes('Yang')?`<strong>${n}</strong>`:n)
+            .join(', ');
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <i class="fas fa-file-alt"></i>
+            <span class="desc">${auth}, “${pub.title},” <em>${pub.journal||'Unknown Venue'}</em>.</span>
+            <a href="${pub.url}" target="_blank">Read Paper</a>
+            <span class="citations">(${pub.citations} citations)</span>
+          `;
+          list.appendChild(li);
+        });
+      } catch {
+        document.getElementById('pub-list').innerHTML = '<li>Failed to load publications.</li>';
       }
-      loadPublications();
-    });
+    }
+    loadPublications();
   </script>
 </body>
 </html>
