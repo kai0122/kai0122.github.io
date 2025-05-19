@@ -22,6 +22,7 @@
     .sidebar p, .sidebar a { margin: 0.3rem 0; color: var(--color-light); font-size: 0.95rem; text-decoration: none; display: flex; align-items: center; }
     .sidebar p i, .sidebar a i { margin-right: 0.5rem; width: 1rem; }
     .sidebar a:hover { text-decoration: underline; }
+
     /* Knight's Tour Game */
     #knight-game { margin-top: auto; width: 100%; display: flex; flex-direction: column; align-items: center; }
     #knight-game h3 { color: var(--color-light); margin-bottom: 0.5rem; }
@@ -34,6 +35,7 @@
     .panda { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; }
     #move-count, #message { margin-top: 0.5rem; color: var(--color-light); font-weight: bold; }
     #restart-btn, #rules-btn, #hint-btn { margin: 0.3rem; padding: 0.3rem 0.6rem; background: var(--color-accent); border: none; color: var(--color-light); border-radius: 4px; cursor: pointer; }
+
     /* Main content */
     main { margin-left: 260px; padding: 2rem; max-width: 1200px; }
     section + section { margin-top: 2rem; border-top: 1px solid var(--color-gray2); padding-top: 1.5rem; }
@@ -58,6 +60,7 @@
     #pub-list li a:hover { text-decoration: underline; }
     #pub-list li em { margin-left: 0.5rem; font-style: italic; }
     #pub-list li .citations { margin-left: 0.5rem; color: var(--color-gray1); font-size: 0.9rem; }
+
     @media(max-width: 768px) {
       .sidebar { position: relative; width: 100%; height: auto; padding-top: 1rem; }
       main { margin-left: 0; }
@@ -73,7 +76,7 @@
     <p><i class="fas fa-phone"></i>+32 456 388 594</p>
     <p><i class="fas fa-phone"></i>+886 988 335 302</p>
     <a href="https://orcid.org/0000-0003-0649-9263"><i class="fab fa-orcid"></i>ORCID</a>
-    <a href="https://scholar.google.com/citations?user=0gl__ukAAAAJ&hl=zh-TW"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
+    <a href="https://scholar.google.com/citations?user=0gl__ukAAAAJ&amp;hl=zh-TW"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
     <a href="https://linkedin.com/in/po-kai-yang-a41921176"><i class="fab fa-linkedin"></i>LinkedIn</a>
     <a href="https://github.com/kai0122"><i class="fab fa-github"></i>GitHub</a>
     <a href="https://twitter.com/iampokaiyang"><i class="fab fa-twitter"></i>@iampokaiyang</a>
@@ -90,7 +93,76 @@
   </aside>
 
   <main>
-    <!-- (About, Updates, Experience, Education, Awards, Services...) -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p class="intro">
+        I am currently a Ph.D. student in the
+        <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a>
+        at KU Leuven, under the supervision of
+        <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">Prof. Dr. Bart Vanrumste</a>.
+        My research focuses on artificial intelligence for healthcare applications. As part of the
+        <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">FOG-IT project</a>,
+        I develop deep learning methods to detect and assess freezing of gait in Parkinson’s disease using wearable sensors.
+      </p>
+    </section>
+
+    <section id="updates">
+      <h2>Recent News</h2>
+      <ul>
+        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster presentation</strong> at <a href="https://icfog.org/meetings/icfog2025/" target="_blank">The International Consortium on Freezing of Gait (ICFOG 2025)</a>, Atlanta, Georgia, USA</span></li>
+        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster presentation</strong> at <a href="https://ispgr.org/2025-world-congress/" target="_blank">The International Society of Posture and Gait Research (ISPGR 2025)</a>, Maastricht, Netherlands</span></li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <ul>
+        <li><i class="fas fa-briefcase"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D. Researcher, KU Leuven, Belgium</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2020 – Aug 2020</span><span class="desc">Summer Research Intern, Nokia Bell Labs (APSS Lab), Antwerp, Belgium</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jun 2018 – Mar 2019</span><span class="desc">Research Intern, Mobile Communications Network Lab, NCTU, Taiwan</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Jul 2018 – Dec 2018</span><span class="desc">Research Intern, Industrial Technology Research Institute (ITRI), Taiwan</span></li>
+        <li><i class="fas fa-briefcase"></i><span class="date">Sep 2017 – Dec 2018</span><span class="desc">Undergraduate Researcher, Collaborative Vision Lab, NCTU, Taiwan</span></li>
+      </ul>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <ul>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D., Engineering Technology (Dept. of Electrical Engineering), KU Leuven, Belgium (expected)</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2019 – Sep 2021</span><span class="desc">M.Sc., Computer Science (Cum laude), KU Leuven, Belgium</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Apr 2019 – Sep 2019</span><span class="desc">Exchange Program, RWTH Aachen, Germany</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2015 – Jun 2019</span><span class="desc">B.Sc., Computer Science & Engineering, NCTU, Taiwan (GPA 4.06/4.3)</span></li>
+      </ul>
+    </section>
+
+    <section id="awards">
+      <h2>Honors & Grants</h2>
+      <ul>
+        <li><i class="fas fa-trophy"></i><span class="date">2025</span><span class="desc">FWO Travel Grant, Research Foundation Flanders for ICFOG 2025</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2019</span><span class="desc">KU Leuven–Taiwan Scholarship (教育部百大留學獎學金)</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Highest Distinction Award, Dept. Graduation Project, NCTU</span></li>
+        <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Popular Award (2nd Runner-up), NCTU Graduation Project</span></li>
+      </ul>
+    </section>
+
+    <section id="services">
+      <h2>Academic Service</h2>
+      <ul>
+        <li><i class="fas fa-book-open"></i><span class="desc"><strong>Reviewer – Journals:</strong>
+          <ul><li>Scientific Reports (IF 3.8)</li><li>IEEE Access (IF 3.4)</li><li>Artificial Intelligence in Medicine (IF 6.1)</li></ul>
+        </span></li>
+        <li><i class="fas fa-comments"></i><span class="desc"><strong>Reviewer – Conferences:</strong>
+          <ul><li>IEEE EMBC 2024</li></ul>
+        </span></li>
+        <li><i class="fas fa-user-graduate"></i><span class="desc"><strong>Master Thesis Co-supervisor:</strong>
+          <ul><li>Supervised 6 master students (Engineering Technology)</li></ul>
+        </span></li>
+        <li><i class="fas fa-chalkboard-teacher"></i><span class="desc"><strong>Teaching Assistant, KU Leuven:</strong>
+          <ul><li>Pathways to Sustainability (2021)</li><li>Machine Learning (2022, 2023, 2024)</li><li>Engineering Experience II – Data Acquisition (2022)</li><li>Applied AI: Academic Perspectives – ML in Healthcare (2022, 2023)</li></ul>
+        </span></li>
+      </ul>
+    </section>
+
     <section id="publications">
       <h2>Publications & Citations</h2>
       <ul id="pub-list"><li>Loading publications…</li></ul>
@@ -101,6 +173,12 @@
     (function(){
       const size = 7;
       const knightMoves = [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]];
+      // Precomputed 7×7 tour as linear indices 0–48
+      const tourIds = [
+        0,15,28,43,38,47,34,39,48,33,46,41,26,13,4,19,6,11,20,5,10,1,14,9,24,37,42,29,44,
+        35,22,7,2,17,32,45,30,25,40,27,12,3,18,31,16,21,36,23,8
+      ];
+
       const board = document.getElementById('board');
       const moveCountEl = document.getElementById('move-count');
       const msgEl = document.getElementById('message');
@@ -124,13 +202,13 @@
       }
 
       function buildBoard(){
-        for(let y=0;y<size;y++){
-          for(let x=0;x<size;x++){
+        for(let y=0; y<size; y++){
+          for(let x=0; x<size; x++){
             const sq = document.createElement('div');
             sq.className = 'square';
             sq.dataset.x = x;
             sq.dataset.y = y;
-            sq.addEventListener('click',onSquareClick);
+            sq.addEventListener('click', onSquareClick);
             board.appendChild(sq);
           }
         }
@@ -168,26 +246,12 @@
 
       function showHints(){
         board.querySelectorAll('.hint').forEach(sq=>sq.classList.remove('hint'));
-        // gather candidates
-        const cands = [];
-        knightMoves.forEach(([dx,dy])=>{
-          const nx=current.x+dx, ny=current.y+dy;
-          if(nx>=0&&nx<size&&ny>=0&&ny<size&&!visited[idx(nx,ny)]){
-            // count onward moves
-            let deg = 0;
-            knightMoves.forEach(([adx,ady])=>{
-              const ax=nx+adx, ay=ny+ady;
-              if(ax>=0&&ax<size&&ay>=0&&ay<size&&!visited[idx(ax,ay)]) deg++;
-            });
-            cands.push({nx,ny,deg});
-          }
-        });
-        if(!cands.length) return;
-        // find minimum degree
-        const minDeg = Math.min(...cands.map(c=>c.deg));
-        // highlight only those with deg == minDeg
-        cands.filter(c=>c.deg===minDeg)
-             .forEach(c=> board.childNodes[idx(c.nx,c.ny)].classList.add('hint'));
+        const currId = current.y*size + current.x;
+        const ti = tourIds.indexOf(currId);
+        if(ti>=0 && ti < tourIds.length-1){
+          const nextId = tourIds[ti+1];
+          board.childNodes[nextId].classList.add('hint');
+        }
       }
 
       function finish(){
@@ -206,9 +270,9 @@
       init();
     })();
 
-    // publications loader (unchanged)…
+    // Load publications
     async function loadPublications(){
-      try{
+      try {
         const res = await fetch('publications.json?t='+Date.now());
         const data = await res.json();
         data.publications.sort((a,b)=>parseInt(b.year||'0')-parseInt(a.year||'0'));
@@ -228,8 +292,8 @@
           `;
           list.appendChild(li);
         });
-      }catch{
-        document.getElementById('pub-list').innerHTML='<li>Failed to load publications.</li>';
+      } catch {
+        document.getElementById('pub-list').innerHTML = '<li>Failed to load publications.</li>';
       }
     }
     loadPublications();
