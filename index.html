@@ -16,7 +16,7 @@
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Arial, sans-serif; color: var(--color-dark); background: var(--color-light); }
     /* Sidebar */
-    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; padding: 2rem 1rem 1rem; background: var(--color-dark); color: var(--color-light); display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; padding: 2rem 1rem; background: var(--color-dark); color: var(--color-light); display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
     .sidebar img.profile { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; }
     .sidebar h1 { margin: 0.5rem 0 1rem; font-size: 1.8rem; text-align: center; }
     .sidebar p, .sidebar a { margin: 0.3rem 0; color: var(--color-light); font-size: 0.95rem; text-decoration: none; display: flex; align-items: center; }
@@ -100,6 +100,7 @@
   </aside>
 
   <main>
+    <!-- About Me -->
     <section id="about">
       <h2>About Me</h2>
       <p class="intro">
@@ -114,24 +115,30 @@
       </p>
     </section>
 
+    <!-- Recent News -->
     <section id="updates">
       <h2>Recent News</h2>
       <ul>
-        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span>
-            <span class="desc"><strong>Poster</strong> at
-              <a href="https://icfog.org/meetings/icfog2025/" target="_blank">The International Consortium on Freezing of Gait (ICFOG 2025)</a>,
-              Atlanta, Georgia, USA
-            </span>
+        <li><i class="fas fa-bullhorn"></i>
+          <span class="date">June 2025</span>
+          <span class="desc"><strong>Poster</strong> at
+            <a href="https://icfog.org/meetings/icfog2025/" target="_blank">
+              The International Consortium on Freezing of Gait (ICFOG 2025)
+            </a>, Atlanta, Georgia, USA
+          </span>
         </li>
-        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span>
-            <span class="desc"><strong>Poster</strong> at
-              <a href="https://ispgr.org/2025-world-congress/" target="_blank">The International Society of Posture and Gait Research (ISPGR 2025)</a>,
-              Maastricht, Netherlands
-            </span>
+        <li><i class="fas fa-bullhorn"></i>
+          <span class="date">June 2025</span>
+          <span class="desc"><strong>Poster</strong> at
+            <a href="https://ispgr.org/2025-world-congress/" target="_blank">
+              The International Society of Posture and Gait Research (ISPGR 2025)
+            </a>, Maastricht, Netherlands
+          </span>
         </li>
       </ul>
     </section>
 
+    <!-- Experience -->
     <section id="experience">
       <h2>Experience</h2>
       <ul>
@@ -143,6 +150,7 @@
       </ul>
     </section>
 
+    <!-- Education -->
     <section id="education">
       <h2>Education</h2>
       <ul>
@@ -153,6 +161,7 @@
       </ul>
     </section>
 
+    <!-- Honors & Grants -->
     <section id="awards">
       <h2>Honors & Grants</h2>
       <ul>
@@ -163,6 +172,7 @@
       </ul>
     </section>
 
+    <!-- Academic Service -->
     <section id="services">
       <h2>Academic Service</h2>
       <ul>
@@ -202,6 +212,7 @@
       </ul>
     </section>
 
+    <!-- Publications -->
     <section id="publications">
       <h2>Publications & Citations</h2>
       <ul id="pub-list"><li>Loading publications…</li></ul>
@@ -209,7 +220,7 @@
   </main>
 
   <script>
-    // Knight's Tour with Hint (optimal next move)
+    // Knight's Tour with Hint
     (function() {
       const size = 7;
       const board = document.getElementById('board');
@@ -222,14 +233,14 @@
 
       function idx(x,y){ return y*size + x; }
 
-      // Warnsdorff-based backtracking to find a full tour path
+      // Warnsdorff heuristic + backtracking
       function solve(x,y,visit,path) {
         if(path.length === size*size) return path;
         const movesList = [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]]
-          .map(([dx,dy])=>({nx:x+dx,ny:y+dy}))
-          .filter(p=>p.nx>=0&&p.nx<size&&p.ny>=0&&p.ny<size&&!visit[idx(p.nx,p.ny)])
-          .map(p=>({...p,deg:count(p.nx,p.ny,visit)}))
-          .sort((a,b)=>a.deg-b.deg);
+          .map(([dx,dy]) => ({nx:x+dx, ny:y+dy}))
+          .filter(p => p.nx>=0&&p.nx<size&&p.ny>=0&&p.ny<size && !visit[idx(p.nx,p.ny)])
+          .map(p => ({...p, deg: count(p.nx,p.ny,visit)}))
+          .sort((a,b) => a.deg - b.deg);
         for(const m of movesList) {
           visit[idx(m.nx,m.ny)] = true;
           const res = solve(m.nx,m.ny,visit, path.concat([{x:m.nx,y:m.ny}]));
@@ -259,41 +270,41 @@
       function buildBoard(){
         for(let y=0; y<size; y++){
           for(let x=0; x<size; x++){
-            const sq=document.createElement('div');
-            sq.className='square';
-            sq.dataset.x=x; sq.dataset.y=y;
-            sq.addEventListener('click',onClick);
+            const sq = document.createElement('div');
+            sq.className = 'square';
+            sq.dataset.x = x; sq.dataset.y = y;
+            sq.addEventListener('click', onClick);
             board.appendChild(sq);
           }
         }
       }
       function clearHints(){
-        board.querySelectorAll('.square.hint')
-          .forEach(sq=>sq.classList.remove('hint'));
+        board.querySelectorAll('.square.hint').forEach(sq => sq.classList.remove('hint'));
       }
       function highlight(){
         clearHints();
-        board.querySelectorAll('.panda').forEach(el=>el.remove());
-        board.childNodes.forEach(s=>s.classList.remove('visited','next','start'));
+        board.querySelectorAll('.panda').forEach(el => el.remove());
+        board.childNodes.forEach(sq => sq.classList.remove('visited','next','start'));
         visited[idx(current.x,current.y)] = true;
-        board.childNodes.forEach((s,i)=>{ if(visited[i]) s.classList.add('visited'); });
+        board.childNodes.forEach((sq,i)=>{ if(visited[i]) sq.classList.add('visited'); });
         // place panda
-        const img=document.createElement('img');
-        img.src='./panda-bear.png'; img.className='panda';
+        const img = document.createElement('img');
+        img.src = './panda-bear.png'; img.className = 'panda';
         board.childNodes[idx(current.x,current.y)].appendChild(img);
         board.childNodes[idx(0,0)].classList.add('start');
-        // mark all available moves
+        // mark all legal moves
         const avail = [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]]
-          .map(([dx,dy])=>({nx:current.x+dx, ny:current.y+dy}))
+          .map(([dx,dy]) => ({nx:current.x+dx, ny:current.y+dy}))
           .filter(m=>m.nx>=0&&m.nx<size&&m.ny>=0&&m.ny<size && !visited[idx(m.nx,m.ny)]);
         avail.forEach(m=>board.childNodes[idx(m.nx,m.ny)].classList.add('next'));
-        // compute solution for next hint
+        // compute solution path and hint
         const visitCopy = visited.slice();
         const sol = solve(current.x,current.y,visitCopy, []);
         if(sol && sol[0]) {
           const {x:nx,y:ny} = sol[0];
           board.childNodes[idx(nx,ny)].classList.add('hint');
         }
+        // check end
         if(avail.length === 0) finish();
       }
       function onClick(e){
