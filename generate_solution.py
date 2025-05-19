@@ -11,7 +11,7 @@ inspect them locally.
 Usage:
   python generate_tours.py [max_tours]
 
-If `max_tours` is not provided, the script defaults to 100 tours.
+If `max_tours` is not provided or invalid, the script defaults to 8 tours (maximum cap).
 
 Output:
   Creates `tours.json` in the current directory with structure:
@@ -25,8 +25,7 @@ Output:
 import json
 import sys
 
-# Board size
-SIZE = 7
+# Board size\SIZE = 7
 # All eight knight moves
 KNIGHT_MOVES = [
     (1, 2), (2, 1),
@@ -35,17 +34,18 @@ KNIGHT_MOVES = [
     (-1, -2), (-2, -1)
 ]
 
-# Limit on number of tours to generate
+# Limit on number of tours to generate (capped at 8)
 try:
-    MAX_TOURS = int(sys.argv[1])
+    MAX_TOURS = min(int(sys.argv[1]), 8)
 except (IndexError, ValueError):
-    MAX_TOURS = 100
+    MAX_TOURS = 8
 
 # Collected tours will be stored here
 # Each tour is a list of (x,y) tuples
 found_tours = []
+SIZE = 7
 
-# Use a set for O(1) visited checks
+# Backtracking with Warnsdorff's heuristic
 
 def backtrack(path, visited):
     # Early exit if we've collected enough
@@ -54,45 +54,38 @@ def backtrack(path, visited):
 
     # If full length, record the tour
     if len(path) == SIZE * SIZE:
-        # Convert to dict form for JSON
         tour_dicts = [{"x": x, "y": y} for (x, y) in path]
         found_tours.append(tour_dicts)
         return False
 
-    # Warnsdorff heuristic: sort next moves by onward degree
+    # Generate candidates ordered by onward degree (Warnsdorff)
     candidates = []
     for dx, dy in KNIGHT_MOVES:
         nx, ny = path[-1][0] + dx, path[-1][1] + dy
         if 0 <= nx < SIZE and 0 <= ny < SIZE and (nx, ny) not in visited:
-            # count onward moves
             deg = 0
             for ddx, ddy in KNIGHT_MOVES:
                 ax, ay = nx + ddx, ny + ddy
                 if 0 <= ax < SIZE and 0 <= ay < SIZE and (ax, ay) not in visited:
                     deg += 1
             candidates.append((deg, nx, ny))
-    # try lowest degree first
     candidates.sort(key=lambda c: c[0])
 
     for _, nx, ny in candidates:
         visited.add((nx, ny))
         path.append((nx, ny))
-        stop = backtrack(path, visited)
-        if stop:
+        if backtrack(path, visited):
             return True
-        # backtrack
         path.pop()
         visited.remove((nx, ny))
     return False
 
 
 def main():
-    # start from (0,0)
     visited = {(0, 0)}
     path = [(0, 0)]
     print(f"Starting search for up to {MAX_TOURS} tours on a {SIZE}×{SIZE} board...")
     backtrack(path, visited)
-    # write to tours.json
     output = {"tours": found_tours}
     with open("tours.json", "w") as f:
         json.dump(output, f, indent=2)
