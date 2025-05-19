@@ -13,7 +13,7 @@
       --color-light:  #f4f3ee;
       --color-accent: #e0afa0;
     }
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -81,6 +81,9 @@
       border-radius: 4px;
       cursor: pointer;
     }
+    #hint-btn:disabled {
+      opacity: 0.6; cursor: not-allowed;
+    }
     #board {
       display: grid;
       grid-template-columns: repeat(7,30px);
@@ -88,10 +91,9 @@
       gap: 2px;
     }
     .square {
-      width: 30px; height: 30px;
+      width:30px; height:30px;
       background: var(--color-light);
-      position: relative;
-      cursor: pointer;
+      position: relative; cursor: pointer;
     }
     .square.visited { background: var(--color-gray2); }
     .square.next    { background: var(--color-accent); }
@@ -103,35 +105,25 @@
       width: 20px; height: 20px;
     }
     #move-count, #message {
-      margin-top: .5rem;
-      color: var(--color-light);
-      font-weight: bold;
+      margin-top: .5rem; color: var(--color-light); font-weight: bold;
     }
 
     /* Main content */
     main {
-      margin-left: 300px;
-      padding: 2rem;
-      max-width: 1200px;
+      margin-left: 300px; padding: 2rem; max-width: 1200px;
     }
     section + section {
-      margin-top: 2rem;
-      border-top: 1px solid var(--color-gray2);
-      padding-top: 1.5rem;
+      margin-top: 2rem; border-top: 1px solid var(--color-gray2); padding-top: 1.5rem;
     }
     section { padding-left: 1rem; }
     h2 {
       font-size: 1.6rem; color: var(--color-dark);
-      border-left: 4px solid var(--color-accent);
-      padding-left: .5rem;
+      border-left: 4px solid var(--color-accent); padding-left: .5rem;
     }
     p.intro {
       font-size: 1rem; line-height: 1.5; margin-bottom: 1rem;
     }
-    p.intro a {
-      color: var(--color-accent);
-      text-decoration: none;
-    }
+    p.intro a { color: var(--color-accent); text-decoration: none; }
     p.intro a:hover { text-decoration: underline; }
 
     ul { list-style: none; padding: 0; }
@@ -152,12 +144,10 @@
       position: relative; padding-left: 1.2rem; margin-bottom: .4rem;
     }
     ul ul li::before {
-      content: "•"; position: absolute; left: 0; top: .2rem;
+      content: "•"; position: absolute; left:0; top:.2rem;
       color: var(--color-accent);
     }
-    .desc a {
-      color: var(--color-accent); text-decoration: none;
-    }
+    .desc a { color: var(--color-accent); text-decoration: none; }
     .desc a:hover { text-decoration: underline; }
 
     #pub-list li {
@@ -186,14 +176,13 @@
     }
   </style>
 </head>
+
 <body>
   <aside class="sidebar">
     <img class="profile" src="photo.jpg" alt="Po-Kai Yang">
     <h1>Po-Kai Yang</h1>
     <p><i class="fas fa-map-marker-alt"></i>Leuven, Belgium</p>
-    <p><i class="fas fa-envelope"></i>
-      <a href="mailto:po-kai.yang@kuleuven.be">po-kai.yang@kuleuven.be</a>
-    </p>
+    <p><i class="fas fa-envelope"></i><a href="mailto:po-kai.yang@kuleuven.be">po-kai.yang@kuleuven.be</a></p>
     <p><i class="fas fa-phone"></i>+32 456 388 594</p>
     <p><i class="fas fa-phone"></i>+886 988 335 302</p>
 
@@ -209,7 +198,7 @@
       <h3>Knight’s Tour Puzzle</h3>
       <div class="button-group">
         <button id="rules-btn">Rules</button>
-        <button id="hint-btn">Hint</button>
+        <button id="hint-btn" disabled>Hint</button>
       </div>
       <div id="board"></div>
       <div id="move-count">Moves: 0</div>
@@ -219,48 +208,23 @@
   </aside>
 
   <main>
-    <!-- CV sections: About, News, Experience, Education, Awards, Services -->
+    <!-- CV sections: About, Updates, Experience, Education, Awards, Services -->
     <section id="about">
       <h2>About Me</h2>
       <p class="intro">
         I am currently a Ph.D. student in the
-        <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">
-          e-Media Research Lab
-        </a> at KU Leuven, supervised by
-        <a href="https://www.kuleuven.be/wieiswie/en/person/00045098" target="_blank">
-          Prof. Dr. Bart Vanrumste
-        </a>. My research focuses on AI for healthcare. As part of the
-        <a href="https://iiw.kuleuven.be/onderzoek/emedia/projects/fog-it" target="_blank">
-          FOG-IT project
-        </a>, I develop deep-learning methods to detect and assess freezing of gait in Parkinson’s disease.
+        <a href="https://iiw.kuleuven.be/onderzoek/emedia" target="_blank">e-Media Research Lab</a>
+        at KU Leuven, under Prof. Dr. Bart Vanrumste. My research focuses on AI for healthcare...
       </p>
     </section>
     <section id="updates">
       <h2>Recent News</h2>
       <ul>
-        <li>
-          <i class="fas fa-bullhorn"></i>
-          <span class="date">June 2025</span>
-          <span class="desc">
-            <strong>Poster presentation</strong> at
-            <a href="https://icfog.org/meetings/icfog2025/" target="_blank">
-              ICFOG 2025
-            </a>, Atlanta, USA
-          </span>
-        </li>
-        <li>
-          <i class="fas fa-bullhorn"></i>
-          <span class="date">June 2025</span>
-          <span class="desc">
-            <strong>Poster presentation</strong> at
-            <a href="https://ispgr.org/2025-world-congress/" target="_blank">
-              ISPGR 2025
-            </a>, Maastricht, Netherlands
-          </span>
-        </li>
+        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster presentation</strong> at <a href="https://icfog.org/meetings/icfog2025/" target="_blank">ICFOG 2025</a>, Atlanta, USA</span></li>
+        <li><i class="fas fa-bullhorn"></i><span class="date">June 2025</span><span class="desc"><strong>Poster presentation</strong> at <a href="https://ispgr.org/2025-world-congress/" target="_blank">ISPGR 2025</a>, Maastricht, Netherlands</span></li>
       </ul>
     </section>
-    <!-- ... other CV sections ... -->
+    <!-- other CV sections omitted for brevity -->
     <section id="publications">
       <h2>Publications & Citations</h2>
       <ul id="pub-list"><li>Loading publications…</li></ul>
@@ -274,7 +238,7 @@
       [1,2],[2,1],[-1,2],[-2,1],
       [1,-2],[2,-1],[-1,-2],[-2,-1]
     ];
-    let visited, current, moves;
+    let nextMap = [], visited, current, moves;
 
     const board    = document.getElementById('board');
     const moveEl   = document.getElementById('move-count');
@@ -284,6 +248,26 @@
     const hintBtn  = document.getElementById('hint-btn');
 
     function idx(x,y){ return y*size + x; }
+
+    // load tours.json and build successor map
+    fetch('tours.json')
+      .then(r=>r.json())
+      .then(data=>{
+        nextMap = Array(size*size).fill(0).map(()=>new Set());
+        data.tours.forEach(tour => {
+          for(let i=0; i<tour.length-1; i++){
+            const a = tour[i].y*size + tour[i].x;
+            const b = tour[i+1].y*size + tour[i+1].x;
+            nextMap[a].add(b);
+          }
+        });
+      })
+      .then(() => {
+        hintBtn.disabled = false;
+      })
+      .catch(err => {
+        console.warn('Failed to load tours.json:', err);
+      });
 
     function init(){
       board.innerHTML = '';
@@ -313,8 +297,7 @@
         if(visited[i]) sq.classList.add('visited');
       });
       const panda = document.createElement('img');
-      panda.src = './panda.png';
-      panda.className = 'panda';
+      panda.src = './panda.png'; panda.className = 'panda';
       board.childNodes[idx(current.x,current.y)].appendChild(panda);
       board.childNodes[idx(0,0)].classList.add('start');
       knightMoves.forEach(([dx,dy])=>{
@@ -336,42 +319,12 @@
       highlight();
     }
 
-    // backtracking check
-    function canComplete(x, y, vis, depth){
-      if(depth === size*size) return true;
-      const cands = [];
-      knightMoves.forEach(([dx,dy])=>{
-        const nx=x+dx, ny=y+dy, id=idx(nx,ny);
-        if(nx>=0&&nx<size&&ny>=0&&ny<size && !vis[id]){
-          let deg=0;
-          knightMoves.forEach(([adx,ady])=>{
-            const ax=nx+adx, ay=ny+ady, aid=idx(ax,ay);
-            if(ax>=0&&ax<size&&ay>=0&&ay<size && !vis[aid]) deg++;
-          });
-          cands.push({nx,ny,deg});
-        }
-      });
-      cands.sort((a,b)=>a.deg-b.deg);
-      for(const {nx,ny} of cands){
-        const id=idx(nx,ny);
-        vis[id]=true;
-        if(canComplete(nx,ny,vis,depth+1)) return true;
-        vis[id]=false;
-      }
-      return false;
-    }
-
     function showHints(){
       board.childNodes.forEach(sq=>sq.classList.remove('hint'));
-      const baseVis = visited.slice();
-      board.childNodes.forEach((sq,i)=>{
-        if(sq.classList.contains('next')){
-          baseVis[i] = true;
-          const x = +sq.dataset.x, y = +sq.dataset.y;
-          if(canComplete(x,y,baseVis,moves+1)){
-            sq.classList.add('hint');
-          }
-          baseVis[i] = false;
+      const curr = idx(current.x,current.y);
+      nextMap[curr].forEach(id => {
+        if(!visited[id]){
+          board.childNodes[id].classList.add('hint');
         }
       });
     }
@@ -384,7 +337,7 @@
     }
 
     rulesBtn.addEventListener('click', ()=>{
-      alert('Start at top-left with the panda. Move in L-shapes (knight moves) to visit all squares once.');
+      alert('Start at top-left. Move in L-shapes (knight moves) to visit all squares once.');
     });
     hintBtn.addEventListener('click', showHints);
     restart.addEventListener('click', init);
@@ -392,7 +345,7 @@
     init();
   })();
 
-  // load publications
+  // publications loader (unchanged) …
   async function loadPublications(){
     try {
       const res = await fetch('publications.json?t='+Date.now());
@@ -401,13 +354,15 @@
       const ul = document.getElementById('pub-list');
       ul.innerHTML = '';
       data.publications.forEach(pub=>{
-        const auth = pub.authors.split(/, | and /g)
-          .map(n=>n.includes('Yang')?`<strong>${n}</strong>`:n)
+        const authors = pub.authors.split(/, | and /g)
+          .map(n=> n.includes('Yang') ? `<strong>${n}</strong>` : n)
           .join(', ');
         ul.insertAdjacentHTML('beforeend', `
           <li>
             <i class="fas fa-file-alt"></i>
-            <span class="desc">${auth}, “${pub.title},” <em>${pub.journal||'Unknown Venue'}</em>.</span>
+            <span class="desc">${authors}, “${pub.title},”
+              <em>${pub.journal||'Unknown Venue'}</em>.
+            </span>
             <a href="${pub.url}" target="_blank">Read Paper</a>
             <span class="citations">(${pub.citations} citations)</span>
           </li>
