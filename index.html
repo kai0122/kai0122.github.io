@@ -58,7 +58,10 @@
     #pub-list li a:hover { text-decoration: underline; }
     #pub-list li em { margin-left: 0.5rem; font-style: italic; }
     #pub-list li .citations { margin-left: 0.5rem; color: var(--color-gray1); font-size: 0.9rem; }
-    @media(max-width: 768px) { .sidebar { position: relative; width: 100%; height: auto; padding-top: 1rem; } main { margin-left: 0; } }
+    @media(max-width: 768px) {
+      .sidebar { position: relative; width: 100%; height: auto; padding-top: 1rem; }
+      main { margin-left: 0; }
+    }
   </style>
 </head>
 <body>
@@ -70,7 +73,7 @@
     <p><i class="fas fa-phone"></i>+32 456 388 594</p>
     <p><i class="fas fa-phone"></i>+886 988 335 302</p>
     <a href="https://orcid.org/0000-0003-0649-9263"><i class="fab fa-orcid"></i>ORCID</a>
-    <a href="https://scholar.google.com/citations?user=0gl__ukAAAAJ&amp;hl=zh-TW"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
+    <a href="https://scholar.google.com/citations?user=0gl__ukAAAAJ&hl=zh-TW"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
     <a href="https://linkedin.com/in/po-kai-yang-a41921176"><i class="fab fa-linkedin"></i>LinkedIn</a>
     <a href="https://github.com/kai0122"><i class="fab fa-github"></i>GitHub</a>
     <a href="https://twitter.com/iampokaiyang"><i class="fab fa-twitter"></i>@iampokaiyang</a>
@@ -87,7 +90,7 @@
   </aside>
 
   <main>
-    <!-- ... other sections unchanged ... -->
+    <!-- ... your other sections (About, Updates, Experience, etc.) remain unchanged ... -->
     <section id="publications">
       <h2>Publications & Citations</h2>
       <ul id="pub-list"><li>Loading publications…</li></ul>
@@ -95,7 +98,6 @@
   </main>
 
   <script>
-    // Knight's Tour Game Logic (7×7) with panda icon
     (function() {
       const size = 7;
       const board = document.getElementById('board');
@@ -106,11 +108,12 @@
       const hintBtn = document.getElementById('hint-btn');
       let current, visited, moves;
 
+      const knightMoves = [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]];
       function idx(x, y) { return y * size + x; }
 
       function init() {
         board.innerHTML = '';
-        visited = Array(size * size).fill(false);
+        visited = Array(size*size).fill(false);
         moves = 0;
         current = { x: 0, y: 0 };
         msgEl.textContent = '';
@@ -134,73 +137,97 @@
       }
 
       function highlight() {
-        // Remove old pandas
         board.querySelectorAll('.panda').forEach(el => el.remove());
-        // Clear classes
         board.childNodes.forEach(sq => sq.classList.remove('visited','next','start','hint'));
-        // Mark visited
         visited[idx(current.x, current.y)] = true;
-        board.childNodes.forEach((sq, i) => { if (visited[i]) sq.classList.add('visited'); });
-        // Place panda icon
+        board.childNodes.forEach((sq,i) => { if (visited[i]) sq.classList.add('visited'); });
         const pandaImg = document.createElement('img');
         pandaImg.src = './panda.png';
         pandaImg.className = 'panda';
         board.childNodes[idx(current.x, current.y)].appendChild(pandaImg);
-        // Mark start
         board.childNodes[idx(0,0)].classList.add('start');
-        // Highlight next moves
         let nextCount = 0;
-        [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]].forEach(([dx,dy]) => {
-          const nx = current.x + dx, ny = current.y + dy;
-          if (nx>=0 && nx<size && ny>=0 && ny<size && !visited[idx(nx,ny)]) {
+        knightMoves.forEach(([dx,dy]) => {
+          const nx = current.x+dx, ny = current.y+dy;
+          if (nx>=0&&nx<size&&ny>=0&&ny<size&&!visited[idx(nx,ny)]) {
             board.childNodes[idx(nx,ny)].classList.add('next');
             nextCount++;
           }
         });
-        if (nextCount === 0) finish();
+        if (nextCount===0) finish();
       }
 
       function onSquareClick(e) {
         if (!e.currentTarget.classList.contains('next')) return;
-        current = { x: +e.currentTarget.dataset.x, y: +e.currentTarget.dataset.y };
+        current = { x:+e.currentTarget.dataset.x, y:+e.currentTarget.dataset.y };
         moves++;
         moveCountEl.textContent = `Moves: ${moves}`;
         highlight();
       }
 
+      // Warnsdorff‐guided backtracking to test completion from any candidate
+      function canComplete(x, y, visitedArr, visitedCount) {
+        if (visitedCount === size*size) return true;
+        // build next candidates with onward‐move counts
+        const cands = [];
+        knightMoves.forEach(([dx,dy]) => {
+          const nx = x+dx, ny = y+dy, id = idx(nx,ny);
+          if (nx>=0&&nx<size&&ny>=0&&ny<size&&!visitedArr[id]) {
+            let deg=0;
+            knightMoves.forEach(([adx,ady])=>{
+              const ax=nx+adx, ay=ny+ady;
+              if (ax>=0&&ax<size&&ay>=0&&ay<size&&!visitedArr[idx(ax,ay)]) deg++;
+            });
+            cands.push({ nx, ny, deg });
+          }
+        });
+        // Warnsdorff: try lowest‐degree first
+        cands.sort((a,b)=>a.deg-b.deg);
+        for (const {nx,ny} of cands) {
+          visitedArr[idx(nx,ny)] = true;
+          if (canComplete(nx,ny,visitedArr, visitedCount+1)) return true;
+          visitedArr[idx(nx,ny)] = false;
+        }
+        return false;
+      }
+
       function showHints() {
-        // clear any old hints
-        board.querySelectorAll('.hint').forEach(sq => sq.classList.remove('hint'));
-        // for each knight‐move direction, if valid & unvisited, mark it
-        [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]].forEach(([dx,dy]) => {
-          const nx = current.x + dx, ny = current.y + dy;
-          if (nx>=0 && nx<size && ny>=0 && ny<size && !visited[idx(nx,ny)]) {
-            board.childNodes[idx(nx,ny)].classList.add('hint');
+        board.querySelectorAll('.hint').forEach(sq=>sq.classList.remove('hint'));
+        // for each possible next, test if it can lead to full tour
+        knightMoves.forEach(([dx,dy])=>{
+          const nx = current.x+dx, ny = current.y+dy, id=idx(nx,ny);
+          if (nx>=0&&nx<size&&ny>=0&&ny<size&&!visited[id]) {
+            const copy = visited.slice();
+            copy[id] = true;
+            if ( canComplete(nx,ny, copy, moves+1) ) {
+              board.childNodes[id].classList.add('hint');
+            }
           }
         });
       }
 
       function finish() {
-        msgEl.textContent = visited.every(v => v)
+        msgEl.textContent = visited.every(v=>v)
           ? `Congratulations! Completed in ${moves} moves.`
           : `No moves left! Visited ${moves+1}/${size*size}. Try again.`;
         restartBtn.style.display = 'block';
       }
 
-      rulesBtn.addEventListener('click', () => {
+      rulesBtn.addEventListener('click', ()=> {
         alert('Start at top-left with the panda. Move in L-shapes (knight moves) to visit all squares once.');
       });
       hintBtn.addEventListener('click', showHints);
       restartBtn.addEventListener('click', init);
+
       init();
     })();
 
     // Load publications
     async function loadPublications() {
       try {
-        const res = await fetch('publications.json?t=' + Date.now());
+        const res = await fetch('publications.json?t='+Date.now());
         const data = await res.json();
-        data.publications.sort((a,b) => parseInt(b.year||'0')-parseInt(a.year||'0'));
+        data.publications.sort((a,b)=>parseInt(b.year||'0')-parseInt(a.year||'0'));
         const list = document.getElementById('pub-list');
         list.innerHTML = '';
         data.publications.forEach(pub => {
