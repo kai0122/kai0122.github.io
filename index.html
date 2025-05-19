@@ -15,36 +15,99 @@
     }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Arial, sans-serif; color: var(--color-dark); background: var(--color-light); }
+
     /* Sidebar */
-    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; padding: 2rem 1rem 1rem; background: var(--color-dark); color: var(--color-light); display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
-    .sidebar img.profile { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; }
-    .sidebar h1 { margin: 0.5rem 0 1rem; font-size: 1.8rem; text-align: center; }
-    .sidebar p, .sidebar a { margin: 0.3rem 0; color: var(--color-light); font-size: 0.95rem; text-decoration: none; display: flex; align-items: center; }
-    .sidebar p i, .sidebar a i { margin-right: 0.5rem; width: 1rem; }
+    .sidebar {
+      position: fixed; top: 0; left: 0;
+      width: 240px; height: 100vh;
+      padding: 2rem 1rem 1rem;
+      background: var(--color-dark); color: var(--color-light);
+      display: flex; flex-direction: column; align-items: center;
+      overflow-y: auto;
+    }
+    .sidebar img.profile {
+      width: 140px; height: 140px;
+      border-radius: 50%; object-fit: cover;
+      margin-bottom: 0.5rem;
+    }
+    .sidebar h1 {
+      margin: 0.5rem 0 1rem;
+      font-size: 1.8rem; text-align: center;
+    }
+    .sidebar p {
+      margin: 0.3rem 0;
+      font-size: 0.95rem; display: flex; align-items: center;
+    }
+    .sidebar p i { margin-right: 0.5rem; width: 1rem; }
     .sidebar a:hover { text-decoration: underline; }
+
+    /* Social icons row */
+    .social-icons {
+      display: flex; gap: 0.5rem; margin: 0.5rem 0;
+    }
+    .social-icons a {
+      color: var(--color-light); font-size: 1.5rem;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
 
     /* Button group */
     .button-group { display: flex; gap: 0.3rem; margin-bottom: 0.5rem; }
 
     /* Knight's Tour Game */
-    #knight-game { margin-top: auto; width: 100%; display: flex; flex-direction: column; align-items: center; }
-    #knight-game h3 { color: var(--color-light); margin-bottom: 0.5rem; }
-    #board { display: grid; grid-template-columns: repeat(7, 30px); grid-template-rows: repeat(7, 30px); gap: 2px; }
-    .square { width: 30px; height: 30px; background: var(--color-light); position: relative; cursor: pointer; }
+    #knight-game {
+      margin-top: auto; width: 100%;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    #knight-game h3 {
+      color: var(--color-light); margin-bottom: 0.5rem;
+    }
+    #board {
+      display: grid;
+      grid-template-columns: repeat(7, 30px);
+      grid-template-rows: repeat(7, 30px);
+      gap: 2px;
+    }
+    .square {
+      width: 30px; height: 30px;
+      background: var(--color-light);
+      position: relative; cursor: pointer;
+    }
     .square.visited { background: var(--color-gray2); }
-    .square.next { background: var(--color-accent); }
-    .square.start { border: 2px solid var(--color-accent); }
-    .square.hint { background: var(--color-gray1); border: 3px solid var(--color-accent); }
-    .panda { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; }
-    #move-count, #message { margin-top: 0.5rem; color: var(--color-light); font-weight: bold; }
-    #restart-btn, #rules-btn, #hint-btn { padding: 0.3rem 0.6rem; background: var(--color-accent); border: none; color: var(--color-light); border-radius: 4px; cursor: pointer; }
+    .square.next    { background: var(--color-accent); }
+    .square.start   { border: 2px solid var(--color-accent); }
+    .square.hint    { background: var(--color-gray1); border: 3px solid var(--color-accent); }
+    .panda {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px; height: 20px;
+    }
+    #move-count, #message {
+      margin-top: 0.5rem; color: var(--color-light); font-weight: bold;
+    }
+    #restart-btn, #rules-btn, #hint-btn {
+      padding: 0.3rem 0.6rem;
+      background: var(--color-accent);
+      border: none; color: var(--color-light);
+      border-radius: 4px; cursor: pointer;
+    }
 
     /* Main content */
-    main { margin-left: 260px; padding: 2rem; max-width: 1200px; }
-    section + section { margin-top: 2rem; border-top: 1px solid var(--color-gray2); padding-top: 1.5rem; }
+    main {
+      margin-left: 260px; padding: 2rem; max-width: 1200px;
+    }
+    section + section {
+      margin-top: 2rem; border-top: 1px solid var(--color-gray2);
+      padding-top: 1.5rem;
+    }
     section { padding-left: 1rem; }
-    h2 { font-size: 1.6rem; color: var(--color-dark); border-left: 4px solid var(--color-accent); padding-left: 0.5rem; }
-    p.intro { font-size: 1rem; line-height: 1.5; margin-bottom: 1rem; }
+    h2 {
+      font-size: 1.6rem; color: var(--color-dark);
+      border-left: 4px solid var(--color-accent);
+      padding-left: 0.5rem;
+    }
+    p.intro {
+      font-size: 1rem; line-height: 1.5; margin-bottom: 1rem;
+    }
     p.intro a { color: var(--color-accent); text-decoration: none; }
     p.intro a:hover { text-decoration: underline; }
     ul { list-style: none; padding: 0; }
@@ -53,16 +116,29 @@
     ul li span.date { flex: 0 0 12rem; font-weight: bold; }
     ul li span.desc { flex: 1; }
     ul ul { list-style: none; margin-left: 1.5rem; padding-left: 0; }
-    ul ul li { position: relative; padding-left: 1.2rem; margin-bottom: 0.4rem; }
-    ul ul li::before { content: "•"; position: absolute; left: 0; top: 0.2rem; color: var(--color-accent); }
+    ul ul li {
+      position: relative; padding-left: 1.2rem; margin-bottom: 0.4rem;
+    }
+    ul ul li::before {
+      content: "•"; position: absolute; left: 0; top: 0.2rem;
+      color: var(--color-accent);
+    }
     .desc a { color: var(--color-accent); text-decoration: none; }
     .desc a:hover { text-decoration: underline; }
-    #pub-list li { display: flex; align-items: baseline; white-space: normal; margin-bottom: 0.5rem; }
+    #pub-list li {
+      display: flex; align-items: baseline; white-space: normal;
+      margin-bottom: 0.5rem;
+    }
     #pub-list li i { margin-right: 0.5rem; color: var(--color-accent); }
-    #pub-list li a { color: var(--color-accent); font-weight: bold; text-decoration: none; margin-left: 0.5rem; }
+    #pub-list li a {
+      color: var(--color-accent); font-weight: bold;
+      text-decoration: none; margin-left: 0.5rem;
+    }
     #pub-list li a:hover { text-decoration: underline; }
     #pub-list li em { margin-left: 0.5rem; font-style: italic; }
-    #pub-list li .citations { margin-left: 0.5rem; color: var(--color-gray1); font-size: 0.9rem; }
+    #pub-list li .citations {
+      margin-left: 0.5rem; color: var(--color-gray1); font-size: 0.9rem;
+    }
 
     @media(max-width: 768px) {
       .sidebar { position: relative; width: 100%; height: auto; padding-top: 1rem; }
@@ -78,11 +154,14 @@
     <p><i class="fas fa-envelope"></i><a href="mailto:po-kai.yang@kuleuven.be">po-kai.yang@kuleuven.be</a></p>
     <p><i class="fas fa-phone"></i>+32 456 388 594</p>
     <p><i class="fas fa-phone"></i>+886 988 335 302</p>
-    <a href="https://orcid.org/0000-0003-0649-9263"><i class="fab fa-orcid"></i>ORCID</a>
-    <a href="https://scholar.google.com/citations?user=0gl__ukAAAAJ&hl=zh-TW"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
-    <a href="https://linkedin.com/in/po-kai-yang-a41921176"><i class="fab fa-linkedin"></i>LinkedIn</a>
-    <a href="https://github.com/kai0122"><i class="fab fa-github"></i>GitHub</a>
-    <a href="https://twitter.com/iampokaiyang"><i class="fab fa-twitter"></i>@iampokaiyang</a>
+
+    <div class="social-icons">
+      <a href="https://orcid.org/0000-0003-0649-9263"><i class="fab fa-orcid"></i></a>
+      <a href="https://scholar.google.com/citations?user=0gl__ukAAAAJ&hl=zh-TW"><i class="fas fa-graduation-cap"></i></a>
+      <a href="https://linkedin.com/in/po-kai-yang-a41921176"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/kai0122"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/iampokaiyang"><i class="fab fa-twitter"></i></a>
+    </div>
 
     <div id="knight-game">
       <h3>Knight's Tour Puzzle</h3>
@@ -152,43 +231,60 @@
         [1,2],[2,1],[-1,2],[-2,1],
         [1,-2],[2,-1],[-1,-2],[-2,-1]
       ];
-      let toursIds = [];
-      fetch('tours.json')
-        .then(r => r.json())
-        .then(data => {
-          toursIds = data.tours.map(t => t.map(p => p.y * size + p.x));
-        })
-        .catch(() => console.warn('Could not load tours.json'));
 
-      const board    = document.getElementById('board');
-      const moveEl   = document.getElementById('move-count');
-      const msgEl    = document.getElementById('message');
-      const restart  = document.getElementById('restart-btn');
+      // Recursive check: Warnsdorff-guided backtracking
+      function canComplete(x, y, visitedArr, visitedCount) {
+        if (visitedCount === size*size) return true;
+        // build candidates with onward-degrees
+        const cands = [];
+        knightMoves.forEach(([dx,dy]) => {
+          const nx = x+dx, ny = y+dy, id = ny*size+nx;
+          if (nx>=0&&nx<size&&ny>=0&&ny<size && !visitedArr[id]) {
+            let deg = 0;
+            knightMoves.forEach(([adx,ady]) => {
+              const ax = nx+adx, ay = ny+ady;
+              if (ax>=0&&ax<size&&ay>=0&&ay<size && !visitedArr[ay*size+ax]) deg++;
+            });
+            cands.push({nx, ny, deg});
+          }
+        });
+        cands.sort((a,b)=>a.deg-b.deg);
+        for (const {nx,ny} of cands) {
+          const id = ny*size+nx;
+          visitedArr[id] = true;
+          if (canComplete(nx, ny, visitedArr, visitedCount+1)) return true;
+          visitedArr[id] = false;
+        }
+        return false;
+      }
+
+      const board = document.getElementById('board');
+      const moveEl = document.getElementById('move-count');
+      const msgEl  = document.getElementById('message');
+      const restart= document.getElementById('restart-btn');
       const rulesBtn = document.getElementById('rules-btn');
       const hintBtn  = document.getElementById('hint-btn');
       let current, visited, moves;
 
-      function idx(x, y) { return y * size + x; }
+      function idx(x,y){ return y*size + x; }
 
       function init(){
         board.innerHTML = '';
         visited = Array(size*size).fill(false);
-        current = { x:0, y:0 };
-        moves   = 0;
+        current = {x:0,y:0};
+        moves = 0;
         moveEl.textContent = 'Moves: 0';
-        msgEl.textContent  = '';
+        msgEl.textContent = '';
         restart.style.display = 'none';
-        buildBoard();
-        highlight();
+        buildBoard(); highlight();
       }
 
       function buildBoard(){
-        for(let y=0; y<size; y++){
-          for(let x=0; x<size; x++){
+        for (let y=0; y<size; y++){
+          for (let x=0; x<size; x++){
             const sq = document.createElement('div');
             sq.className = 'square';
-            sq.dataset.x = x;
-            sq.dataset.y = y;
+            sq.dataset.x = x; sq.dataset.y = y;
             sq.addEventListener('click', onClick);
             board.appendChild(sq);
           }
@@ -198,27 +294,25 @@
       function highlight(){
         board.querySelectorAll('.panda').forEach(e=>e.remove());
         board.childNodes.forEach(sq=>sq.classList.remove('visited','next','start','hint'));
-        visited[idx(current.x, current.y)] = true;
+        visited[idx(current.x,current.y)] = true;
         board.childNodes.forEach((sq,i)=>{ if(visited[i]) sq.classList.add('visited'); });
         const panda = document.createElement('img');
-        panda.src = './panda.png';
-        panda.className = 'panda';
-        board.childNodes[idx(current.x, current.y)].appendChild(panda);
+        panda.src = './panda.png'; panda.className = 'panda';
+        board.childNodes[idx(current.x,current.y)].appendChild(panda);
         board.childNodes[idx(0,0)].classList.add('start');
-
-        let cnt = 0;
+        let countNext = 0;
         knightMoves.forEach(([dx,dy])=>{
-          const nx = current.x + dx, ny = current.y + dy;
-          if(nx>=0 && nx<size && ny>=0 && ny<size && !visited[idx(nx,ny)]){
-            board.childNodes[idx(nx,ny)].classList.add('next');
-            cnt++;
+          const nx=current.x+dx, ny=current.y+dy, id=idx(nx,ny);
+          if (nx>=0&&nx<size&&ny>=0&&ny<size && !visited[id]){
+            board.childNodes[id].classList.add('next');
+            countNext++;
           }
         });
-        if(cnt === 0) finish();
+        if (countNext === 0) finish();
       }
 
       function onClick(e){
-        if(!e.currentTarget.classList.contains('next')) return;
+        if (!e.currentTarget.classList.contains('next')) return;
         current = {
           x: +e.currentTarget.dataset.x,
           y: +e.currentTarget.dataset.y
@@ -230,13 +324,20 @@
 
       function showHints(){
         board.querySelectorAll('.hint').forEach(sq=>sq.classList.remove('hint'));
-        const currId = idx(current.x, current.y);
-        const nexts = new Set();
-        toursIds.forEach(t=>{
-          const i = t.indexOf(currId);
-          if(i >= 0 && i < t.length - 1) nexts.add(t[i+1]);
+        // test each possible next
+        knightMoves.forEach(([dx,dy])=>{
+          const nx = current.x+dx, ny = current.y+dy;
+          if (nx>=0&&nx<size&&ny>=0&&ny<size){
+            const id = idx(nx,ny);
+            if (!visited[id]){
+              const copy = visited.slice();
+              copy[id] = true;
+              if (canComplete(nx, ny, copy, moves+1)){
+                board.childNodes[id].classList.add('hint');
+              }
+            }
+          }
         });
-        nexts.forEach(id => board.childNodes[id].classList.add('hint'));
       }
 
       function finish(){
