@@ -1,5 +1,5 @@
 # .github/workflows/generate-tours.yml
-name: Split-and-Merge Tours
+name: Generate & Merge Tours
 
 on:
   push:
@@ -12,61 +12,36 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        branchIndex: [0, 1]
 
     steps:
+      # 1) Checkout so we can commit
       - name: Checkout
         uses: actions/checkout@v3
         with:
           persist-credentials: true
 
-      - name: Set up Python
+      # 2) Setup Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: Generate branch ${{ matrix.branchIndex }}
+      # 3) Generate both branches locally
+      - name: Generate branch 0 and 1 tours
         run: |
-          python generate_tours.py 100000 ${{ matrix.branchIndex }}
+          python generate_tours.py 100000 0
+          python generate_tours.py 100000 1
 
-      - name: Upload branch tours
-        uses: actions/upload-artifact@v2
-        with:
-          name: tours-${{ matrix.branchIndex }}
-          path: tours-${{ matrix.branchIndex }}.json
+      # 4) Merge into tours.json
+      - name: Merge tours
+        run: |
+          python merge_tours.py
 
-  merge:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: true
-
-      - name: Download branch 0 tours
-        uses: actions/download-artifact@v2
-        with:
-          name: tours-0
-          path: .
-
-      - name: Download branch 1 tours
-        uses: actions/download-artifact@v2
-        with:
-          name: tours-1
-          path: .
-
-      - name: Merge into tours.json
-        run: python merge_tours.py
-
-      - name: Commit merged file
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: regenerate merged tours.json"
-          file_pattern: "tours.json"
-          branch: main
-          author_name: github-actions
-          author_email: github-actions@github.com
+      # 5) Commit & push tours.json back to main
+      - name: Commit tours.json
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add tours.json
+          git diff --quiet && echo "No changes to tours.json" || git commit -m "chore: regenerate tours.json"
+          git push
