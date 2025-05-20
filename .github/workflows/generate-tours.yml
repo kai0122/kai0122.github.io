@@ -1,3 +1,4 @@
+# .github/workflows/generate-tours.yml
 name: Split-and-Merge Tours
 
 on:
@@ -9,7 +10,6 @@ on:
       - '.github/workflows/generate-tours.yml'
 
 jobs:
-  # matrix job: one for branch 0 (1,2) and one for branch 1 (2,1)
   build:
     runs-on: ubuntu-latest
     strategy:
@@ -17,25 +17,22 @@ jobs:
         branchIndex: [0, 1]
 
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           persist-credentials: true
 
-      - name: set up Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: install deps
-        run: python -m pip install --upgrade pip
-
-      - name: generate branch ${{ matrix.branchIndex }}
+      - name: Generate branch ${{ matrix.branchIndex }}
         run: |
           python generate_tours.py 100000 ${{ matrix.branchIndex }}
 
-      - name: upload branch tours
-        uses: actions/upload-artifact@v3
+      - name: Upload branch tours
+        uses: actions/upload-artifact@v2
         with:
           name: tours-${{ matrix.branchIndex }}
           path: tours-${{ matrix.branchIndex }}.json
@@ -43,27 +40,29 @@ jobs:
   merge:
     needs: build
     runs-on: ubuntu-latest
+
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           persist-credentials: true
 
-      - name: download branch tours
-        uses: actions/download-artifact@v3
+      - name: Download branch 0 tours
+        uses: actions/download-artifact@v2
         with:
           name: tours-0
           path: .
-      - name: download branch tours
-        uses: actions/download-artifact@v3
+
+      - name: Download branch 1 tours
+        uses: actions/download-artifact@v2
         with:
           name: tours-1
           path: .
 
-      - name: merge into tours.json
+      - name: Merge into tours.json
         run: python merge_tours.py
 
-      - name: commit merged file
+      - name: Commit merged file
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: regenerate merged tours.json"
