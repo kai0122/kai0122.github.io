@@ -1,44 +1,72 @@
-name: Generate Tours JSON
+name: Split-and-Merge Tours
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
     paths:
       - 'generate_tours.py'
+      - 'merge_tours.py'
       - '.github/workflows/generate-tours.yml'
 
 jobs:
-  generate-tours:
+  # matrix job: one for branch 0 (1,2) and one for branch 1 (2,1)
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        branchIndex: [0, 1]
 
     steps:
-      # 1. Check out the repo, with creds so we can push back
-      - uses: actions/checkout@v3
+      - name: checkout
+        uses: actions/checkout@v3
         with:
           persist-credentials: true
 
-      # 2. Set up Python
-      - name: Set up Python 3.x
+      - name: set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      # 3. (Optional) install deps
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
+      - name: install deps
+        run: python -m pip install --upgrade pip
 
-      # 4. Run your generator with a 1 000 000 cap
-      - name: Generate tours.json
+      - name: generate branch ${{ matrix.branchIndex }}
         run: |
-          python generate_tours.py 3000000
+          python generate_tours.py 100000 ${{ matrix.branchIndex }}
 
-      # 5. Commit & push tours.json if it changed
-      - name: Commit and push tours.json
+      - name: upload branch tours
+        uses: actions/upload-artifact@v3
+        with:
+          name: tours-${{ matrix.branchIndex }}
+          path: tours-${{ matrix.branchIndex }}.json
+
+  merge:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true
+
+      - name: download branch tours
+        uses: actions/download-artifact@v3
+        with:
+          name: tours-0
+          path: .
+      - name: download branch tours
+        uses: actions/download-artifact@v3
+        with:
+          name: tours-1
+          path: .
+
+      - name: merge into tours.json
+        run: python merge_tours.py
+
+      - name: commit merged file
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: regenerate tours.json"
+          commit_message: "chore: regenerate merged tours.json"
           file_pattern: "tours.json"
           branch: main
           author_name: github-actions
