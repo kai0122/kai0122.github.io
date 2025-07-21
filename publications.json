@@ -5,23 +5,31 @@
       "year": 2024,
       "title": "Freezing of gait assessment with inertial measurement units and deep learning: effect of tasks, medication states, and stops",
       "journal": "Journal of NeuroEngineering and Rehabilitation 21 (1), 24, 2024",
-      "url": "#",
-      "citations": 16
+      "url": "https://link.springer.com/article/10.1186/s12984-024-01320-1",
+      "citations": 20
     },
     {
       "authors": "Po-Kai Yang and Benjamin Filtjens and Pieter Ginis and Maaike Goris and Alice Nieuwboer and Moran Gilat and Peter Slaets and Bart Vanrumste",
       "year": 2024,
       "title": "Automatic detection and assessment of freezing of gait manifestations",
       "journal": "IEEE Transactions on Neural Systems and Rehabilitation Engineering, 2024",
-      "url": "#",
-      "citations": 7
+      "url": "https://ieeexplore.ieee.org/abstract/document/10604853/",
+      "citations": 9
     },
     {
       "authors": "Po-Kai Yang and Benjamin Filtjens and Pieter Ginis and Maaike Goris and Alice Nieuwboer and Moran Gilat and Peter Slaets and Bart Vanrumste",
       "year": 2025,
       "title": "Multimodal freezing of gait detection: Analyzing the benefits and limitations of physiological data",
       "journal": "IEEE Transactions on Neural Systems and Rehabilitation Engineering, 2025",
-      "url": "#",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10902623/",
+      "citations": 4
+    },
+    {
+      "authors": "Benjamin Filtjens and Po-Kai Yang and Maaike Goris and Moran Gilat and Niklas Kempynck and Pieter Ginis and Alice Nieuwboer and Peter Slaets and Bart Vanrumste",
+      "year": 2023,
+      "title": "Automated freezing of gait assessment with deep learning and data augmentation from simulated inertial measurement unit data",
+      "journal": "2023 IEEE 19th international conference on body sensor networks (BSN), 1-4, 2023",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10330987/",
       "citations": 2
     },
     {
@@ -29,31 +37,55 @@
       "year": 2022,
       "title": "Touching the Explanations: Explaining Movie Recommendation Scores in Mobile Augmented Reality",
       "journal": "2022 IEEE International Conference on Artificial Intelligence and Virtual …, 2022",
-      "url": "#",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10024447/",
       "citations": 2
-    },
-    {
-      "authors": "Benjamin Filtjens and Po-Kai Yang and Maaike Goris and Moran Gilat and Niklas Kempynck and Pieter Ginis and Alice Nieuwboer and Peter Slaets and Bart Vanrumste",
-      "year": 2023,
-      "title": "Automated freezing of gait assessment with deep learning and data augmentation from simulated inertial measurement unit data",
-      "journal": "2023 IEEE 19th international conference on body sensor networks (BSN), 1-4, 2023",
-      "url": "#",
-      "citations": 1
     },
     {
       "authors": "Po-Kai Yang and Benjamin Filtjens and Pieter Ginis and Maaike Goris and Moran Gilat and Alice Nieuwboer and Peter Slaets and Bart Vanrumste",
       "year": 2023,
       "title": "Automated freezing of gait assessment in Parkinson's disease using inertial measurement units and deep learning",
-      "journal": "The International Society of Posture and Gait Research (ISPGR) Congress 2023 …, 2023",
-      "url": "#",
+      "journal": "The International Society of Posture and Gait Research (ISPGR): Congress 2023, 2023",
+      "url": "https://research.tudelft.nl/en/publications/automated-freezing-of-gait-assessment-in-parkinsons-disease-using",
       "citations": 1
     },
     {
-      "authors": "Maaike Goris and Po-Kai Yang and Pieter Ginis and Benjamin Filtjens and Clint Hansen and Christian Schlenstedt and Jeff M Hausdorff and Walter Maetsler and Wim Vandenberghe and Moran Gilat",
+      "authors": "Po-Kai Yang and Bart Vanrumste and Alice Nieuwboer and Peter Slaets",
+      "year": 2025,
+      "title": "Automated Detection and Assessment of Freezing of Gait in Parkinson’s Disease Using Wearable Sensors and Machine Learning",
+      "journal": "",
+      "url": "https://scholar.google.com/scholar?cluster=8755820235716209782&hl=en&oi=scholarr",
+      "citations": 0
+    },
+    {
+      "authors": "Maaike Goris and Po-Kai Yang and Pieter Ginis and Benjamin Filtjens and Clint Hansen and Christian Schlenstedt and Jeff M Hausdorff and Walter Maetsler and Wim Vandenberghe and Bart Vanrumste and Alice Nieuwboer and Moran Gilat",
       "year": 2025,
       "title": "Can a deep learning algorithm assess freezing of gait during a turning task in people with Parkinson’s disease?",
-      "journal": "ISPGR 2025, Date: 2025/06/29-2025/07/02, Location: Maastricht, 2025",
-      "url": "#",
+      "journal": "International Society of Posture & Gait Research (ISPGR): World Congress, 2025",
+      "url": "https://research.tudelft.nl/en/publications/can-a-deep-learning-algorithm-assess-freezing-of-gait-during-a-tu",
+      "citations": 0
+    },
+    {
+      "authors": "Juha Carlon and Po-Kai Yang and Maaike Goris and Pieter Ginis and Alice Nieuwboer and Benjamin Filtjens and Moran Gilat and Bart Vanrumste",
+      "year": 2025,
+      "title": "External Validation of a Deep Learning Model for Freezing of Gait Detection in Parkinson's disease",
+      "journal": "International Society of Posture & Gait Research (ISPGR): World Congress, 2025",
+      "url": "https://research.tudelft.nl/en/publications/external-validation-of-a-deep-learning-model-for-freezing-of-gait",
+      "citations": 0
+    },
+    {
+      "authors": "Po-Kai Yang and Emilie Klaver and Jorik Nonnekes and Richard JA van Wezel and Lisa Alcock and Alison J Yarnall and Lynn Rochester and Clint Hansen and Christian Schlenstedt and Walter Maetzler and David Buzaglo and Marina Brozgol and Jeffrey M Hausdorff and Alice Nieuwboer and Moran Gilat and Bart Vanrumste and Benjamin Filtjens and Pieter Ginis",
+      "year": 2025,
+      "title": "Deep learning-based assessment of freezing of gait severity in Parkinson's disease: a multicentre study",
+      "journal": "The International Consortium for Freezing of Gait (ICFOG): Meeting, 2025",
+      "url": "https://research.tudelft.nl/en/publications/deep-learning-based-assessment-of-freezing-of-gait-severity-in-pa",
+      "citations": 0
+    },
+    {
+      "authors": "Po-Kai Yang and Juha Carlon and Maaike Goris and Emilie Klaver and Jorik Nonnekes and Richard JA van Wezel and Lisa Alcock and Alison J Yarnall and Lynn Rochester and Clint Hansen and Christian Schlenstedt and Walter Maetzler and David Buzaglo and Marina Brozgol and Jeffrey M Hausdorff and Alice Nieuwboer and Moran Gilat and Pieter Ginis and Bart Vanrumste and Benjamin Filtjens",
+      "year": 2025,
+      "title": "Deep Learning for Freezing of Gait Assessment using Inertial Measurement Units: A Multicentre Study",
+      "journal": "medRxiv, 2025.06. 27.25330405, 2025",
+      "url": "https://www.medrxiv.org/content/10.1101/2025.06.27.25330405.abstract",
       "citations": 0
     },
     {
@@ -61,7 +93,7 @@
       "year": 2024,
       "title": "Automatic detection of Freezing of gait in Parkinson’s disease with IMU: validation of a deep learning algorithm in the home",
       "journal": "International Congress of Parkinson’s Disease and Movement Disorders …, 2024",
-      "url": "#",
+      "url": "https://scholar.google.com/scholar?cluster=2423835789335965580&hl=en&oi=scholarr",
       "citations": 0
     },
     {
@@ -69,7 +101,7 @@
       "year": 2023,
       "title": "A Comparative Study of Multi-Modal Data for Human Action Forecasting in Robotic Assistive Devices",
       "journal": "21st National Day of Biomedical Engineering 2023, Location: VUB Campus …, 2023",
-      "url": "#",
+      "url": "https://researchportal.vub.be/files/106507872/poster_ai4exo_v4.pdf",
       "citations": 0
     },
     {
@@ -77,7 +109,7 @@
       "year": 2022,
       "title": "Automatic freezing of gait annotation with deep learning and simulated inertial measurement unit data",
       "journal": "ISPGR World Congress 2022, Date: 2022/07/04-2022/07/07, Location: Montreal …, 2022",
-      "url": "#",
+      "url": "https://lirias.kuleuven.be/handle/20.500.12942/690466",
       "citations": 0
     },
     {
@@ -85,7 +117,7 @@
       "year": 2022,
       "title": "Automatic gait assessment of people with Parkinson's disease and freezing of gait with motion capture and deep learning",
       "journal": "ISPGR World Congress 2022, Date: 2022/07/04-2022/07/07, Location: Montreal …, 2022",
-      "url": "#",
+      "url": "https://lirias.kuleuven.be/3690079?",
       "citations": 0
     },
     {
@@ -93,7 +125,7 @@
       "year": 2022,
       "title": "Freezing-of-gait detection for Parkinson’s Disease with RGB videos",
       "journal": "Leuven. AI Scientific Workshop 2022, Date: 2022/06/02-2022/06/02, Location …, 2022",
-      "url": "#",
+      "url": "https://scholar.google.com/scholar?cluster=764369054064081553&hl=en&oi=scholarr",
       "citations": 0
     }
   ]
