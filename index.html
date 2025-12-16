@@ -120,10 +120,15 @@
     p.intro {
       font-size: 1rem; line-height: 1.5; margin-bottom: 1rem;
     }
-    p.intro a {
-      color: var(--color-accent); text-decoration: none;
+
+    /* Unified Link Styling (NEW) */
+    main a {
+      color: var(--color-accent);
+      text-decoration: none;
     }
-    p.intro a:hover { text-decoration: underline; }
+    main a:hover {
+      text-decoration: underline;
+    }
 
     ul { list-style: none; padding: 0; }
     ul li {
@@ -144,11 +149,12 @@
       margin-right: .5rem; color: var(--color-accent);
     }
     #pub-list li a {
-      color: var(--color-accent); font-weight: bold;
-      text-decoration: none; margin-left: .5rem;
+      margin-left: .5rem;
+      font-weight: bold;
     }
     #pub-list li em {
-      margin-left: .5rem; font-style: italic;
+      margin-left: .5rem;
+      font-style: italic;
     }
     #pub-list li .citations {
       margin-left: .5rem; color: var(--color-gray1); font-size: .9rem;
@@ -226,9 +232,10 @@
           <span class="desc">
             We will organize a special session titled
             “Advanced Time-Series Modeling for Wearable-Based ADL Monitoring in Healthcare”
-            at the 34th European Signal Processing Conference (EUSIPCO 2026), to be held in Bruges, Belgium.
+            at the 34th European Signal Processing Conference (EUSIPCO 2026), held in Bruges, Belgium.
           </span>
         </li>
+
         <li>
           <i class="fas fa-bullhorn"></i>
           <span class="date">Sep 2025</span>
@@ -237,6 +244,7 @@
             “Automated Detection and Assessment of Freezing of Gait in Parkinson's Disease using Wearable Sensors and Machine Learning.”
           </span>
         </li>
+
         <li>
           <i class="fas fa-bullhorn"></i>
           <span class="date">June 2025</span>
@@ -245,6 +253,7 @@
             <a href="https://icfog.org/meetings/icfog2025/" target="_blank">ICFOG 2025</a>, Atlanta, USA
           </span>
         </li>
+
         <li>
           <i class="fas fa-bullhorn"></i>
           <span class="date">June 2025</span>
@@ -270,10 +279,10 @@
     <section id="education">
       <h2>Education</h2>
       <ul>
-        <li><i class="fas fa-graduation-cap"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D., Engineering Technology, KU Leuven (expected)</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Oct 2021 – Sep 2025</span><span class="desc">Ph.D., Engineering Technology, KU Leuven</span></li>
         <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2019 – Sep 2021</span><span class="desc">M.Sc., Computer Science (Cum laude), KU Leuven</span></li>
         <li><i class="fas fa-graduation-cap"></i><span class="date">Apr 2019 – Sep 2019</span><span class="desc">Exchange Program, RWTH Aachen, Germany</span></li>
-        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2015 – Jun 2019</span><span class="desc">B.Sc., Computer Science & Engineering, NCTU (GPA 4.06/4.3)</span></li>
+        <li><i class="fas fa-graduation-cap"></i><span class="date">Sep 2015 – Jun 2019</span><span class="desc">B.Sc., Computer Science & Engineering, NCTU</span></li>
       </ul>
     </section>
 
@@ -290,6 +299,7 @@
             </a>
           </span>
         </li>
+
         <li><i class="fas fa-trophy"></i><span class="date">2025</span><span class="desc">FWO Travel Grant for ICFOG 2025</span></li>
         <li><i class="fas fa-trophy"></i><span class="date">2019</span><span class="desc">KU Leuven–Taiwan Scholarship</span></li>
         <li><i class="fas fa-trophy"></i><span class="date">2018</span><span class="desc">Highest Distinction Award, NCTU</span></li>
@@ -403,7 +413,8 @@
       });
 
       const panda = document.createElement('img');
-      panda.src = './panda.png'; panda.className = 'panda';
+      panda.src = './panda.png';
+      panda.className = 'panda';
       board.childNodes[idx(current.x,current.y)].appendChild(panda);
 
       board.childNodes[idx(0,0)].classList.add('start');
@@ -491,5 +502,6 @@
   }
   loadPublications();
   </script>
+
 </body>
 </html>
